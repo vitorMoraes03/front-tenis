@@ -1,5 +1,9 @@
-import { NavBar } from "./components/NavBar";
-import { createGlobalStyle } from "styled-components";
+import { NavBar } from "./components/Nav";
+import { Home } from "./components/Home";
+import { Gallery } from "./components/Gallery";
+import { BigImage } from "./components/BigImage";
+import { Footer } from "./components/Footer";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -11,17 +15,27 @@ const GlobalStyle = createGlobalStyle`
 
   html {
         font-size: 62.5%;
+        --main-color: rgba(173, 216, 230);
         --space-small: 1rem;
     }
+`
+
+const AppContainer = styled.div`
+  padding-top: 6rem;
+  background-color: var(--main-color);
 `
 
 function App() {
   return (
     <>
     <GlobalStyle/>
-    <div className="App">
+    <AppContainer>
       <NavBar></NavBar>
-    </div>
+      <Home></Home>
+      <Gallery></Gallery>
+      <BigImage></BigImage>
+      <Footer></Footer>
+    </AppContainer>
     </>
   );
 }

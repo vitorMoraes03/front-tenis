@@ -2,11 +2,15 @@ import styled from "styled-components";
 import imgTest from "../../images/rdy-1.png"
 
 const StyledNavBar = styled.nav`
-    background-color: lightblue;
     display: flex;
     justify-content: space-between;
     gap: var(--space-small);
     padding: 0 6rem;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    background-color: var(--main-color);
 
     img {
         width: 8rem;
