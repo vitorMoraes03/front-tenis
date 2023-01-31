@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
-    width: 100vw;
+    width: 100%;
 `
 
 const StyledFooterMain = styled.div`
