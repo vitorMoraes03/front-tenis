@@ -3,25 +3,11 @@ import { Home } from "./components/Home";
 import { Gallery } from "./components/Gallery";
 import { BigImage } from "./components/BigImage";
 import { Footer } from "./components/Footer";
-import styled, { createGlobalStyle } from "styled-components";
-
-const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    /* border: 1px solid red; */
-  }
-
-  html {
-        font-size: 62.5%;
-        --main-color: rgba(173, 216, 230);
-        --space-small: 1rem;
-    }
-`
+import styled from "styled-components";
+import { GlobalStyle } from "./global";
 
 const AppContainer = styled.div`
-  padding-top: 6rem;
+  padding-top: 8rem; // Atençao, problemático, responsividade...
   background-color: var(--main-color);
 `
 

@@ -1,12 +1,23 @@
 import styled from "styled-components";
 import imgHome from "../../images/woman-3.2-shoes-waves.png";
-import imgHome2 from "../../images/woman-3.2-shoes-waves.png";
 import imgSideSecond from "../../images/allstar-jeans-men.png"
 import imgSideThird from "../../images/allstar-orange.png"
-import imgSide3 from "../../images/black-woman-shoes.png"
-import imgSide4 from "../../images/girl-urban.png"
-import imgSide5 from "../../images/woman-shoes-sport.png"
-import imgSide6 from "../../images/woman-white-shoes.png"
+
+const StyledWrapper = styled.div`
+    color: var(--main-white);
+
+    h1, h2 {
+        text-transform: uppercase; 
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+
+    }
+`
 
 const StyledHome = styled.div`
     display: grid;
@@ -14,13 +25,12 @@ const StyledHome = styled.div`
         "featured featured second"
         "featured featured third";
     grid-template-columns: 1fr 1fr 1fr;
-    border: 1px solid red;
     height: 100vh;
 `
 
 const StyledPromo = styled.div`
     text-align: center;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgb(255,243,232, 0.3);
     
     p {
         padding: 1rem;
@@ -35,10 +45,9 @@ const StyledFeatured = styled.section`
 
     div {
         position: absolute;
-        color: black;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, 50%);
+        transform: translate(-50%, -50%);
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -46,7 +55,7 @@ const StyledFeatured = styled.section`
     }
 
     h1 {
-        text-transform: uppercase; 
+        
     }
 `
 
@@ -87,14 +96,13 @@ function SideSection(props){
 
 export function Home(){
     return (
-        <div>
+        <StyledWrapper>
         <StyledPromo>
             <p>Entregas grátis a partir de 150 reais</p>
         </StyledPromo>
         <StyledHome>
         <StyledFeatured>
             <div>
-                <h1>LOGO</h1>
                 <h1>Comece seu ano com leveza.</h1>
                 <p>Edição limitada.</p>
             </div>
@@ -110,6 +118,6 @@ export function Home(){
         p={"Compre linha Modern"}
         />
         </StyledHome>
-        </div>
+        </StyledWrapper>
     )
 }
