@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    list-style: none;
     /* border: 1px solid red; */
   }
 
@@ -15,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
 
         --font-text: 1rem;
         --font-medium: 1.5rem;
+        --font-big: 1.8rem;
          
         --font-logo: 3.4rem;
         --icons-size: 3.2rem;
@@ -40,6 +42,11 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
       text-decoration: none;
+      color: var(--main-white);
+    }
+
+    input {
+      outline: none;
     }
 `
 
