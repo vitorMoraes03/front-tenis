@@ -38,7 +38,6 @@ const StyledLinks = styled(StyledFlex)`
     a {
         font-size: var(--font-medium);
         text-transform: uppercase;
-        color: var(--main-white);
         align-self: center;
     }
 `
