@@ -7,21 +7,19 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     list-style: none;
-    /* border: 1px solid red; */
   }
 
   html {
         font-size: 62.5%;
         font-family: 'Roboto', sans-serif;
+        color: var(--main-white);
 
-        --font-text: 1rem;
+        --font-text: 1.4rem;
         --font-medium: 1.5rem;
         --font-big: 1.8rem;
-         
         --font-logo: 3.4rem;
         --icons-size: 3.2rem;
         
-
         --main-color: #190e02;
         --secondary-color: #e27c12;
         --main-shade: #4b2906;
@@ -30,7 +28,11 @@ export const GlobalStyle = createGlobalStyle`
 
         --space-small: 1.5rem;
         --space-medium: 4rem;
-        --space-big: 14rem;
+        --space-big: 10rem;
+    }
+
+    ion-icon {
+      font-size: var(--icons-size);
     }
 
     ion-icon:hover,
@@ -47,6 +49,10 @@ export const GlobalStyle = createGlobalStyle`
 
     input {
       outline: none;
+    }
+
+    p {
+      font-size: var(--font-text);
     }
 `
 

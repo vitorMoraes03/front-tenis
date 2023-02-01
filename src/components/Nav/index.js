@@ -12,11 +12,10 @@ const StyledNavBar = styled.nav`
     z-index: 100;
     top: 0;
     background-color: var(--main-color);
-    color: var(--main-white);
 `
 
 const StyledLinks = styled(StyledFlex)`
-        div {
+    div {
         display: flex;
         align-items: center;
     }
@@ -38,16 +37,7 @@ const StyledLinks = styled(StyledFlex)`
     a {
         font-size: var(--font-medium);
         text-transform: uppercase;
-        align-self: center;
     }
-`
-
-const StyledIcons = styled(StyledFlex)`
-    ion-icon {
-        font-size: var(--icons-size);
-        color: var(--main-white);
-    }
-
 `
 
 export function NavBar(){
@@ -63,11 +53,11 @@ export function NavBar(){
                 <Link to={""}>Shop</Link>
                 <Link to={""}>Quem somos</Link>
             </StyledLinks>
-            <StyledIcons>
+            <StyledFlex>
                 <Link to={""}><ion-icon name="search-outline"></ion-icon></Link>
                 <Link to={""}><ion-icon name="cart-outline"></ion-icon></Link>
                 <Link to={""}><ion-icon name="person-outline"></ion-icon></Link>
-            </StyledIcons>
+            </StyledFlex>
         </StyledNavBar>
     )
 }

@@ -4,18 +4,12 @@ import imgSideSecond from "../../images/allstar-jeans-men.png"
 import imgSideThird from "../../images/allstar-orange.png"
 
 const StyledWrapper = styled.div`
-    color: var(--main-white);
-
     h1, h2 {
         text-transform: uppercase; 
     }
 
     h1 {
         font-size: 4rem;
-    }
-
-    h2 {
-
     }
 `
 
@@ -33,7 +27,7 @@ const StyledPromo = styled.div`
     border-top: 1px solid rgba(255,243,232, 0.3);
     
     p {
-        padding: 1rem;
+        padding: var(--space-small);
     }
 `
 
@@ -50,12 +44,8 @@ const StyledFeatured = styled.section`
         transform: translate(-50%, -50%);
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: var(--space-small);
         text-align: center;
-    }
-
-    h1 {
-        
     }
 `
 
@@ -79,7 +69,7 @@ const StyledSide = styled.section`
     }
 
     p {
-        margin-top: 1rem;
+        margin-top: var(--space-small);
     }
 `
 

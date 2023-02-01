@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import logosImg from "../../images/logos-credit-card.png"
+import { StyledFlex } from "../../global";
 
 const StyledFooter = styled.footer`
     color: var(--main-white);
@@ -9,7 +10,7 @@ const StyledFooter = styled.footer`
 
 const StyledFooterMain = styled.div`
     display: flex;
-    padding: 7rem 14rem;
+    padding: var(--space-medium) var(--space-big);
     justify-content: space-between;
     align-items: center;
 `
@@ -24,7 +25,6 @@ const StyledFooterCta = styled.div`
     div {
         display: flex;
         align-items: center;
-        position: relative;
         justify-content: center;
     }
 
@@ -36,8 +36,6 @@ const StyledFooterCta = styled.div`
 
     ion-icon {
         font-size: var(--icons-size);
-        position: absolute;
-        right: -3rem;
     }
 `
 
@@ -59,16 +57,6 @@ const StyledFooterMedia = styled.div`
         margin-bottom: var(--space-small);
         text-transform: uppercase;
         text-align: center;
-    }
-
-    div {
-        display: flex;
-        gap: var(--space-small);
-        justify-content: center;
-    }
-
-    ion-icon {
-        font-size: var(--icons-size);
     }
 `
 
@@ -113,19 +101,17 @@ export function Footer(){
                 </StyledFooterUls>
                 <StyledFooterMedia>
                     <h3>Siga-nos</h3>
-                    <div>
+                    <StyledFlex>
                         <ion-icon name="logo-instagram"></ion-icon>
                         <ion-icon name="logo-linkedin"></ion-icon>
                         <ion-icon name="logo-github"></ion-icon>
-                    </div>
+                    </StyledFlex>
                 </StyledFooterMedia>
             </StyledFooterMain>
-
             <StyledFooterBottom>
                     <p>© 2023 Made Shoes Copyright</p>
                     <img src={logosImg} alt={"Logos credit card"}/>
             </StyledFooterBottom>
         </StyledFooter>
-       
     )
 }
