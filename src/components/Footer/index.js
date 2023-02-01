@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import logosImg from "../../images/logos-credit-card.png"
 
 const StyledFooter = styled.footer`
     color: var(--main-white);
@@ -72,7 +73,20 @@ const StyledFooterMedia = styled.div`
 `
 
 const StyledFooterBottom = styled.div`
+    display: flex;
+    border-top: 1px solid rgba(255,243,232, 0.3);
+    padding: var(--space-small) var(--space-medium);
+    justify-content: space-between;
+    align-items: center;
 
+    p {
+        font-size: var(--font-text);
+        opacity: 0.7;
+    }
+
+    img {
+        height: var(--icons-size);
+    }
 `
 
 export function Footer(){
@@ -108,17 +122,8 @@ export function Footer(){
             </StyledFooterMain>
 
             <StyledFooterBottom>
-                <div>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                </div>
-                <div>
-                    <p></p>
-                </div>
-                <div>
-                    <img></img>
-                </div>
+                    <p>© 2023 Made Shoes Copyright</p>
+                    <img src={logosImg} alt={"Logos credit card"}/>
             </StyledFooterBottom>
         </StyledFooter>
        

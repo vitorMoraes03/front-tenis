@@ -30,7 +30,7 @@ const StyledHome = styled.div`
 
 const StyledPromo = styled.div`
     text-align: center;
-    border-top: 1px solid rgb(255,243,232, 0.3);
+    border-top: 1px solid rgba(255,243,232, 0.3);
     
     p {
         padding: 1rem;
@@ -98,7 +98,7 @@ export function Home(){
     return (
         <StyledWrapper>
         <StyledPromo>
-            <p>Entregas grátis a partir de 150 reais</p>
+            <p>Entrega grátis a partir de 150 reais</p>
         </StyledPromo>
         <StyledHome>
         <StyledFeatured>
