@@ -1,19 +1,15 @@
 import styled from "styled-components";
-import imgHome from "../../images/woman-3.2-shoes-waves.png";
-import imgSideSecond from "../../images/allstar-jeans-men.png"
-import imgSideThird from "../../images/allstar-orange.png"
+import imgHome from "../../../images/woman-3.2-shoes-waves.png";
+import imgSideSecond from "../../../images/allstar-jeans-men.png"
+import imgSideThird from "../../../images/allstar-orange.png"
 
 const StyledWrapper = styled.div`
-    h1, h2 {
-        text-transform: uppercase; 
-    }
-
     h1 {
         font-size: 4rem;
     }
 `
 
-const StyledHome = styled.div`
+const StyledMain = styled.div`
     display: grid;
     grid-template-areas: 
         "featured featured second"
@@ -64,10 +60,6 @@ const StyledSide = styled.section`
         text-align: center;
     }
 
-    h2 {
-        text-transform: uppercase; 
-    }
-
     p {
         margin-top: var(--space-small);
     }
@@ -84,13 +76,13 @@ function SideSection(props){
     )
 }
 
-export function Home(){
+export function Main(){
     return (
         <StyledWrapper>
         <StyledPromo>
             <p>Entrega grátis a partir de 150 reais</p>
         </StyledPromo>
-        <StyledHome>
+        <StyledMain>
         <StyledFeatured>
             <div>
                 <h1>Comece seu ano com leveza.</h1>
@@ -107,7 +99,7 @@ export function Home(){
         h2={"Bem vindo ao futuro"} 
         p={"Compre linha Modern"}
         />
-        </StyledHome>
+        </StyledMain>
         </StyledWrapper>
     )
 }

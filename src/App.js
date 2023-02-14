@@ -1,10 +1,10 @@
 import { NavBar } from "./components/Nav";
-import { Home } from "./components/Home";
-import { Gallery } from "./components/Gallery";
-import { BigImage } from "./components/BigImage";
+import { Home } from "./pages/Home";
 import { Footer } from "./components/Footer";
+import { LoginPage } from "./pages/LoginPage";
 import styled from "styled-components";
 import { GlobalStyle } from "./global";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 const AppContainer = styled.div`
   padding-top: 8rem; // Atençao, problemático, responsividade...
@@ -16,11 +16,13 @@ function App() {
     <>
     <GlobalStyle/>
     <AppContainer>
-      <NavBar></NavBar>
-      <Home></Home>
-      <Gallery></Gallery>
-      <BigImage></BigImage>
-      <Footer></Footer>
+      <NavBar/>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home"/>}/>
+        <Route path="/home" element={<Home />}/>
+        <Route path="/login" element={<LoginPage />}/>
+      </Routes>
+      <Footer/>
     </AppContainer>
     </>
   );

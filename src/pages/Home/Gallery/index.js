@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import img5 from "../../images/rdy-5.png";
-import img6 from "../../images/rdy-6.png";
-import img7 from "../../images/rdy-7.png";
+import img5 from "../../../images/rdy-5.png";
+import img6 from "../../../images/rdy-6.png";
+import img7 from "../../../images/rdy-7.png";
 
 const StyledGallery = styled.section`
     display: flex;

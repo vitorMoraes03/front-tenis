@@ -26,8 +26,8 @@ const StyledLinks = styled(StyledFlex)`
 
     h1 {
         font-size: var(--font-logo);
-        letter-spacing: -1.5px;
         margin-bottom: -2px;
+        text-transform: none;
     }
 
     img {
@@ -56,7 +56,7 @@ export function NavBar(){
             <StyledFlex>
                 <Link to={""}><ion-icon name="search-outline"></ion-icon></Link>
                 <Link to={""}><ion-icon name="cart-outline"></ion-icon></Link>
-                <Link to={""}><ion-icon name="person-outline"></ion-icon></Link>
+                <Link to={"/login"}><ion-icon name="person-outline"></ion-icon></Link>
             </StyledFlex>
         </StyledNavBar>
     )
