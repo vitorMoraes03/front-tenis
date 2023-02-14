@@ -1,34 +1,34 @@
 import { StyledBtnLogin } from "../../../global";
 import styled from "styled-components";
 
-export function LoginCreateAcc(){
-    const StyledCreateAcc = styled.div`
-    width: 50%;
-    padding: 6rem var(--space-medium);  
-    background-color: var(--secondary-shade);
-    
-    h3 {
-        font-weight: 800;
-        margin-bottom: var(--space-small);
-    }
+const StyledCreateAcc = styled.div`
+width: 50%;
+padding: 6rem var(--space-medium);  
+background-color: var(--secondary-shade);
 
-    p {
-        margin-bottom: 1rem;
-        font-size: var(--font-medium);
-    }
+h3 {
+    font-weight: 800;
+    margin-bottom: var(--space-small);
+}
 
-    ul {
-        margin-left: var(--space-medium);
-        margin-bottom: var(--space-small);
-    }
+p {
+    margin-bottom: 1rem;
+    font-size: var(--font-medium);
+}
 
-    li {
-        list-style: initial;
-        margin-bottom: 0.5rem;
-        padding-left: 1rem;
-    }
+ul {
+    margin-left: var(--space-medium);
+    margin-bottom: 3rem;
+}
+
+li {
+    list-style: initial;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+}
 `
 
+export function LoginCreateAcc(){
     return (
         <StyledCreateAcc>
         <h3>Cliente novo?</h3>

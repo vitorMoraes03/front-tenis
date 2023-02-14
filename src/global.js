@@ -26,7 +26,6 @@ export const GlobalStyle = createGlobalStyle`
         --secondary-color: #e27c12; //orange
         --secondary-shade: #fafaf7; //gray
         --main-white: #fff3e8; //white
-        
 
         --space-small: 1.5rem;
         --space-medium: 4rem;
@@ -74,41 +73,87 @@ export const StyledFlex = styled.div`
   align-items: center;
 `
 
-export function InputContainerForm(props){
-  const StyledContainerInput = styled.div`
-  padding: var(--space-small);
+const StyledInputWrapper = styled.div`
+padding: var(--space-small);
 
-  input {
-    width: 100%; 
-    height: 4rem; 
-    background-color: var(--secondary-shade);
-    padding: 0.5rem;
-    margin: 1rem 0;   
-    border: 1px solid var(--main-shade);
-  }
+input {
+  width: 100%; 
+  height: 4rem; 
+  background-color: var(--secondary-shade);
+  padding: 0.5rem;
+  margin: 1rem 0;   
+  border: 1px solid var(--main-shade);
+}
 
-  input:hover,
-  input:active {
-    border-color: var(--main-color);
-  }
+input:hover,
+input:active {
+  border-color: var(--main-color);
+}
 
-  span {
-    color: var(--secondary-color);
-  }
-  `
+span {
+  color: var(--secondary-color);
+}
+`
 
+export const InputWrapper = ({ children }) => {
   return (
-      <StyledContainerInput label={props.label}>
-          <label>{props.label}:</label>
-          <input></input>
-          <span>Please use a valid email address, such as user@example.com.</span>
-      </StyledContainerInput>
+      <StyledInputWrapper>
+        {children}
+      </StyledInputWrapper>
   )
 }
 
 export const StyledBtnLogin = styled.button`
-  padding: var(--space-small);
+  padding: var(--space-small) var(--space-medium);
+  text-transform: uppercase;
   cursor: pointer;
+  background-color: var(--main-color);
+  color: var(--main-white);
+  font-size: 1.2rem;
+  z-index: 98;
+
+  position: relative;
+  transition: all .15s ease;
+  overflow: hidden;
+  //white-space: nowrap;
+  //background: 0 0;
+
+  &:hover{
+    background-color: transparent;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &::before{
+    background-color: var(--main-color);
+    z-index: -1;
+  }
+
+  &::after{
+    background-color: var(--main-shade);
+    transform: translate(-50%) skew(20deg) scaleX(1);
+    transition: width .36s cubic-bezier(.175, .885, .32, 1.275);
+    z-index: -2;
+    width: 20px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+  }
+
+  &:hover::before, 
+  &:hover::after {
+    opacity: 1;
+  }
 `
 
 // export function StyledTitle(props){
