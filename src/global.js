@@ -107,20 +107,14 @@ export const StyledBtnLogin = styled.button`
   padding: var(--space-small) var(--space-medium);
   text-transform: uppercase;
   cursor: pointer;
-  background-color: var(--main-color);
   color: var(--main-white);
   font-size: 1.2rem;
-  z-index: 98;
-
   position: relative;
-  transition: all .15s ease;
   overflow: hidden;
+  border: none;
+  z-index: 98;
+  transition: all 0.2s ease;
   //white-space: nowrap;
-  //background: 0 0;
-
-  &:hover{
-    background-color: transparent;
-  }
 
   &::before,
   &::after {
@@ -130,24 +124,28 @@ export const StyledBtnLogin = styled.button`
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
     transition: opacity 0.2s ease-in-out;
   }
 
   &::before{
     background-color: var(--main-color);
     z-index: -1;
+    opacity: 0.9;
   }
 
   &::after{
-    background-color: var(--main-shade);
+    background-color: #2e1a04;
     transform: translate(-50%) skew(20deg) scaleX(1);
     transition: width .36s cubic-bezier(.175, .885, .32, 1.275);
     z-index: -2;
-    width: 20px;
-    height: 100%;
-    top: 0;
     left: 50%;
+    width: 2rem;
+    //height: 100%;
+    //top: 0;
+  }
+
+  &:hover::after {
+    width: 120%;
   }
 
   &:hover::before, 
@@ -156,18 +154,4 @@ export const StyledBtnLogin = styled.button`
   }
 `
 
-// export function StyledTitle(props){
-  
-//   const StyledTitle = styled.h1`
-//     text-transform: uppercase;
-//     font-weight: 800;
-//     letter-spacing: -1px;
-//     font-size: ${props.fontSize};
-//   `
-
-//   return (
-//     <StyledTitle fontSize={props.fontSize}>
-//     </StyledTitle>
-//   )
-// }
 

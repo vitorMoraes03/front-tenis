@@ -1,19 +1,8 @@
-import styled from "styled-components";
 import { InputWrapper, StyledBtnLogin } from "../../../global";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
-const StyledForm = styled.form`
-    width: 50%;
-    //padding: 6rem var(--space-medium);   
-`
-const StyledContainerBtn = styled.div`
-    display: flex;
-    justify-content: center;
-    gap: var(--space-small);
-    align-items: center;
-    margin-top: var(--space-small);
-`
+import { api } from "../../../api/api";
+import { StyledForm, StyledContainerBtn } from "../styles.js";
 
 export function LoginForm(){
     const [formLogin, setFormLogin] = useState({
@@ -25,9 +14,15 @@ export function LoginForm(){
         setFormLogin({...formLogin, [e.target.name]: e.target.value});
     }
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
         console.log(formLogin);
+        try {
+            const res = await api.post("/user/login", formLogin);
+            console.log(res);
+        } catch (err){
+            console.log(err);
+        }
     }
 
     return (
