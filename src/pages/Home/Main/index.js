@@ -3,12 +3,6 @@ import imgHome from "../../../images/woman-3.2-shoes-waves.png";
 import imgSideSecond from "../../../images/allstar-jeans-men.png"
 import imgSideThird from "../../../images/allstar-orange.png"
 
-const StyledWrapper = styled.div`
-    h1 {
-        font-size: 4rem;
-    }
-`
-
 const StyledMain = styled.div`
     display: grid;
     grid-template-areas: 
@@ -16,14 +10,9 @@ const StyledMain = styled.div`
         "featured featured third";
     grid-template-columns: 1fr 1fr 1fr;
     height: 100vh;
-`
 
-const StyledPromo = styled.div`
-    text-align: center;
-    border-top: 1px solid rgba(255,243,232, 0.3);
-    
-    p {
-        padding: var(--space-small);
+    h1 {
+        font-size: 4rem;
     }
 `
 
@@ -78,10 +67,6 @@ function SideSection(props){
 
 export function Main(){
     return (
-        <StyledWrapper>
-        <StyledPromo>
-            <p>Entrega grátis a partir de 150 reais</p>
-        </StyledPromo>
         <StyledMain>
         <StyledFeatured>
             <div>
@@ -99,7 +84,6 @@ export function Main(){
         h2={"Bem vindo ao futuro"} 
         p={"Compre linha Modern"}
         />
-        </StyledMain>
-        </StyledWrapper>
+        </StyledMain>    
     )
 }

@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { LoginForm } from "../LoginPage/LoginForm";
-import { LoginCreateAcc } from "../LoginPage/LoginCreateAcc";
-import { StyledFlex } from "../../global";
-import { useState } from "react";
+import { LoginForm } from "../LoginForm";
+import { LoginCreateAcc } from "../LoginCreateAcc";
+import { StyledFlex } from "../../../global";
 
-const StyledLoginContainer = styled.div`
+export const StyledLoginContainer = styled.div`
 padding: var(--space-medium) 8rem;
 background-color: var(--main-white);
 color: var(--main-color);
@@ -18,16 +17,14 @@ h1 {
     text-align: center;
     font-size: 6rem;
     font-weight: 800;
+    padding: var(--space-medium);
 }
 `
 
 const StyledSmallContainer = styled(StyledFlex)`
-    margin: var(--space-medium) 0;
 `
 
-export function LoginPage(){    
-
-
+export function Login(){    
     return (
         <StyledLoginContainer>
             <h1>Login</h1>

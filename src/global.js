@@ -28,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
         --main-white: #fff3e8; //white
 
         --space-small: 1.5rem;
-        --space-medium: 4rem;
+        --space-medium: 3rem;
         --space-big: 10rem;
     }
 
@@ -74,7 +74,7 @@ export const StyledFlex = styled.div`
 `
 
 const StyledInputWrapper = styled.div`
-padding: var(--space-small);
+padding: 1rem;
 
 input {
   width: 100%; 
@@ -83,6 +83,7 @@ input {
   padding: 0.5rem;
   margin: 1rem 0;   
   border: 1px solid var(--main-shade);
+  opacity: 0.7;
 }
 
 input:hover,
@@ -153,5 +154,6 @@ export const StyledBtnLogin = styled.button`
     opacity: 1;
   }
 `
+
 
 

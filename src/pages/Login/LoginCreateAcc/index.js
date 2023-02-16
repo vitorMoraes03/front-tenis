@@ -1,5 +1,6 @@
 import { StyledBtnLogin } from "../../../global";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledCreateAcc = styled.div`
 width: 50%;
@@ -40,7 +41,7 @@ export function LoginCreateAcc(){
                 <li>Access your order history</li>
                 <li>Track new orders</li>
             </ul>
-            <StyledBtnLogin>Criar conta</StyledBtnLogin>
+            <Link to={"/signup"}><StyledBtnLogin>Criar conta</StyledBtnLogin></Link>
         </div>
         </StyledCreateAcc> 
     )

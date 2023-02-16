@@ -1,10 +1,14 @@
 import { InputWrapper, StyledBtnLogin } from "../../../global";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../../contexts/authContext";
 import { api } from "../../../api/api";
 import { StyledForm, StyledContainerBtn } from "../styles.js";
 
 export function LoginForm(){
+    const navigate = useNavigate();
+    const { setLoggedInUser } = useContext(AuthContext);
+
     const [formLogin, setFormLogin] = useState({
         email: '',
         password: ''
@@ -16,10 +20,11 @@ export function LoginForm(){
 
     async function handleSubmit(e){
         e.preventDefault();
-        console.log(formLogin);
         try {
             const res = await api.post("/user/login", formLogin);
-            console.log(res);
+            setLoggedInUser({ ...res.data }); 
+            localStorage.setItem("loggedInUser", JSON.stringify(res.data)); 
+            navigate('/');
         } catch (err){
             console.log(err);
         }
@@ -31,6 +36,7 @@ export function LoginForm(){
                     <label htmlFor="inputEmail">Endereço de Email:</label>
                     <input
                     id="inputEmail"
+                    // type="password"
                     type="text"
                     name="email"
                     onChange={handleChange}
@@ -40,7 +46,7 @@ export function LoginForm(){
                     <span>Please use a valid email address, such as user@example.com.</span>
             </InputWrapper>
             <InputWrapper>
-                    <label>Password:</label>
+                    <label htmlFor="inputPassword">Password:</label>
                     <input
                     id="inputPassword"
                     type="text"

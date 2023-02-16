@@ -2,6 +2,8 @@ import styled from "styled-components";
 import imgNav from "../../images/logo_modern.png";
 import { Link, useNavigate } from "react-router-dom";
 import { StyledFlex } from "../../global";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 
 const StyledNavBar = styled.nav`
     display: flex;
@@ -42,21 +44,27 @@ const StyledLinks = styled(StyledFlex)`
 
 export function NavBar(){
     const navigate = useNavigate();
+    const { loggedInUser } = useContext(AuthContext);
 
     return (
         <StyledNavBar>
             <StyledLinks>
                 <div onClick={() => navigate('/')}>
-                <img src={imgNav} alt='Logo Image Sneakers'></img>
+                <img src={imgNav} alt='Logo Sneakers'/>
                 <h1>Made</h1>
                 </div>
                 <Link to={""}>Shop</Link>
                 <Link to={""}>Quem somos</Link>
             </StyledLinks>
             <StyledFlex>
-                <Link to={""}><ion-icon name="search-outline"></ion-icon></Link>
-                <Link to={""}><ion-icon name="cart-outline"></ion-icon></Link>
-                <Link to={"/login"}><ion-icon name="person-outline"></ion-icon></Link>
+                {loggedInUser ? 
+                <p>{`Olá, ${loggedInUser.user.firstName}`}</p> :
+                null}
+                <Link to={loggedInUser ? "/profile" : "/login"}>
+                    <ion-icon name="person-outline"/>
+                </Link>
+                <Link to={""}><ion-icon name="search-outline"/></Link>               
+                <Link to={""}><ion-icon name="cart-outline"/></Link>
             </StyledFlex>
         </StyledNavBar>
     )
