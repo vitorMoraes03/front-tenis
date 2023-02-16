@@ -8,6 +8,8 @@ import styled from "styled-components";
 import { GlobalStyle } from "./global";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthContextComponent } from "./contexts/authContext";
+import { useState } from "react";
+
 
 const AppContainer = styled.div`
   padding-top: 8rem; // Atençao, problemático, responsividade...
@@ -24,19 +26,30 @@ const StyledPromo = styled.div`
 `
 
 function App() {
+  const [form, setForm] = useState({
+    userName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    firstName: '',
+    lastName: '',
+    birthday: '',
+});
+
   return (
     <AuthContextComponent>
     <GlobalStyle/>
     <AppContainer>
-      <NavBar/>
+      {/* PROP FORM SOMENTE PARA TESTE, ON CLICK NA LUPA */}
+      <NavBar form={form}/> 
       <StyledPromo>
         <p>Entrega grátis a partir de 150 reais</p>
       </StyledPromo>
       <Routes>
         <Route path="/" element={<Navigate to="/home"/>}/>
-        <Route path="/home" element={<Home />}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/home" element={<Home/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<SignUp form={form} setForm={setForm}/>}/>
         <Route path="/profile" element={<Profile/>}/>
       </Routes>
       <Footer/>

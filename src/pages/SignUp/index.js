@@ -1,8 +1,9 @@
 import { StyledSignUpContainer } from "./styles";
 import { InputWrapper, StyledBtnLogin } from "../../global";
-import { useState } from "react";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 
 // Onde essa funcoes SMALL E SPAN vao ficar?
 // Levar em conta quando o SPAN é ativado...
@@ -25,26 +26,21 @@ function Span(){
 
 export function SignUp(props){
     const navigate = useNavigate();
-
-    const [formSignUp, setFormSignUp] = useState({
-        userName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        firstName: '',
-        lastName: '',
-        birthday: '',
-    });
+    const form = props.form;
+    const setForm = props.setForm;
+    const { setLoggedInUser } = useContext(AuthContext);
 
     function handleChange(e){
-        setFormSignUp({...formSignUp, [e.target.name]: e.target.value});
+        setForm({...form, [e.target.name]: e.target.value});
     }
 
     async function handleSubmit(e){
         e.preventDefault();
         try {
-            const res = await api.post("/user/signup", formSignUp);
-            console.log(res.data);
+            const res = await api.post("/user/signup", form);
+            setLoggedInUser({ ...res.data }); 
+            localStorage.setItem("loggedInUser", JSON.stringify(res.data)); 
+            setForm({...form, password: '', confirmPassword: ''}); //clear state -> password
             navigate('/');
         } catch (err){
             console.log(err);
@@ -65,7 +61,7 @@ export function SignUp(props){
                 type="text"
                 name="userName"
                 onChange={handleChange}
-                value={formSignUp.userName}
+                value={form.userName}
                 required              
                 />
                 <Span/>
@@ -80,7 +76,7 @@ export function SignUp(props){
                 type="text"
                 name="email"
                 onChange={handleChange}
-                value={formSignUp.email}
+                value={form.email}
                 required              
                 />
                 <Span/>
@@ -95,7 +91,7 @@ export function SignUp(props){
                 type="text"
                 name="password"
                 onChange={handleChange}
-                value={formSignUp.password}
+                value={form.password}
                 required              
                 />
                 <Span/>
@@ -110,7 +106,7 @@ export function SignUp(props){
                 type="text"
                 name="confirmPassword"
                 onChange={handleChange}
-                value={formSignUp.confirmPassword}
+                value={form.confirmPassword}
                 required              
                 />
                 <Span/>
@@ -125,7 +121,7 @@ export function SignUp(props){
                 type="text"
                 name="firstName"
                 onChange={handleChange}
-                value={formSignUp.firstName}
+                value={form.firstName}
                 required              
                 />
                 <Span/>
@@ -140,7 +136,7 @@ export function SignUp(props){
                 type="text"
                 name="lastName"
                 onChange={handleChange}
-                value={formSignUp.lastName}
+                value={form.lastName}
                 required              
                 />
                 <Span/>
@@ -155,7 +151,7 @@ export function SignUp(props){
                 type="text"
                 name="birthday"
                 onChange={handleChange}
-                value={formSignUp.birthday}
+                value={form.birthday}
                 required              
                 />
                 <Span/> 

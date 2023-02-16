@@ -42,9 +42,14 @@ const StyledLinks = styled(StyledFlex)`
     }
 `
 
-export function NavBar(){
+export function NavBar(props){
     const navigate = useNavigate();
+    const form = props.form;
     const { loggedInUser } = useContext(AuthContext);
+
+    function testFormState(){
+        console.log(form);
+    }
 
     return (
         <StyledNavBar>
@@ -63,7 +68,7 @@ export function NavBar(){
                 <Link to={loggedInUser ? "/profile" : "/login"}>
                     <ion-icon name="person-outline"/>
                 </Link>
-                <Link to={""}><ion-icon name="search-outline"/></Link>               
+                <Link to={""} onClick={testFormState}><ion-icon name="search-outline"/></Link>               
                 <Link to={""}><ion-icon name="cart-outline"/></Link>
             </StyledFlex>
         </StyledNavBar>

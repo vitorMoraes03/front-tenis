@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 
+
 export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
@@ -154,6 +155,7 @@ export const StyledBtnLogin = styled.button`
     opacity: 1;
   }
 `
+
 
 
 
