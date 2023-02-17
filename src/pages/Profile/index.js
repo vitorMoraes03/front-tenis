@@ -1,28 +1,59 @@
 import { api } from "../../api/api";
-import { StyledLoginContainer } from "../Login/LoginContainer";
-import { InputWrapper } from "../../global";
+import { Form } from "../../components/Form";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/authContext";
+import { StyledSignUpContainer } from "../SignUp/styles";
+import { StyledBtnLogin } from "../../global";
+import { useNavigate } from "react-router";
 
 export function Profile(){
+    const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
+    const user = loggedInUser.user;
+    const navigate = useNavigate();
+    const [edition, setEdition] = useState({
+        userName: user.userName,
+        email: user.email,
+        password: user.password,
+        confirmPassword: user.confirmPassword,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        birthday: user.birthday,
+    });
 
     async function handleSubmit(e){
         e.preventDefault();
         try {
-            const res = await api.get("/user/profile");
-            console.log(res);
+            await api.put("/user/edit", edition);
+            navigate("/");
         } catch (err){
             console.log(err);
         }
     }
 
+    async function logOut(){
+        localStorage.removeItem('loggedInUser');
+        setLoggedInUser(null);
+        navigate('/');
+    }
+
+    async function deleteAcc(){
+        try {
+            await api.delete("/user/delete");
+            logOut();
+        } catch (err){
+            console.log(err.response.data);
+        }
+    }
+
     return (
-       <StyledLoginContainer>
+       <StyledSignUpContainer>
             <h1>Minha Conta</h1>
             <form>
-                <InputWrapper>
-                    <label></label>
-                    <input></input>
-                </InputWrapper>
+                <Form formNewUser={false} form={edition} setForm={setEdition}/>
             </form>
-       </StyledLoginContainer>
+            <StyledBtnLogin onClick={logOut}>Deslogar</StyledBtnLogin>
+            <StyledBtnLogin onClick={handleSubmit}>Editar</StyledBtnLogin>
+            <StyledBtnLogin onClick={deleteAcc}>Deletar</StyledBtnLogin>
+       </StyledSignUpContainer>
     )
 }
