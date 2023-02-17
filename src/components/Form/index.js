@@ -130,7 +130,7 @@ export function Form(props){
                 </label>
                 <input
                 id="inputBirthday"
-                type="text"
+                type="string"
                 name="birthday"
                 onChange={handleChange}
                 value={form.birthday}

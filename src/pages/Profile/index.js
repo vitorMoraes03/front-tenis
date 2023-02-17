@@ -20,20 +20,29 @@ export function Profile(){
         birthday: user.birthday,
     });
 
-    // async function handleSubmit(e){
-    //     e.preventDefault();
-    //     try {
-    //         const res = await api.get("/user/profile");
-    //         console.log(res);
-    //     } catch (err){
-    //         console.log(err);
-    //     }
-    // }
+    async function handleSubmit(e){
+        e.preventDefault();
+        try {
+            await api.put("/user/edit", edition);
+            navigate("/");
+        } catch (err){
+            console.log(err);
+        }
+    }
 
     async function logOut(){
         localStorage.removeItem('loggedInUser');
         setLoggedInUser(null);
         navigate('/');
+    }
+
+    async function deleteAcc(){
+        try {
+            await api.delete("/user/delete");
+            logOut();
+        } catch (err){
+            console.log(err.response.data);
+        }
     }
 
     return (
@@ -42,7 +51,9 @@ export function Profile(){
             <form>
                 <Form formNewUser={false} form={edition} setForm={setEdition}/>
             </form>
-            <StyledBtnLogin onClick={logOut}>Teste: deslogar</StyledBtnLogin>
+            <StyledBtnLogin onClick={logOut}>Deslogar</StyledBtnLogin>
+            <StyledBtnLogin onClick={handleSubmit}>Editar</StyledBtnLogin>
+            <StyledBtnLogin onClick={deleteAcc}>Deletar</StyledBtnLogin>
        </StyledSignUpContainer>
     )
 }
