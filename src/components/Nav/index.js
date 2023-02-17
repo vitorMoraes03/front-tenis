@@ -44,11 +44,10 @@ const StyledLinks = styled(StyledFlex)`
 
 export function NavBar(props){
     const navigate = useNavigate();
-    const form = props.form;
     const { loggedInUser } = useContext(AuthContext);
 
     function testFormState(){
-        console.log(form);
+        console.log(loggedInUser);
     }
 
     return (
