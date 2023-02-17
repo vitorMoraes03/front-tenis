@@ -18,7 +18,8 @@ function Span(){
 
 export function Form(props){
     const formNewUser = props.formNewUser;
-    const { form, setForm } = props.formState;
+    const form = props.form;
+    const setForm = props.setForm;
 
     function handleChange(e){
         setForm({...form, [e.target.name]: e.target.value});

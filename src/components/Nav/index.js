@@ -67,7 +67,7 @@ export function NavBar(props){
                 <Link to={loggedInUser ? "/profile" : "/login"}>
                     <ion-icon name="person-outline"/>
                 </Link>
-                <Link to={""} onClick={testFormState}><ion-icon name="search-outline"/></Link>               
+                <Link to={"/profile"} onClick={testFormState}><ion-icon name="search-outline"/></Link>               
                 <Link to={""}><ion-icon name="cart-outline"/></Link>
             </StyledFlex>
         </StyledNavBar>

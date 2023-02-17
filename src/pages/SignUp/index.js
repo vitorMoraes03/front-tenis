@@ -37,7 +37,7 @@ export function SignUp(){
         <StyledSignUpContainer>
             <h1>Cadastro</h1>
             <form>
-            <Form formNewUser={true} formState={{form, setForm}}/>
+            <Form formNewUser={true} form={form} setForm={setForm}/>
             <StyledBtnLogin onClick={handleSubmit}>Criar Conta</StyledBtnLogin>
             </form>
         </StyledSignUpContainer>
