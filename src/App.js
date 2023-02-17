@@ -1,28 +1,60 @@
 import { NavBar } from "./components/Nav";
-import { Home } from "./components/Home";
-import { Gallery } from "./components/Gallery";
-import { BigImage } from "./components/BigImage";
+import { Home } from "./pages/Home";
 import { Footer } from "./components/Footer";
+import { Login } from "./pages/Login/LoginContainer";
+import { SignUp } from "./pages/SignUp";
+import { Profile } from "./pages/Profile";
 import styled from "styled-components";
 import { GlobalStyle } from "./global";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { AuthContextComponent } from "./contexts/authContext";
+import { useState } from "react";
+
 
 const AppContainer = styled.div`
   padding-top: 8rem; // Atençao, problemático, responsividade...
   background-color: var(--main-color);
 `
 
+const StyledPromo = styled.div`
+    text-align: center;
+    border-top: 1px solid rgba(255,243,232, 0.3);
+    
+    p {
+        padding: 1.2rem;
+    }
+`
+
 function App() {
+  const [form, setForm] = useState({
+    userName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    firstName: '',
+    lastName: '',
+    birthday: '',
+});
+
   return (
-    <>
+    <AuthContextComponent>
     <GlobalStyle/>
     <AppContainer>
-      <NavBar></NavBar>
-      <Home></Home>
-      <Gallery></Gallery>
-      <BigImage></BigImage>
-      <Footer></Footer>
+      {/* PROP FORM SOMENTE PARA TESTE, ON CLICK NA LUPA */}
+      <NavBar form={form}/> 
+      <StyledPromo>
+        <p>Entrega grátis a partir de 150 reais</p>
+      </StyledPromo>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home"/>}/>
+        <Route path="/home" element={<Home/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<SignUp form={form} setForm={setForm}/>}/>
+        <Route path="/profile" element={<Profile/>}/>
+      </Routes>
+      <Footer/>
     </AppContainer>
-    </>
+    </AuthContextComponent>
   );
 }
 
