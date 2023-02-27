@@ -3,7 +3,7 @@ import { Form } from "../../components/Form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { StyledSignUpContainer } from "../SignUp/styles";
-import { StyledBtnLogin } from "../../global";
+import { StyledBtnLogin } from "../Login/styles";
 import { useNavigate } from "react-router";
 
 export function Profile(){

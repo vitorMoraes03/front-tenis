@@ -55,9 +55,9 @@ export function NavBar(props){
             <StyledLinks>
                 <div onClick={() => navigate('/')}>
                 <img src={imgNav} alt='Logo Sneakers'/>
-                <h1>Made</h1>
+                <h1>Motion</h1>
                 </div>
-                <Link to={""}>Shop</Link>
+                <Link to={"./shop"}>Shop</Link>
                 <Link to={""}>Quem somos</Link>
             </StyledLinks>
             <StyledFlex>

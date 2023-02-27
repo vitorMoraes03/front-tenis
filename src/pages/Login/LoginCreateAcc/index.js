@@ -1,4 +1,4 @@
-import { StyledBtnLogin } from "../../../global";
+import { StyledBtnLogin } from "../styles";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 

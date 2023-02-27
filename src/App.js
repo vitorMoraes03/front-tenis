@@ -4,12 +4,11 @@ import { Footer } from "./components/Footer";
 import { Login } from "./pages/Login/LoginContainer";
 import { SignUp } from "./pages/SignUp";
 import { Profile } from "./pages/Profile";
+import { Shop } from "./pages/Shop/shop";
 import styled from "styled-components";
 import { GlobalStyle } from "./global";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthContextComponent } from "./contexts/authContext";
-
-
 
 const AppContainer = styled.div`
   padding-top: 8rem; // Atençao, problemático, responsividade...
@@ -42,6 +41,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/shop" element={<Shop/>}/>
       </Routes>
       <Footer/>
     </AppContainer>

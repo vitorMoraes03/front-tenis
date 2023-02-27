@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import bigImg from "../../../images/bigimg-shop-sale.png";
+import bigImg from "../../../images/bigimg-2-option.png";
 
 const StyedBigImage = styled.div`
     background-image: url(${bigImg});
