@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { GlobalStyle } from "./global";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthContextComponent } from "./contexts/authContext";
+import { CartContextComponent } from "./contexts/cartContext";
 
 const AppContainer = styled.div`
   padding-top: 8rem; // Atençao, problemático, responsividade...
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <AuthContextComponent>
+    <CartContextComponent>
     <GlobalStyle/>
     <AppContainer>
       <NavBar/> 
@@ -45,6 +47,7 @@ function App() {
       </Routes>
       <Footer/>
     </AppContainer>
+    </CartContextComponent>
     </AuthContextComponent>
   );
 }

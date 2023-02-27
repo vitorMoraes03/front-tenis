@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { StyledFlex } from "../../global";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
+import { CartContext } from "../../contexts/cartContext";
 
 const StyledNavBar = styled.nav`
     display: flex;
@@ -42,13 +43,20 @@ const StyledLinks = styled(StyledFlex)`
     }
 `
 
-export function NavBar(props){
+const StyledCart = styled.a`
+    position: relative;
+
+    p {
+        position: absolute;
+        right: -5px;
+        bottom: -3px;
+    }
+`
+
+export function NavBar(){
     const navigate = useNavigate();
     const { loggedInUser } = useContext(AuthContext);
-
-    function testFormState(){
-        console.log(loggedInUser);
-    }
+    const { order } = useContext(CartContext);
 
     return (
         <StyledNavBar>
@@ -67,8 +75,11 @@ export function NavBar(props){
                 <Link to={loggedInUser ? "/profile" : "/login"}>
                     <ion-icon name="person-outline"/>
                 </Link>
-                <Link to={"/profile"} onClick={testFormState}><ion-icon name="search-outline"/></Link>               
-                <Link to={""}><ion-icon name="cart-outline"/></Link>
+                <Link to={"/profile"}><ion-icon name="search-outline"/></Link>               
+                <StyledCart to={""}>
+                    <ion-icon name="cart-outline"/>
+                    <p>{order.length === 0 ? null : order.length}</p>
+                </StyledCart>
             </StyledFlex>
         </StyledNavBar>
     )

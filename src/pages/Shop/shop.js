@@ -1,8 +1,14 @@
 import { StyledBtnShop, StyledShopContainer, StyledDivShop, StyledGridShop } from "./styles";
 import { api } from "../../api/api";
 import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/cartContext";
 
 export function Shop(){
+
+    const {order, setOrder} = useContext(CartContext);
+    const [shoes, setShoes] = useState([]);
+    const [selectedOption, setSelectedOption] = useState('');
 
     async function getAllShoes(){
         try {
@@ -13,18 +19,30 @@ export function Shop(){
         }
     }
  
-    const [shoes, setShoes] = useState([]);
-
     useEffect(() => {
         getAllShoes();
     }, []);
+
+    function addShoes(element){
+        setOrder([...order, 
+            {shoesName: element.shoesName,
+             id: element._id,
+             size: selectedOption
+            }])
+
+        // {shoesName: , id: , quantity: }
+    }
+
+    function handleSelectChange(e){
+        setSelectedOption(e.target.value);
+    }
     
     return (
         <StyledShopContainer>
             <h1>Shop</h1>
             <StyledDivShop>
                 <StyledBtnShop>Teste</StyledBtnShop>
-                <StyledBtnShop onClick={() => console.log(shoes)}>Show state</StyledBtnShop>
+                <StyledBtnShop onClick={() => console.log(shoes, order)}>Show state</StyledBtnShop>
                 <select>
                     <option>
                         Teste 1
@@ -42,20 +60,21 @@ export function Shop(){
                         const objectKeys = Object.keys(element.sizeAndStock)
 
                         return (
-                        <div>
+                        <div key={element._id}>
                             <img alt={element.alt}
                             src={element.src}
                             />
                             <h4>{element.shoesName}</h4>
                             <p>{element.price}</p>
-                            <select>
+                            <select onChange={handleSelectChange}>
+                                <option>No</option>
                                 {objectKeys.map(key => {
-                                    return <option>
+                                    return <option value={key} key={key}>
                                             {key}
                                            </option>
                                 })}
                             </select>
-                            <StyledBtnShop>Comprar</StyledBtnShop>
+                            <StyledBtnShop onClick={() => addShoes(element)}>Comprar</StyledBtnShop>
                          </div>
                         )
                     })}
