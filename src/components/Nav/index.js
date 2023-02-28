@@ -43,7 +43,7 @@ const StyledLinks = styled(StyledFlex)`
     }
 `
 
-const StyledCart = styled.a`
+const StyledCart = styled(Link)`
     position: relative;
 
     p {
@@ -76,7 +76,7 @@ export function NavBar(){
                     <ion-icon name="person-outline"/>
                 </Link>
                 <Link to={"/profile"}><ion-icon name="search-outline"/></Link>               
-                <StyledCart to={""}>
+                <StyledCart to={"/checkout"}>
                     <ion-icon name="cart-outline"/>
                     <p>{order.length === 0 ? null : order.length}</p>
                 </StyledCart>

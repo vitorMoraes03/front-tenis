@@ -27,10 +27,13 @@ export function Shop(){
         setOrder([...order, 
             {shoesName: element.shoesName,
              id: element._id,
-             size: selectedOption
+             size: selectedOption,
+             gender: element.gender,
+             price: element.price,
+             color: element.color,
+             src: element.src,
+             alt: element.alt
             }])
-
-        // {shoesName: , id: , quantity: }
     }
 
     function handleSelectChange(e){
