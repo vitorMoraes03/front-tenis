@@ -8,7 +8,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     list-style: none;
-    //border: 1px solid red;
   }
 
   html {
@@ -39,22 +38,6 @@ export const GlobalStyle = createGlobalStyle`
       text-transform: uppercase;
       letter-spacing: -1px;
     } 
-
-    ion-icon {
-      font-size: var(--icons-size);
-    }
-
-    ion-icon:hover,
-    ion-icon:active,
-    a:hover,
-    a:active {
-        color: var(--secondary-shade);
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--main-white);
-    }
 
     input {
       outline: none;
@@ -105,11 +88,10 @@ export const InputWrapper = ({ children }) => {
   )
 }
 
-export const StyledBtnLogin = styled.button`
+export const StyledBtn = styled.button`
   padding: var(--space-small) var(--space-medium);
   text-transform: uppercase;
   cursor: pointer;
-  color: var(--main-white);
   font-size: 1.2rem;
   position: relative;
   overflow: hidden;
@@ -130,13 +112,11 @@ export const StyledBtnLogin = styled.button`
   }
 
   &::before{
-    background-color: var(--main-color);
     z-index: -1;
     opacity: 0.9;
   }
 
   &::after{
-    background-color: #2e1a04;
     transform: translate(-50%) skew(20deg) scaleX(1);
     transition: width .36s cubic-bezier(.175, .885, .32, 1.275);
     z-index: -2;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { StyledFlex } from "../../global";
+import { Link } from "react-router-dom";
 
 export const StyledNavBar = styled.nav`
     display: flex;
@@ -10,6 +11,22 @@ export const StyledNavBar = styled.nav`
     z-index: 100;
     top: 0;
     background-color: var(--main-color);
+
+    ion-icon {
+      font-size: var(--icons-size);
+    }
+
+    ion-icon:hover,
+    ion-icon:active,
+    a:hover,
+    a:active {
+        color: var(--main-shade);
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--main-white);
+    }
 `
 
 export const StyledLinks = styled(StyledFlex)`
@@ -35,5 +52,15 @@ export const StyledLinks = styled(StyledFlex)`
     a {
         font-size: var(--font-medium);
         text-transform: uppercase;
+    }
+`
+
+export const StyledCart = styled(Link)`
+    position: relative;
+
+    p {
+        position: absolute;
+        right: -5px;
+        bottom: -3px;
     }
 `

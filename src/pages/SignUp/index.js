@@ -1,5 +1,5 @@
 import { StyledSignUpContainer } from "./styles";
-import { StyledBtnLogin } from "../../global";
+import { StyledBtnLogin } from "../Login/styles";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";

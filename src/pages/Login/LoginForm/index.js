@@ -1,9 +1,9 @@
-import { InputWrapper, StyledBtnLogin } from "../../../global";
+import { InputWrapper } from "../../../global";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../../contexts/authContext";
 import { api } from "../../../api/api";
-import { StyledForm, StyledContainerBtn } from "../styles.js";
+import { StyledForm, StyledContainerBtn, StyledBtnLogin } from "../styles.js";
 
 export function LoginForm(){
     const navigate = useNavigate();
