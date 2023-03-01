@@ -43,7 +43,7 @@ export function CheckOut(){
             <StyledCheckOutContainer>
                 <StyledCheckOutTitle>
                 <h2>Resumo da Compra:</h2>
-                <StyledBtnSmall>Editar Compra</StyledBtnSmall>
+                <StyledBtnSmall>Continuar Compra</StyledBtnSmall>
                 </StyledCheckOutTitle>
                 <StyledCheckOutMain>
                 <h3>{order.length}{order.length > 1 ? ' Itens' : ' Item'}</h3>
@@ -51,15 +51,15 @@ export function CheckOut(){
                 {order.map(element => {
                     const index = order.indexOf(element);
                     return (
-                        <ShoeCardSmall props={[element, index]}/>
+                        <ShoeCardSmall props={[element, index, order, setOrder]}/>
                     )
                 })}
                 </StyledCheckOutCards>
                 </StyledCheckOutMain>
                 <StyledCheckOutPrice>
-                    <div className="total-price">
-                        <p>Total price</p>
-                        <p>{priceTotal()}</p>
+                    <div>
+                        <p className="total-price">Preço total</p>
+                        <p>R${priceTotal()}</p>
                     </div>
                     <div>
                         <p>Frete</p>

@@ -67,5 +67,5 @@ export const StyledBtnsCheckout = styled.div`
     display: flex;
     gap: 1rem;
     justify-content: center;
-    padding: 2rem;
+    padding: var(--space-medium);
 `

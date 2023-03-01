@@ -6,6 +6,22 @@ import { StyledFlex } from "../../global";
 const StyledFooter = styled.footer`
     color: var(--main-white);
     font-size: var(--font-medium);
+
+    ion-icon {
+      font-size: var(--icons-size);
+    }
+
+    ion-icon:hover,
+    ion-icon:active,
+    a:hover,
+    a:active {
+        color: var(--main-shade);
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--main-white);
+    }
 `
 
 const StyledFooterMain = styled.div`
@@ -57,6 +73,10 @@ const StyledFooterMedia = styled.div`
         margin-bottom: var(--space-small);
         text-transform: uppercase;
         text-align: center;
+    }
+
+    ion-icon {
+        cursor: pointer;
     }
 `
 

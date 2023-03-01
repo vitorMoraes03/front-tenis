@@ -8,7 +8,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     list-style: none;
-    //border: 1px solid red;
   }
 
   html {
@@ -39,22 +38,6 @@ export const GlobalStyle = createGlobalStyle`
       text-transform: uppercase;
       letter-spacing: -1px;
     } 
-
-    ion-icon {
-      font-size: var(--icons-size);
-    }
-
-    ion-icon:hover,
-    ion-icon:active,
-    a:hover,
-    a:active {
-        color: var(--secondary-shade);
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--main-white);
-    }
 
     input {
       outline: none;

@@ -7,18 +7,34 @@ const StyledShoeSmall = styled.div`
     margin-bottom: var(--space-small);
     position: relative;
 
-    div {
-
-    }
-
-    .p-price {
+    .price-div {
         position: absolute;
         right: 0;
+    }
+
+    ion-icon {
+        color: var(--main-color);
+        font-size: var(--font-text);
+        cursor: pointer;
+    }
+
+    .btn-trash {
+        border: none;
+        background: none;
+        position: absolute;
+        padding: 1rem;
+        right: 0;
+        bottom: 0;
     }
 `
 
 export function ShoeCardSmall(props){
-    const [element, index] = props.props;
+    const [element, index, order, setOrder] = props.props;
+
+    function deleteItem(){
+        order.splice(index, 1);
+        setOrder(order);
+    }
 
     return (
         <StyledShoeSmall key={`${element.id}-${index}`}>
@@ -29,7 +45,12 @@ export function ShoeCardSmall(props){
                 <p>Tamanho: {element.size}</p>
                 <p>{element.gender}</p>
             </div>
-            <p className="p-price">{element.price}</p>
+            <div className="price-div">
+                <p>R${element.price}</p>
+                
+            </div>
+            <button className="btn-trash" onClick={deleteItem}><ion-icon name="trash"></ion-icon></button>
+            
         </StyledShoeSmall>
     )
 }
