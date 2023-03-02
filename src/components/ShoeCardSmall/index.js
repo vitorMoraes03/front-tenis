@@ -32,12 +32,12 @@ export function ShoeCardSmall(props){
     const [element, index, order, setOrder] = props.props;
 
     function deleteItem(){
-        order.splice(index, 1);
-        setOrder(order);
+        const updatedOrder = order.filter((_, i) => i !== index)
+        setOrder(updatedOrder);
     }
 
     return (
-        <StyledShoeSmall key={`${element.id}-${index}`}>
+        <StyledShoeSmall>
             <img src={element.src} alt={element.alt}/>
             <div>
                 <p>{element.shoesName}</p>
@@ -50,7 +50,6 @@ export function ShoeCardSmall(props){
                 
             </div>
             <button className="btn-trash" onClick={deleteItem}><ion-icon name="trash"></ion-icon></button>
-            
         </StyledShoeSmall>
     )
 }

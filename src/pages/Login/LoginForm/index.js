@@ -14,12 +14,43 @@ export function LoginForm(){
         password: ''
     });
 
+    const [emailMsg, setEmailMsg] = useState('');
+    const [passwordMsg, setPasswordMsg] = useState('');
+
     function handleChange(e){
         setFormLogin({...formLogin, [e.target.name]: e.target.value});
     }
 
+    //checkEmail e checkPassword tem algum código repetido.
+    //talvez haja uma maneira mais simples de escrever isso.
+    //Quero fazer a sessão de cadastro do usuário primeiro, e pensar alguma solução.
+
+    function checkEmail(){
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(formLogin.email === '') {
+            setEmailMsg('Campo obrigatório.');
+            return
+        };
+        if(!emailRegex.test(formLogin.email)) {
+            setEmailMsg('Email incorreto.')};
+    }
+
+    function checkPassword(){
+        const passwordRegex = /^(?=.*\d).{4,10}$/gm;
+        if(formLogin.password === '') {
+            setPasswordMsg('Campo obrigatório.');
+            return
+        };
+        if(!passwordRegex.test(formLogin.password)) {
+            setPasswordMsg('Password incorreto.')};
+    }
+
     async function handleSubmit(e){
         e.preventDefault();
+        checkEmail();
+        checkPassword();
+        if(emailMsg !== '' || passwordMsg !== '') return;
+
         try {
             const res = await api.post("/user/login", formLogin);
             setLoggedInUser({ ...res.data }); 
@@ -43,7 +74,7 @@ export function LoginForm(){
                     value={formLogin.email}
                     required
                     />
-                    <span>Please use a valid email address, such as user@example.com.</span>
+                    <span>{emailMsg}</span>
             </InputWrapper>
             <InputWrapper>
                     <label htmlFor="inputPassword">Password:</label>
@@ -54,7 +85,7 @@ export function LoginForm(){
                     onChange={handleChange}
                     value={formLogin.password}
                     required/>
-                    <span>You must enter a password.</span>
+                    <span>{passwordMsg}</span>
             </InputWrapper>
             <StyledContainerBtn>
                 <StyledBtnLogin 

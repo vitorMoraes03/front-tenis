@@ -8,8 +8,8 @@ import { Shop } from "./pages/Shop/shop";
 import styled from "styled-components";
 import { GlobalStyle } from "./global";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { AuthContextComponent } from "./contexts/authContext";
-import { CartContextComponent } from "./contexts/cartContext";
+import { AuthContextComponent } from "./contexts/authContext.js";
+import { CartContextComponent } from "./contexts/cartContext.js";
 import { CheckOut } from "./pages/CheckOut";
 
 const AppContainer = styled.div`

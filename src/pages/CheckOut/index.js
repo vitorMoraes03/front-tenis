@@ -1,12 +1,14 @@
-import { StyledCheckOutBackground, StyledBtnsCheckout, StyledCheckOutContainer, StyledCheckOutTitle, StyledBtnSmall, StyledCheckOutMain, StyledCheckOutPrice, StyledCheckOutCards } from "./styles";
+import { StyledCheckOutBackground, StyledBtnsCheckout, StyledCheckOutContainer, StyledBtnSmall } from "./styles";
 import { useContext } from "react";
 import { StyledBtnLogin } from "../Login/styles";
 import { CartContext } from "../../contexts/cartContext";
 import { api } from "../../api/api";
 import { ShoeCardSmall } from "../../components/ShoeCardSmall";
+import { useNavigate } from "react-router-dom";
 
 export function CheckOut(){
     const { order, setOrder } = useContext(CartContext);
+    const navigate = useNavigate();
 
     function priceTotal(){
         let res = 0;
@@ -30,9 +32,8 @@ export function CheckOut(){
                 shoes: shoes
             }
 
-            console.log(finalOrder);
             await api.post("/order/create", finalOrder);
-
+            navigate('/');
         } catch (err){
             console.log(err);
         }
@@ -41,31 +42,31 @@ export function CheckOut(){
     return (
         <StyledCheckOutBackground>
             <StyledCheckOutContainer>
-                <StyledCheckOutTitle>
-                <h2>Resumo da Compra:</h2>
-                <StyledBtnSmall>Continuar Compra</StyledBtnSmall>
-                </StyledCheckOutTitle>
-                <StyledCheckOutMain>
-                <h3>{order.length}{order.length > 1 ? ' Itens' : ' Item'}</h3>
-                <StyledCheckOutCards>
-                {order.map(element => {
-                    const index = order.indexOf(element);
-                    return (
-                        <ShoeCardSmall props={[element, index, order, setOrder]}/>
-                    )
-                })}
-                </StyledCheckOutCards>
-                </StyledCheckOutMain>
-                <StyledCheckOutPrice>
+                <div className="checkout-title">
+                    <h2>Resumo da Compra:</h2>
+                    <StyledBtnSmall>Continuar Compra</StyledBtnSmall>
+                </div>
+                <div className="checkout-main">
+                    <h3>{order.length}{order.length > 1 ? ' Itens' : ' Item'}</h3>
+                    <div className="checkout-cards">
+                        {order.map(element => {
+                            const index = order.indexOf(element);
+                            return (
+                                <ShoeCardSmall key={index} props={[element, index, order, setOrder]}/>
+                            )
+                        })}
+                    </div>
+                </div>
+                <div>
                     <div>
                         <p className="total-price">Preço total</p>
                         <p>R${priceTotal()}</p>
                     </div>
-                    <div>
+                    <div className="delivery-tax">
                         <p>Frete</p>
                         <p>Grátis</p>
                     </div>
-                </StyledCheckOutPrice>
+                </div>
             </StyledCheckOutContainer>  
             <StyledBtnsCheckout>
                 <StyledBtnLogin onClick={checkOutCart}>

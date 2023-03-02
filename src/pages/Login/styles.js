@@ -11,6 +11,10 @@ export const StyledContainerBtn = styled.div`
     gap: var(--space-small);
     align-items: center;
     margin-top: var(--space-small);
+
+    a {
+        text-decoration: none;
+    }
 `
 
 export const StyledBtnLogin = styled(StyledBtn)`
