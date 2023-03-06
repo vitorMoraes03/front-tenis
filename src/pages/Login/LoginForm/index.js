@@ -21,10 +21,6 @@ export function LoginForm(){
         setFormLogin({...formLogin, [e.target.name]: e.target.value});
     }
 
-    //checkEmail e checkPassword tem algum código repetido.
-    //talvez haja uma maneira mais simples de escrever isso.
-    //Quero fazer a sessão de cadastro do usuário primeiro, e pensar alguma solução.
-
     function checkEmail(){
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if(formLogin.email === '') {

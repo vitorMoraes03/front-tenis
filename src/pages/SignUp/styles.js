@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { StyledLoginContainer } from "../Login/LoginContainer";
+import { StyledBtnLogin } from "../Login/styles";
 
 export const StyledSignUpContainer = styled(StyledLoginContainer)`
     h1 {
@@ -23,10 +24,14 @@ export const StyledSignUpContainer = styled(StyledLoginContainer)`
         margin: 0 auto;
     }
 
-    button {
+    input[type="date"]{
+        font-family: inherit;
+    }
+`
+
+export const StyledBtnSignUp = styled(StyledBtnLogin)`
         display: block;
         margin: var(--space-medium) auto;
-    }
 `
 
 
