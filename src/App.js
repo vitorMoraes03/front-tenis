@@ -4,7 +4,7 @@ import { Footer } from "./components/Footer";
 import { Login } from "./pages/Login/LoginContainer";
 import { SignUp } from "./pages/SignUp";
 import { Profile } from "./pages/Profile";
-import { Shop } from "./pages/Shop/shop";
+import { Shop } from "./pages/Shop";
 import styled from "styled-components";
 import { GlobalStyle } from "./global";
 import { Routes, Route, Navigate } from "react-router-dom";

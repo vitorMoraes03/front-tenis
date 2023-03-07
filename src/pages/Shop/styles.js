@@ -21,6 +21,11 @@ export const StyledDivShop = styled.div`
         display: flex;
         gap: var(--space-small);
         justify-content: center;
+
+        select {
+           padding: var(--space-small);
+           text-transform: uppercase;
+        }     
 `
 
 export const StyledGridShop = styled.div`
@@ -29,8 +34,35 @@ export const StyledGridShop = styled.div`
     gap: var(--space-medium);
     padding-top: var(--space-big); //double check
 
+
+`
+
+export const ShoeCard = styled.div`
+    font-size: var(--font-big);
+   
+
     img {
         width: 100%;
         border-radius: 2px;
     }
+
+    div {
+        //border: 1px solid red;
+    }
+
+    .shoe-card-infos {
+        padding: var(--space-small);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .shoe-card-text {
+        
+    }
+
+    select {
+        padding: 1px;                   
+    }   
+  
 `

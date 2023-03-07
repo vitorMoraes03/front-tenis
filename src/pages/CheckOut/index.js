@@ -4,7 +4,8 @@ import { StyledBtnLogin } from "../Login/styles";
 import { CartContext } from "../../contexts/cartContext";
 import { api } from "../../api/api";
 import { ShoeCardSmall } from "../../components/ShoeCardSmall";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export function CheckOut(){
     const { order, setOrder } = useContext(CartContext);
@@ -17,6 +18,13 @@ export function CheckOut(){
         });
         return res;
     }
+
+    useEffect(() => {
+        if(order.length === 0){
+            navigate("/shop");
+            alert("Nada no carrinho") //double render, ver como vai ficar com o modal
+        };
+    }, [order]);
 
     async function checkOutCart(){
         try {

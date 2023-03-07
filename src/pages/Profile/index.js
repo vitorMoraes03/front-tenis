@@ -136,8 +136,8 @@ export function Profile(){
             />
             </form>
             <div className="container-btn">
-            <StyledBtnLogin onClick={logOut}>Sair</StyledBtnLogin>
-            <StyledBtnLogin onClick={handleSubmit}>Editar</StyledBtnLogin>
+            <StyledBtnLogin onClick={logOut}>Deslogar</StyledBtnLogin>
+            <StyledBtnLogin onClick={handleSubmit}>Confirmar Modificações</StyledBtnLogin>
             <StyledBtnLogin onClick={deleteAcc}>Apagar Conta</StyledBtnLogin>
             </div>
        </StyledProfileContainer>
