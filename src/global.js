@@ -46,6 +46,13 @@ export const GlobalStyle = createGlobalStyle`
     p {
       font-size: var(--font-text);
     }
+
+    select {
+           border: none;
+           outline: none;
+           background-color: var(--main-white);
+           border-bottom: 1px solid var(--main-color);
+        } 
 `
 
 // Default Const Styles

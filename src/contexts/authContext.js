@@ -13,10 +13,15 @@ function AuthContextComponent(props) {
 
     if (parsedStoredUser.token) {
       setLoggedInUser(parsedStoredUser);
-    } else {
+    } else { 
       setLoggedInUser(null);
     }
-  }, []);
+  }, []);  
+  
+  useEffect(() => {
+    
+  }, [loggedInUser])
+
 
   return (
     //Vai ser colocado no App
