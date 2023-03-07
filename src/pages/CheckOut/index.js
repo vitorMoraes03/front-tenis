@@ -4,7 +4,7 @@ import { StyledBtnLogin } from "../Login/styles";
 import { CartContext } from "../../contexts/cartContext";
 import { api } from "../../api/api";
 import { ShoeCardSmall } from "../../components/ShoeCardSmall";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 
 export function CheckOut(){
@@ -16,7 +16,7 @@ export function CheckOut(){
         order.map(element => {
             return res += element.price
         });
-        return res;
+        return res.toFixed(2);
     }
 
     useEffect(() => {
@@ -54,7 +54,7 @@ export function CheckOut(){
             <StyledCheckOutContainer>
                 <div className="checkout-title">
                     <h2>Resumo da Compra:</h2>
-                    <StyledBtnSmall>Continuar Compra</StyledBtnSmall>
+                    <Link to={"/shop"}><StyledBtnSmall>Continuar Compra</StyledBtnSmall></Link>
                 </div>
                 <div className="checkout-main">
                     <h3>{order.length}{order.length > 1 ? ' Itens' : ' Item'}</h3>
@@ -81,12 +81,6 @@ export function CheckOut(){
             <StyledBtnsCheckout>
                 <StyledBtnLogin onClick={checkOutCart}>
                     Comprar
-                </StyledBtnLogin>
-                <StyledBtnLogin onClick={() => console.log(order)}>
-                    Show Cart Context
-                </StyledBtnLogin>
-                <StyledBtnLogin onClick={priceTotal}>
-                    Total Price
                 </StyledBtnLogin>
             </StyledBtnsCheckout>
         </StyledCheckOutBackground>

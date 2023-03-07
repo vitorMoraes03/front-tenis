@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { StyledDivColors, StyledTagColor } from "../ShoeCard/styles.js"
 
 const StyledShoeSmall = styled.div`
     display: flex;
@@ -41,7 +42,13 @@ export function ShoeCardSmall(props){
             <img src={element.src} alt={element.alt}/>
             <div>
                 <p>{element.shoesName}</p>
-                <p>Cores: {(element.color).join(', ')}</p>
+                <StyledDivColors>
+                {element.color.map(element => {
+                            return (
+                                <StyledTagColor backgroundColor={element}/>
+                            )
+                        })}
+                </StyledDivColors>
                 <p>Tamanho: {element.size}</p>
                 <p>{element.gender}</p>
             </div>
