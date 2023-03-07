@@ -1,18 +1,6 @@
 import { StyledLoginContainer } from "../Login/LoginContainer";
-import { StyledBtn } from "../../global";
 import styled from "styled-components";
-
-export const StyledBtnShop = styled(StyledBtn)`
-    color: var(--main-white);
-
-    &::before {
-    background-color: var(--main-shade);
-    }
-
-    &::after{
-    background-color: #2e1a04;
-    }
-`
+import { StyledBtn } from "../../global";
 
 export const StyledShopContainer = styled(StyledLoginContainer)`
 `
@@ -32,37 +20,17 @@ export const StyledGridShop = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--space-medium);
-    padding-top: var(--space-big); //double check
-
-
+    padding-top: var(--space-big); 
 `
 
-export const ShoeCard = styled.div`
-    font-size: var(--font-big);
-   
+export const StyledBtnShop = styled(StyledBtn)`
+    color: var(--main-white);
 
-    img {
-        width: 100%;
-        border-radius: 2px;
+    &::before {
+    background-color: var(--main-shade);
     }
 
-    div {
-        //border: 1px solid red;
+    &::after{
+    background-color: #2e1a04;
     }
-
-    .shoe-card-infos {
-        padding: var(--space-small);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .shoe-card-text {
-        
-    }
-
-    select {
-        padding: 1px;                   
-    }   
-  
 `

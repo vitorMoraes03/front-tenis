@@ -4,7 +4,7 @@ import { StyledBtnLogin } from "../Login/styles";
 import { CartContext } from "../../contexts/cartContext";
 import { api } from "../../api/api";
 import { ShoeCardSmall } from "../../components/ShoeCardSmall";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export function CheckOut(){
@@ -41,9 +41,11 @@ export function CheckOut(){
             }
 
             await api.post("/order/create", finalOrder);
+            setOrder([]);
             navigate('/');
         } catch (err){
             console.log(err);
+            alert('erro na compra');
         }
     }
 

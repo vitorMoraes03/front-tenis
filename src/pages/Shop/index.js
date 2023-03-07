@@ -1,13 +1,12 @@
-import { StyledBtnShop, StyledShopContainer, StyledDivShop, StyledGridShop, ShoeCard } from "./styles";
+import { StyledShopContainer, StyledDivShop, StyledGridShop, StyledBtnShop } from "./styles";
 import { api } from "../../api/api";
-import { useState, useEffect } from "react";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { CartContext } from "../../contexts/cartContext";
+import { ShoeCard } from "../../components/ShoeCard";
 
 export function Shop(){
     const {order, setOrder} = useContext(CartContext);
     const [shoes, setShoes] = useState([]);
-    const [selectedOption, setSelectedOption] = useState('');
 
     async function getAllShoes(){
         try {
@@ -21,23 +20,6 @@ export function Shop(){
     useEffect(() => {
         getAllShoes();
     }, []);
-
-    function addShoes(element){
-        setOrder([...order, 
-            {shoesName: element.shoesName,
-             id: element._id,
-             size: selectedOption,
-             gender: element.gender,
-             price: element.price,
-             color: element.color,
-             src: element.src,
-             alt: element.alt
-            }])
-    }
-
-    function handleSelectChange(e){
-        setSelectedOption(e.target.value);
-    }
     
     return (
         <StyledShopContainer>
@@ -59,31 +41,8 @@ export function Shop(){
             </StyledDivShop>
                 <StyledGridShop>
                     {shoes.map(element => {
-                        const objectKeys = Object.keys(element.sizeAndStock)
-
                         return (
-                        <ShoeCard key={element._id}>
-                            <img alt={element.alt}
-                            src={element.src}
-                            />
-                            <div className="shoe-card-infos">
-                                <div className="shoe-card-text">
-                                    <h4>{element.shoesName}</h4>
-                                    <p>{element.price}</p>
-                                    <p>{element.color}</p>
-                                    <p>{element.gender}</p>
-                                <select onChange={handleSelectChange}>
-                                    <option>No</option>
-                                    {objectKeys.map(key => {
-                                        return <option value={key} key={key}>
-                                                    {key}
-                                               </option>
-                                    })}
-                                </select>
-                                </div>
-                                <StyledBtnShop onClick={() => addShoes(element)}>Comprar</StyledBtnShop>
-                            </div>
-                         </ShoeCard>
+                            <ShoeCard element={element} orderState={{order, setOrder}}/>
                         )
                     })}
                 </StyledGridShop>
