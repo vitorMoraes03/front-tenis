@@ -37,7 +37,7 @@ export function ShoeCard(props){
                     <StyledDivColors>
                         {element.color.map(element => {
                             return (
-                                <StyledTagColor backgroundColor={element}/>
+                                <StyledTagColor backgroundColor={element} key={`${element}-${element.shoesName}`}/>
                             )
                         })}
                     </StyledDivColors>
