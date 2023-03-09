@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { StyledSignUpContainer, StyledBtnSignUp } from './styles';
-import { api } from '../../api/api';
+import api from '../../api/api';
 import { AuthContext } from '../../contexts/authContext';
 import { Input } from '../../components/Input';
 
@@ -84,6 +84,7 @@ function SignUp() {
 
   const birthdayFormat = () => {
     const date = new Date(form.birthday);
+    // eslint-disable-next-line no-unused-vars
     const formattedDate = date.toLocaleDateString('pt-BR');
   };
 

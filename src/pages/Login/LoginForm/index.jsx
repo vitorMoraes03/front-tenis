@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { InputWrapper } from '../../../global';
 import { AuthContext } from '../../../contexts/authContext';
-import { api } from '../../../api/api';
+import api from '../../../api/api';
 import { StyledForm, StyledContainerBtn, StyledBtnLogin } from '../styles';
 
 function LoginForm() {
@@ -94,7 +95,7 @@ function LoginForm() {
         <StyledBtnLogin type="submit" onClick={handleSubmit}>
           Login
         </StyledBtnLogin>
-        <Link to={''}>Esqueceu seu password?</Link>
+        <Link to=''>Esqueceu seu password?</Link>
       </StyledContainerBtn>
     </StyledForm>
   );

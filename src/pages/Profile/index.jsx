@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router';
-import { api } from '../../api/api';
+import { useNavigate } from 'react-router-dom';
+import api from '../../api/api';
 import { AuthContext } from '../../contexts/authContext';
 import { StyledBtnLogin } from '../Login/styles';
 import { Input } from '../../components/Input';
@@ -30,32 +30,17 @@ function Profile() {
   const [lastNameMsg, setLastNameMsg] = useState('');
   const [birthdayMsg, setBirthdayMsg] = useState('');
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     setEdition({ ...edition, [e.target.name]: e.target.value });
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    checkEmail();
-    checkFirstName();
-    checkLastName();
-    checkBirthday();
-    try {
-      const userEdited = await api.put('/user/edit', edition);
-      localStorage.setItem('loggedInUser', JSON.stringify(userEdited));
-    } catch (err) {
-      console.log(err);
-    }
-    navigate('/');
-  }
-
-  async function logOut() {
+  const logOut = async () => {
     localStorage.removeItem('loggedInUser');
     setLoggedInUser(null);
     navigate('/');
   }
 
-  async function deleteAcc() {
+  const deleteAcc = async () => {
     try {
       await api.delete('/user/delete');
       logOut();
@@ -97,6 +82,21 @@ function Profile() {
     if (edition.birthday === '') {
       setBirthdayMsg('Campo Obrigatório.');
     }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    checkEmail();
+    checkFirstName();
+    checkLastName();
+    checkBirthday();
+    try {
+      const userEdited = await api.put('/user/edit', edition);
+      localStorage.setItem('loggedInUser', JSON.stringify(userEdited));
+    } catch (err) {
+      console.log(err);
+    }
+    navigate('/');
   }
 
   return (

@@ -30,7 +30,7 @@ export const StyledNavBar = styled.nav`
 `;
 
 export const StyledLinks = styled(StyledFlex)`
-  div {
+  a {
     display: flex;
     align-items: center;
   }

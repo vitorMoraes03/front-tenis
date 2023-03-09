@@ -8,7 +8,7 @@ import {
 } from './styles';
 import { StyledBtnLogin } from '../Login/styles';
 import { CartContext } from '../../contexts/cartContext';
-import { api } from '../../api/api';
+import api from '../../api/api';
 import ShoeCardSmall from '../../components/ShoeCardSmall';
 
 function CheckOut() {

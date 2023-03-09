@@ -35,9 +35,6 @@ const StyledFeatured = styled.section`
 `;
 
 const StyledSide = styled.section`
-  grid-area: ${(props) => (props.section === 'second' ? 'second' : 'third')};
-  background-image: url((${(props) =>
-    props.section === 'second' ? imgSideSecond : imgSideThird}));
   background-size: cover;
   position: relative;
 
@@ -54,16 +51,13 @@ const StyledSide = styled.section`
   }
 `;
 
-function SideSection({ section, h2, p }) {
-  return (
-    <StyledSide section={section}>
-      <div>
-        <h2>{h2}</h2>
-        <p>{p}</p>
-      </div>
-    </StyledSide>
-  );
-}
+const StyledSecondSide = styled(StyledSide)`
+  background-image: url(${imgSideSecond});
+`
+
+const StyledThirdSide = styled(StyledSide)`
+  background-image: url(${imgSideThird});
+`
 
 function Main() {
   return (
@@ -74,16 +68,18 @@ function Main() {
           <p>Edição limitada.</p>
         </div>
       </StyledFeatured>
-      <SideSection
-        section="second"
-        h2="Lançamento Converse 2023"
-        p="Compre agora"
-      />
-      <SideSection
-        section="third"
-        h2="Bem vindo ao futuro"
-        p="Compre linha Modern"
-      />
+      <StyledSecondSide>
+        <div>
+          <h2>Lançamento Converse 2023</h2>
+          <p>Compre agora</p>
+        </div>
+      </StyledSecondSide>
+      <StyledThirdSide>
+        <div>
+          <h2>Bem vindo ao futuro</h2>
+          <p>Compre linha Modern</p>
+        </div>
+      </StyledThirdSide>
     </StyledMain>
   );
 }

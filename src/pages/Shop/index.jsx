@@ -7,7 +7,7 @@ import {
   StyledShopMain,
   StyledShopSide,
 } from './styles';
-import { api } from '../../api/api';
+import api from '../../api/api';
 import { CartContext } from '../../contexts/cartContext';
 import ShoeCard from '../../components/ShoeCard';
 import ColorSideFilter from '../../components/SideFilter/Color';
