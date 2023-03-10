@@ -7,9 +7,11 @@ const AuthContext = createContext({ token: '', user: {} });
 function AuthContextComponent({ children }) {
   const [loggedInUser, setLoggedInUser] = useState({ token: '', user: {} });
 
-  const authContextValue = useMemo(() => 
-    ({ loggedInUser, setLoggedInUser }), [loggedInUser, setLoggedInUser]);
-  
+  const authContextValue = useMemo(
+    () => ({ loggedInUser, setLoggedInUser }),
+    [loggedInUser, setLoggedInUser]
+  );
+
   useEffect(() => {
     const storedUser = localStorage.getItem('loggedInUser');
     const parsedStoredUser = JSON.parse(storedUser || '""');

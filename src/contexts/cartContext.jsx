@@ -6,9 +6,10 @@ const CartContext = createContext([]);
 function CartContextComponent({ children }) {
   const [order, setOrder] = useState([]);
 
-const cartContextValue = useMemo(() =>
-  ({ order, setOrder }), [order, setOrder]
-)
+  const cartContextValue = useMemo(
+    () => ({ order, setOrder }),
+    [order, setOrder]
+  );
 
   return (
     <CartContext.Provider value={cartContextValue}>

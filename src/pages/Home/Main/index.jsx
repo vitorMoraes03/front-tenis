@@ -53,11 +53,11 @@ const StyledSide = styled.section`
 
 const StyledSecondSide = styled(StyledSide)`
   background-image: url(${imgSideSecond});
-`
+`;
 
 const StyledThirdSide = styled(StyledSide)`
   background-image: url(${imgSideThird});
-`
+`;
 
 function Main() {
   return (

@@ -95,7 +95,7 @@ function LoginForm() {
         <StyledBtnLogin type="submit" onClick={handleSubmit}>
           Login
         </StyledBtnLogin>
-        <Link to=''>Esqueceu seu password?</Link>
+        <Link to="">Esqueceu seu password?</Link>
       </StyledContainerBtn>
     </StyledForm>
   );

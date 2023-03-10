@@ -32,13 +32,13 @@ function Profile() {
 
   const handleChange = (e) => {
     setEdition({ ...edition, [e.target.name]: e.target.value });
-  }
+  };
 
   const logOut = async () => {
     localStorage.removeItem('loggedInUser');
     setLoggedInUser(null);
     navigate('/');
-  }
+  };
 
   const deleteAcc = async () => {
     try {
@@ -47,7 +47,7 @@ function Profile() {
     } catch (err) {
       console.log(err.response.data);
     }
-  }
+  };
 
   function checkEmail() {
     if (edition.email === '') {
@@ -97,7 +97,7 @@ function Profile() {
       console.log(err);
     }
     navigate('/');
-  }
+  };
 
   return (
     <StyledProfileContainer>

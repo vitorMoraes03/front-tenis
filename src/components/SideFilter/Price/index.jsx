@@ -21,7 +21,7 @@ function PriceSideFilter({ shoes, setShoes, defaultShoes }) {
   useEffect(() => {
     if (pricesPick.length === 0) return;
     const arr = [];
-    for (let i = 0; i < pricesPick.length; i+1) {
+    for (let i = 0; i < pricesPick.length; i + 1) {
       // const item = pricesPick[i];
       const filtered = shoes.filter(
         (element) =>
