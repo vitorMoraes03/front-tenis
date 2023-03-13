@@ -51,11 +51,6 @@ export const StyledDivShop = styled.div`
   gap: var(--space-small);
   justify-content: center;
 
-  select {
-    padding: 0.5rem;
-    text-transform: uppercase;
-  }
-
   input {
     border: none;
     outline: none;

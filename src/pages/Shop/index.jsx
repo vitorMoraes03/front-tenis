@@ -15,6 +15,7 @@ import PriceSideFilter from '../../components/Filters/Price';
 import CategorySideFilter from '../../components/Filters/Category';
 import SizeSideFilter from '../../components/Filters/Size/size';
 import SearchFilter from '../../components/Filters/Search';
+import SelectFilter from '../../components/Filters/Select';
 
 function Shop() {
   const { order, setOrder } = useContext(CartContext);
@@ -39,7 +40,6 @@ function Shop() {
     <StyledShopContainer>
       <StyledShopSide>
         <ColorSideFilter
-          shoes={shoes}
           setShoes={setShoes}
           defaultShoes={defaultShoes}
         />
@@ -49,17 +49,14 @@ function Shop() {
           defaultShoes={defaultShoes}
         />
         <PriceSideFilter
-          shoes={shoes}
           setShoes={setShoes}
           defaultShoes={defaultShoes}
         />
         <CategorySideFilter
-          shoes={shoes}
           setShoes={setShoes}
           defaultShoes={defaultShoes}
         />
         <SizeSideFilter
-          shoes={shoes}
           setShoes={setShoes}
           defaultShoes={defaultShoes}
         />
@@ -72,11 +69,10 @@ function Shop() {
             setShoes={setShoes}
             defaultShoes={defaultShoes}
           />
-          <select>
-            <option>Teste 1</option>
-            <option>Teste 2</option>
-            <option>Teste 3</option>
-          </select>
+        <SelectFilter
+          shoes={shoes}
+          setShoes={setShoes}
+          />
         </StyledDivShop>
         <StyledGridShop>
           {shoes.map((element) => (

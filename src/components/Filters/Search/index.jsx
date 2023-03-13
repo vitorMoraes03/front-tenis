@@ -1,11 +1,9 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 
-function SearchFilter({ shoes, setShoes, defaultShoes }) {
+function SearchFilter({ setShoes, defaultShoes }) {
   const [searchInput, setSearchInput] = useState('');
 
-  function handleSearch(e) {
+  function handleChange(e) {
     setSearchInput(e.target.value);
   }
 
@@ -26,7 +24,7 @@ function SearchFilter({ shoes, setShoes, defaultShoes }) {
       <input
         placeholder="Pesquisar por nome"
         value={searchInput}
-        onChange={handleSearch}
+        onChange={handleChange}
       />
       <ion-icon name="search-outline" />
     </div>
