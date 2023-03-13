@@ -35,10 +35,10 @@ function ShoeCard({ order, setOrder, element }) {
           <h4>{element.shoesName}</h4>
           <p>{element.price}</p>
           <StyledDivColors>
-            {element.color.map(() => (
+            {element.color.map((color) => (
               <StyledTagColor
-                backgroundColor={element}
-                key={`${element}-${element.shoesName}`}
+                backgroundColor={color}
+                key={`${color}-${element.shoesName}`}
               />
             ))}
           </StyledDivColors>

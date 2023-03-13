@@ -36,9 +36,21 @@ function Shop() {
   return (
     <StyledShopContainer>
       <StyledShopSide>
-        <ColorSideFilter shoesState={{ shoes, setShoes, defaultShoes }} />
-        <GenderSideFilter shoesState={{ shoes, setShoes, defaultShoes }} />
-        <PriceSideFilter shoesState={{ shoes, setShoes, defaultShoes }} />
+        <ColorSideFilter
+          shoes={shoes}
+          setShoes={setShoes}
+          defaultShoes={defaultShoes}
+        />
+        <GenderSideFilter
+          shoes={shoes}
+          setShoes={setShoes}
+          defaultShoes={defaultShoes}
+        />
+        <PriceSideFilter
+          shoes={shoes}
+          setShoes={setShoes}
+          defaultShoes={defaultShoes}
+        />
         <div className="side-category">teste</div>
         <div className="side-sizes">teste</div>
       </StyledShopSide>
