@@ -52,8 +52,23 @@ export const StyledDivShop = styled.div`
   justify-content: center;
 
   select {
-    padding: var(--space-small);
+    padding: 0.5rem;
     text-transform: uppercase;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    background-color: var(--main-white);
+    padding: 0.5rem;
+    color: rgba(25, 14, 2, 0.7);
+    height: 100%;
+  }
+
+  .div-search-filter {
+    border-bottom: 1px solid var(--main-color);
+    display: flex;
+    align-items: center;
   }
 `;
 

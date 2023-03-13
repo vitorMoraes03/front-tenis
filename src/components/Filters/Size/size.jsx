@@ -1,5 +1,4 @@
 /* eslint-disable no-plusplus */
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 

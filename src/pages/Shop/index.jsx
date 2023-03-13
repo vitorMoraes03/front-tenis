@@ -3,18 +3,18 @@ import {
   StyledShopContainer,
   StyledDivShop,
   StyledGridShop,
-  StyledBtnShop,
   StyledShopMain,
   StyledShopSide,
 } from './styles';
 import api from '../../api/api';
 import { CartContext } from '../../contexts/cartContext';
 import ShoeCard from '../../components/ShoeCard';
-import ColorSideFilter from '../../components/SideFilter/Color';
-import GenderSideFilter from '../../components/SideFilter/Gender';
-import PriceSideFilter from '../../components/SideFilter/Price';
-import CategorySideFilter from '../../components/SideFilter/Category';
-import SizeSideFilter from '../../components/SideFilter/Size/size';
+import ColorSideFilter from '../../components/Filters/Color';
+import GenderSideFilter from '../../components/Filters/Gender';
+import PriceSideFilter from '../../components/Filters/Price';
+import CategorySideFilter from '../../components/Filters/Category';
+import SizeSideFilter from '../../components/Filters/Size/size';
+import SearchFilter from '../../components/Filters/Search';
 
 function Shop() {
   const { order, setOrder } = useContext(CartContext);
@@ -67,10 +67,11 @@ function Shop() {
       <StyledShopMain>
         <h1>Shop</h1>
         <StyledDivShop>
-          <StyledBtnShop>Filter green</StyledBtnShop>
-          <StyledBtnShop onClick={() => console.log('teste')}>
-            genderPick
-          </StyledBtnShop>
+          <SearchFilter
+            shoes={shoes}
+            setShoes={setShoes}
+            defaultShoes={defaultShoes}
+          />
           <select>
             <option>Teste 1</option>
             <option>Teste 2</option>
