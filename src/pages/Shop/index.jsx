@@ -39,27 +39,15 @@ function Shop() {
   return (
     <StyledShopContainer>
       <StyledShopSide>
-        <ColorSideFilter
-          setShoes={setShoes}
-          defaultShoes={defaultShoes}
-        />
+        <ColorSideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
         <GenderSideFilter
           shoes={shoes}
           setShoes={setShoes}
           defaultShoes={defaultShoes}
         />
-        <PriceSideFilter
-          setShoes={setShoes}
-          defaultShoes={defaultShoes}
-        />
-        <CategorySideFilter
-          setShoes={setShoes}
-          defaultShoes={defaultShoes}
-        />
-        <SizeSideFilter
-          setShoes={setShoes}
-          defaultShoes={defaultShoes}
-        />
+        <PriceSideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
+        <CategorySideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
+        <SizeSideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
       </StyledShopSide>
       <StyledShopMain>
         <h1>Shop</h1>
@@ -69,10 +57,7 @@ function Shop() {
             setShoes={setShoes}
             defaultShoes={defaultShoes}
           />
-        <SelectFilter
-          shoes={shoes}
-          setShoes={setShoes}
-          />
+          <SelectFilter shoes={shoes} setShoes={setShoes} />
         </StyledDivShop>
         <StyledGridShop>
           {shoes.map((element) => (
