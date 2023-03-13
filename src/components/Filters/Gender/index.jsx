@@ -5,6 +5,17 @@ function GenderSideFilter({ shoes, setShoes, defaultShoes }) {
   const [genderPick, setGenderPick] = useState([]);
   const [genderOpen, setGenderOpen] = useState(false);
 
+  function handleGender(e) {
+    if (genderPick.includes(e.target.value)) {
+      const filtered = genderPick.filter(
+        (element) => element !== e.target.value
+      );
+      setGenderPick(filtered);
+      return;
+    }
+    setGenderPick([...genderPick, e.target.value]);
+  }
+
   useEffect(() => {
     if (genderPick.length === 2) {
       setShoes(defaultShoes);
@@ -19,17 +30,6 @@ function GenderSideFilter({ shoes, setShoes, defaultShoes }) {
       setShoes(defaultShoes);
     } else setShoes(filtered);
   }, [genderPick]);
-
-  function handleGender(e) {
-    if (genderPick.includes(e.target.value)) {
-      const filtered = genderPick.filter(
-        (element) => element !== e.target.value
-      );
-      setGenderPick(filtered);
-      return;
-    }
-    setGenderPick([...genderPick, e.target.value]);
-  }
 
   return (
     <StyledSideCard>

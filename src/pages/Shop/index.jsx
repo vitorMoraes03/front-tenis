@@ -3,16 +3,19 @@ import {
   StyledShopContainer,
   StyledDivShop,
   StyledGridShop,
-  StyledBtnShop,
   StyledShopMain,
   StyledShopSide,
 } from './styles';
 import api from '../../api/api';
 import { CartContext } from '../../contexts/cartContext';
 import ShoeCard from '../../components/ShoeCard';
-import ColorSideFilter from '../../components/SideFilter/Color';
-import GenderSideFilter from '../../components/SideFilter/Gender';
-import PriceSideFilter from '../../components/SideFilter/Price';
+import ColorSideFilter from '../../components/Filters/Color';
+import GenderSideFilter from '../../components/Filters/Gender';
+import PriceSideFilter from '../../components/Filters/Price';
+import CategorySideFilter from '../../components/Filters/Category';
+import SizeSideFilter from '../../components/Filters/Size/size';
+import SearchFilter from '../../components/Filters/Search';
+import SelectFilter from '../../components/Filters/Select';
 
 function Shop() {
   const { order, setOrder } = useContext(CartContext);
@@ -36,24 +39,25 @@ function Shop() {
   return (
     <StyledShopContainer>
       <StyledShopSide>
-        <ColorSideFilter shoesState={{ shoes, setShoes, defaultShoes }} />
-        <GenderSideFilter shoesState={{ shoes, setShoes, defaultShoes }} />
-        <PriceSideFilter shoesState={{ shoes, setShoes, defaultShoes }} />
-        <div className="side-category">teste</div>
-        <div className="side-sizes">teste</div>
+        <ColorSideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
+        <GenderSideFilter
+          shoes={shoes}
+          setShoes={setShoes}
+          defaultShoes={defaultShoes}
+        />
+        <PriceSideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
+        <CategorySideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
+        <SizeSideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
       </StyledShopSide>
       <StyledShopMain>
         <h1>Shop</h1>
         <StyledDivShop>
-          <StyledBtnShop>Filter green</StyledBtnShop>
-          <StyledBtnShop onClick={() => console.log('teste')}>
-            genderPick
-          </StyledBtnShop>
-          <select>
-            <option>Teste 1</option>
-            <option>Teste 2</option>
-            <option>Teste 3</option>
-          </select>
+          <SearchFilter
+            shoes={shoes}
+            setShoes={setShoes}
+            defaultShoes={defaultShoes}
+          />
+          <SelectFilter shoes={shoes} setShoes={setShoes} />
         </StyledDivShop>
         <StyledGridShop>
           {shoes.map((element) => (

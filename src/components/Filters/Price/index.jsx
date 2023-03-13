@@ -1,42 +1,62 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-console */
+
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
-function PriceSideFilter({ shoes, setShoes, defaultShoes }) {
+function PriceSideFilter({ setShoes, defaultShoes }) {
   const [priceOpen, setPriceOpen] = useState(false);
-  const [pricesPick, setPricesPick] = useState([]);
+  const arrOfValues = [
+    [0, 350],
+    [350, 600],
+    [600, 900],
+    [900, 1500],
+    [1500, 10000],
+  ];
+  const [arrPrices, setArrPrices] = useState([]);
+  const [filteredArr, setFilteredArr] = useState([]);
 
   function handlePrice(e) {
-    if (pricesPick.includes(e.target.value)) {
-      const filtered = pricesPick.filter(
-        (element) => element !== e.target.value
-      );
-      setPricesPick(filtered);
+    const item = e.target.value;
+    if (arrPrices.includes(item)) {
+      const copyArr = [...arrPrices];
+      const indexToRemove = arrPrices.indexOf(item);
+      copyArr.splice(indexToRemove, 1);
+      setArrPrices(copyArr);
       return;
     }
-    const conversionToNum = e.target.value.split(',');
-    setPricesPick([...pricesPick, conversionToNum]);
+    setArrPrices([...arrPrices, item]);
   }
 
   useEffect(() => {
-    if (pricesPick.length === 0) return;
-    const arr = [];
-    for (let i = 0; i < pricesPick.length; i + 1) {
-      // const item = pricesPick[i];
-      const filtered = shoes.filter(
-        (element) =>
-          element.price >= pricesPick[i][0] && element.price <= pricesPick[i][1]
-      );
-      arr.push(filtered);
+    if (arrPrices.length === 0) {
+      setShoes(defaultShoes);
+      return;
     }
-    console.log(arr);
-  }, [pricesPick]);
 
-  // 0 a 350
-  // 350 a 600
-  // 600 a 900
-  // 900 a 1500
-  // 1500 a 10000
+    const arrRes = [];
+    for (let i = 0; i < arrPrices.length; i++) {
+      const range = arrPrices[i];
+
+      const filtered = defaultShoes.filter(
+        (obj) =>
+          obj.price >= arrOfValues[range][0] &&
+          obj.price <= arrOfValues[range][1]
+      );
+
+      arrRes.push(filtered);
+    }
+
+    setFilteredArr(arrRes.flat());
+  }, [arrPrices]);
+
+  useEffect(() => {
+    if (filteredArr.length === 0) {
+      setShoes([]);
+      return;
+    }
+    setShoes(filteredArr);
+  }, [filteredArr]);
 
   return (
     <StyledSideCard>
@@ -53,21 +73,18 @@ function PriceSideFilter({ shoes, setShoes, defaultShoes }) {
             <ion-icon name="add-outline" />
           )}
         </button>
-        <button type="button" onClick={() => console.log(pricesPick)}>
-          see pricepicks
-        </button>
       </div>
       {priceOpen ? (
         <ul className="ul-tags">
           <li>
-            <label htmlFor="less-600">
+            <label htmlFor="less-350">
               <input
                 type="checkbox"
                 onClick={handlePrice}
-                value={[0, 350]}
-                id="less-600"
+                value={0}
+                id="less-350"
               />
-              Menos de R$ 600
+              Menos de R$ 350
             </label>
           </li>
           <li>
@@ -75,7 +92,7 @@ function PriceSideFilter({ shoes, setShoes, defaultShoes }) {
               <input
                 type="checkbox"
                 onClick={handlePrice}
-                value={[350, 600]}
+                value={1}
                 id="350-600"
               />
               R$ 350 - R$ 600
@@ -86,7 +103,7 @@ function PriceSideFilter({ shoes, setShoes, defaultShoes }) {
               <input
                 type="checkbox"
                 onClick={handlePrice}
-                value={[600, 900]}
+                value={2}
                 id="600-900"
               />
               R$ 600 - R$ 900
@@ -97,7 +114,7 @@ function PriceSideFilter({ shoes, setShoes, defaultShoes }) {
               <input
                 type="checkbox"
                 onClick={handlePrice}
-                value={[900, 1500]}
+                value={3}
                 id="900-1500"
               />
               R$ 900 - R$ 1500
@@ -108,7 +125,7 @@ function PriceSideFilter({ shoes, setShoes, defaultShoes }) {
               <input
                 type="checkbox"
                 onClick={handlePrice}
-                value={[1500, 10000]}
+                value={4}
                 id="1500-10000"
               />
               Acima de R$ 1500
