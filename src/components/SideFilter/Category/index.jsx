@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
-function CategorySideFilter({ shoes, setShoes, defaultShoes }) {
+function CategorySideFilter({ setShoes, defaultShoes }) {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [arrCategory, setArrCategory] = useState([]);
   const [filteredArr, setFilteredArr] = useState([]);

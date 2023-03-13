@@ -1,37 +1,63 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
 function ColorSideFilter({ shoes, setShoes, defaultShoes }) {
-  const [colorsPick, setColorsPick] = useState([]);
   const colors = ['white', 'black', 'blue', 'green', 'brown', 'gray'];
   const [colorOpen, setColorOpen] = useState(false);
-
-  useEffect(() => {
-    function filterColor(element) {
-      return element.color.some((item) => colorsPick.includes(item));
-    }
-    const filtered = shoes.filter(filterColor);
-
-    if (colorsPick.length === 0) {
-      setShoes(defaultShoes);
-    } else setShoes(filtered);
-  }, [colorsPick]);
+  const [arrColors, setArrColors] = useState([]);
+  const [filteredArr, setFilteredArr] = useState([]);
 
   function handleColor(e) {
-    if (colorsPick.includes(e.target.value)) {
-      const filtered = colorsPick.filter(
-        (element) => element !== e.target.value
-      );
-      setColorsPick(filtered);
+    const color = e.target.value;
+
+    if (arrColors.includes(color)) {
+      const copyArr = [...arrColors];
+      const indexToRemove = arrColors.indexOf(color);
+      copyArr.splice(indexToRemove, 1);
+      setArrColors(copyArr);
       return;
     }
-    setColorsPick([...colorsPick, e.target.value]);
+
+    setArrColors([...arrColors, color]);
   }
+
+  useEffect(() => {
+    if (arrColors.length === 0) {
+      setShoes(defaultShoes);
+      return;
+    }
+
+    const arrRes = [];
+    for (let i = 0; i < arrColors.length; i++) {
+      const color = arrColors[i];
+      const filtered = defaultShoes.filter((obj) => obj.color.includes(color));
+      arrRes.push(filtered);
+    }
+
+    const noDuplicata = [...new Set(arrRes.flat())];
+    setFilteredArr(noDuplicata);
+  }, [arrColors]);
+
+  useEffect(() => {
+    if (filteredArr.length === 0) {
+      setShoes([]);
+      return;
+    }
+    setShoes(filteredArr);
+  }, [filteredArr]);
 
   return (
     <StyledSideCard>
       <div className="div-h4">
         <h4>Cor</h4>
+        <button type="button" onClick={() => console.log(filteredArr)}>
+          filteredArr
+        </button>
+        <button type="button" onClick={() => console.log(arrColors)}>
+          arrColors
+        </button>
         <button
           className="btn-color-add"
           type="button"
