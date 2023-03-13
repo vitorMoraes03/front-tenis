@@ -1,62 +1,62 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
+
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
-function PriceSideFilter({ shoes, setShoes, defaultShoes }) {
+function PriceSideFilter({ setShoes, defaultShoes }) {
   const [priceOpen, setPriceOpen] = useState(false);
   const arrOfValues = [
     [0, 350],
     [350, 600],
     [600, 900],
     [900, 1500],
-    [1500, 10000]
+    [1500, 10000],
   ];
   const [arrPrices, setArrPrices] = useState([]);
   const [filteredArr, setFilteredArr] = useState([]);
 
-function handlePrice(e) { 
-  const item = e.target.value;
-  if(arrPrices.includes(item)){
-    const copyArr = [...arrPrices];
-    const indexToRemove = arrPrices.indexOf(item);
-    copyArr.splice(indexToRemove, 1);
-    setArrPrices(copyArr);
-    return
+  function handlePrice(e) {
+    const item = e.target.value;
+    if (arrPrices.includes(item)) {
+      const copyArr = [...arrPrices];
+      const indexToRemove = arrPrices.indexOf(item);
+      copyArr.splice(indexToRemove, 1);
+      setArrPrices(copyArr);
+      return;
+    }
+    setArrPrices([...arrPrices, item]);
   }
-  setArrPrices([...arrPrices, item]);
-}
 
   useEffect(() => {
-    if(arrPrices.length === 0){
+    if (arrPrices.length === 0) {
       setShoes(defaultShoes);
-      console.log('length é igual a zero');
-      return
+      return;
     }
 
     const arrRes = [];
-
-    // eslint-disable-next-line no-plusplus
     for (let i = 0; i < arrPrices.length; i++) {
       const range = arrPrices[i];
-      
-      const filtered = defaultShoes.filter((obj) =>
-        obj.price >= arrOfValues[range][0] && obj.price <= arrOfValues[range][1]);
+
+      const filtered = defaultShoes.filter(
+        (obj) =>
+          obj.price >= arrOfValues[range][0] &&
+          obj.price <= arrOfValues[range][1]
+      );
 
       arrRes.push(filtered);
     }
 
-    setFilteredArr(arrRes.flat()); 
-
+    setFilteredArr(arrRes.flat());
   }, [arrPrices]);
 
   useEffect(() => {
-    if(filteredArr.length === 0) {
+    if (filteredArr.length === 0) {
       setShoes([]);
-      return
+      return;
     }
     setShoes(filteredArr);
-  }, [filteredArr]); 
+  }, [filteredArr]);
 
   return (
     <StyledSideCard>
@@ -72,12 +72,6 @@ function handlePrice(e) {
           ) : (
             <ion-icon name="add-outline" />
           )}
-        </button>
-        <button type="button" onClick={() => console.log(arrPrices)}>
-          see arrPrices
-        </button>
-        <button type="button" onClick={() => console.log(filteredArr)}>
-          see filteredArr
         </button>
       </div>
       {priceOpen ? (

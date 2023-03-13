@@ -13,6 +13,7 @@ import ShoeCard from '../../components/ShoeCard';
 import ColorSideFilter from '../../components/SideFilter/Color';
 import GenderSideFilter from '../../components/SideFilter/Gender';
 import PriceSideFilter from '../../components/SideFilter/Price';
+import CategorySideFilter from '../../components/SideFilter/Category';
 
 function Shop() {
   const { order, setOrder } = useContext(CartContext);
@@ -51,8 +52,12 @@ function Shop() {
           setShoes={setShoes}
           defaultShoes={defaultShoes}
         />
-        <div className="side-category">teste</div>
-        <div className="side-sizes">teste</div>
+        <CategorySideFilter
+          shoes={shoes}
+          setShoes={setShoes}
+          defaultShoes={defaultShoes}
+        />
+        <div className="side-sizes">teste sizes</div>
       </StyledShopSide>
       <StyledShopMain>
         <h1>Shop</h1>
