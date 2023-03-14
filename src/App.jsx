@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useState } from 'react';
 import NavBar from './components/Nav';
 import Home from './pages/Home';
 import Footer from './components/Footer';
@@ -27,12 +28,14 @@ const StyledPromo = styled.div`
 `;
 
 function App() {
+  const [modalCart, setModalCart] = useState(false);
+
   return (
     <AuthContextComponent>
       <CartContextComponent>
         <GlobalStyle />
         <AppContainer>
-          <NavBar />
+          <NavBar modalCart={modalCart} setModalCart={setModalCart} />
           <StyledPromo>
             <p>Entrega grátis a partir de 150 reais</p>
           </StyledPromo>
@@ -42,7 +45,12 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/shop" element={<Shop />} />
+            <Route
+              path="/shop"
+              element={
+                <Shop setModalCart={setModalCart} modalCart={modalCart} />
+              }
+            />
             <Route path="/checkout" element={<CheckOut />} />
           </Routes>
           <Footer />

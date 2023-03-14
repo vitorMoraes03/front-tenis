@@ -32,6 +32,7 @@ export const StyledShoeCard = styled.div`
 export const StyledDivColors = styled.div`
   display: flex;
   gap: 2px;
+  margin: 3px 0;
 `;
 
 export const StyledTagColor = styled.div`

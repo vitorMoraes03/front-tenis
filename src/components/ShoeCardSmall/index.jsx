@@ -29,7 +29,7 @@ const StyledShoeSmall = styled.div`
   }
 `;
 
-function ShoeCardSmall([element, index, order, setOrder]) {
+function ShoeCardSmall({ element, index, order, setOrder }) {
   function deleteItem() {
     const updatedOrder = order.filter((_, i) => i !== index);
     setOrder(updatedOrder);
@@ -41,8 +41,11 @@ function ShoeCardSmall([element, index, order, setOrder]) {
       <div>
         <p>{element.shoesName}</p>
         <StyledDivColors>
-          {element.color.map(() => (
-            <StyledTagColor backgroundColor={element} />
+          {element.color.map((singleColor) => (
+            <StyledTagColor
+              backgroundColor={singleColor}
+              key={`${singleColor}-${element.shoesName}-smallcard`}
+            />
           ))}
         </StyledDivColors>
         <p>Tamanho: {element.size}</p>

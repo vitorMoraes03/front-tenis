@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
@@ -5,9 +6,15 @@ import imgNav from '../../images/logo_modern.png';
 import { StyledFlex } from '../../global';
 import { AuthContext } from '../../contexts/authContext';
 import { CartContext } from '../../contexts/cartContext';
-import { StyledNavBar, StyledLinks, StyledCart } from './styles';
+import {
+  StyledNavBar,
+  StyledLinks,
+  StyledCart,
+  StyledContainerUser,
+} from './styles';
+import CartModal from '../Modals/Cart';
 
-function NavBar() {
+function NavBar({ modalCart, setModalCart }) {
   const { loggedInUser } = useContext(AuthContext);
   const { order } = useContext(CartContext);
 
@@ -21,7 +28,7 @@ function NavBar() {
         <Link to="./shop">Shop</Link>
         <Link to="">Quem somos</Link>
       </StyledLinks>
-      <StyledFlex>
+      <StyledContainerUser>
         {loggedInUser ? <p>{`Olá, ${loggedInUser.user.firstName}`}</p> : null}
         <Link to={loggedInUser ? '/profile' : '/login'}>
           <ion-icon name="person-outline" />
@@ -33,7 +40,8 @@ function NavBar() {
           <ion-icon name="cart-outline" />
           <p>{order.length === 0 ? null : order.length}</p>
         </StyledCart>
-      </StyledFlex>
+      </StyledContainerUser>
+      <CartModal modalCart={modalCart} setModalCart={setModalCart} />
     </StyledNavBar>
   );
 }
