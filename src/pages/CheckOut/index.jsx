@@ -16,8 +16,7 @@ function CheckOut() {
   const navigate = useNavigate();
 
   function priceTotal() {
-    const sum = order.reduce((acum, element) => acum + element.price);
-
+    const sum = order.reduce((acum, element) => acum + element.price, 0);
     return sum.toFixed(2);
   }
 
@@ -69,7 +68,10 @@ function CheckOut() {
               return (
                 <ShoeCardSmall
                   key={index}
-                  props={[element, index, order, setOrder]}
+                  element={element}
+                  index={index}
+                  order={order}
+                  setOrder={setOrder}
                 />
               );
             })}

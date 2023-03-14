@@ -63,7 +63,8 @@ function Shop() {
           {shoes.map((element) => (
             <ShoeCard
               element={element}
-              orderState={{ order, setOrder }}
+              order={order}
+              setOrder={setOrder}
               key={element.shoesName}
             />
           ))}
