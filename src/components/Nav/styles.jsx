@@ -56,13 +56,16 @@ export const StyledLinks = styled(StyledFlex)`
   }
 `;
 
+export const StyledContainerUser = styled(StyledFlex)`
+  padding-right: var(--space-medium);
+`;
+
 export const StyledCart = styled(Link)`
   position: relative;
-  padding-right: var(--space-medium);
 
   p {
     position: absolute;
-    right: -5px;
-    bottom: -3px;
+    right: -6px;
+    bottom: -6px;
   }
 `;

@@ -6,17 +6,21 @@ export const StyledContainerCart = styled.div`
   width: 100%;
   height: fit-content;
   top: 100%;
-  z-index: ${(props) => (props.modalCart ? -1 : 100)};
+  z-index: ${(props) => (props.modalCart ? 100 : -1)};
   opacity: ${(props) => (props.modalCart ? 1 : 0)};
   transition: all 0.25s ease-out;
   transform: ${(props) =>
     props.modalCart ? 'translateY(0)' : 'translateY(-100%)'};
   color: var(--main-color);
 
+  h2 {
+    font-size: var(--font-big);
+    font-weight: 800;
+  }
+
   .main-container {
     width: 30%;
     margin: 0 0 0 auto;
-    border: 1px solid red;
     padding: var(--space-small);
   }
 
@@ -24,6 +28,11 @@ export const StyledContainerCart = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: var(--space-small);
+  }
+
+  .container-button {
+    padding-top: var(--space-small);
   }
 
   img {

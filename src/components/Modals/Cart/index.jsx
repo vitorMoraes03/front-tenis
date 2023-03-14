@@ -1,12 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { StyledContainerCart, OverlayStyle } from './styles';
 import ShoeCardSmall from '../../ShoeCardSmall';
 import { CartContext } from '../../../contexts/cartContext';
+import { StyledBtnLogin } from '../../../pages/Login/styles';
 
 function CartModal({ modalCart, setModalCart }) {
   const { order, setOrder } = useContext(CartContext);
   const modalRef = useRef(null);
+  const navigate = useNavigate();
   const [modalInitialized, setModalInitialized] = useState(false);
 
   function handleClickOutside(e) {
@@ -28,6 +31,13 @@ function CartModal({ modalCart, setModalCart }) {
       document.addEventListener('click', handleClickOutside);
     }
   }, [modalInitialized]);
+
+  const handleCheckout = () => {
+    setModalCart(false);
+    setModalInitialized(false);
+    document.removeEventListener('click', handleClickOutside);
+    navigate('/checkout');
+  };
 
   return (
     <>
@@ -51,6 +61,11 @@ function CartModal({ modalCart, setModalCart }) {
                 />
               );
             })}
+          </div>
+          <div className="container-button">
+            <StyledBtnLogin onClick={handleCheckout}>
+              Finalizar Compra
+            </StyledBtnLogin>
           </div>
         </div>
       </StyledContainerCart>
