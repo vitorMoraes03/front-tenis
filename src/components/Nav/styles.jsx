@@ -5,7 +5,6 @@ import { StyledFlex } from '../../global';
 export const StyledNavBar = styled.nav`
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--space-medium);
   width: 100%;
   position: fixed;
   z-index: 100;
@@ -30,6 +29,8 @@ export const StyledNavBar = styled.nav`
 `;
 
 export const StyledLinks = styled(StyledFlex)`
+  padding-left: var(--space-medium);
+
   a {
     display: flex;
     align-items: center;
@@ -57,6 +58,7 @@ export const StyledLinks = styled(StyledFlex)`
 
 export const StyledCart = styled(Link)`
   position: relative;
+  padding-right: var(--space-medium);
 
   p {
     position: absolute;

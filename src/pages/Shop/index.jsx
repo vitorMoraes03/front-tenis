@@ -17,7 +17,7 @@ import SizeSideFilter from '../../components/Filters/Size/size';
 import SearchFilter from '../../components/Filters/Search';
 import SelectFilter from '../../components/Filters/Select';
 
-function Shop() {
+function Shop({ setModalCart, modalCart }) {
   const { order, setOrder } = useContext(CartContext);
   const [shoes, setShoes] = useState([]);
   const [defaultShoes, setDefaultShoes] = useState([]);
@@ -66,6 +66,8 @@ function Shop() {
               order={order}
               setOrder={setOrder}
               key={element.shoesName}
+              setModalCart={setModalCart}
+              modalCart={modalCart}
             />
           ))}
         </StyledGridShop>

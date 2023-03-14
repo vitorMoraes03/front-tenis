@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { StyledShoeCard, StyledDivColors, StyledTagColor } from './styles';
 import { StyledBtnShop } from '../../pages/Shop/styles';
 
-function ShoeCard({ order, setOrder, element }) {
+function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
   const objectKeys = Object.keys(element.sizeAndStock);
   const [selectedOption, setSelectedOption] = useState(objectKeys[0]);
 
@@ -12,6 +12,8 @@ function ShoeCard({ order, setOrder, element }) {
   }
 
   function addShoes() {
+    if (modalCart) return;
+    setModalCart(true);
     setOrder([
       ...order,
       {
@@ -35,10 +37,10 @@ function ShoeCard({ order, setOrder, element }) {
           <h4>{element.shoesName}</h4>
           <p>{element.price}</p>
           <StyledDivColors>
-            {element.color.map((color) => (
+            {element.color.map((singleColor) => (
               <StyledTagColor
-                backgroundColor={color}
-                key={`${color}-${element.shoesName}`}
+                backgroundColor={singleColor}
+                key={`${singleColor}-${element.shoesName}-card`}
               />
             ))}
           </StyledDivColors>

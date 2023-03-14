@@ -41,8 +41,11 @@ function ShoeCardSmall({ element, index, order, setOrder }) {
       <div>
         <p>{element.shoesName}</p>
         <StyledDivColors>
-          {element.color.map(() => (
-            <StyledTagColor backgroundColor={element} key={`${element.color}-${element.shoesName}`}/>
+          {element.color.map((singleColor) => (
+            <StyledTagColor
+              backgroundColor={singleColor}
+              key={`${singleColor}-${element.shoesName}-smallcard`}
+            />
           ))}
         </StyledDivColors>
         <p>Tamanho: {element.size}</p>

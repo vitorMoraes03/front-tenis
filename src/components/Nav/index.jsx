@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
@@ -6,8 +7,9 @@ import { StyledFlex } from '../../global';
 import { AuthContext } from '../../contexts/authContext';
 import { CartContext } from '../../contexts/cartContext';
 import { StyledNavBar, StyledLinks, StyledCart } from './styles';
+import CartModal from '../Modals/Cart';
 
-function NavBar() {
+function NavBar({ modalCart, setModalCart }) {
   const { loggedInUser } = useContext(AuthContext);
   const { order } = useContext(CartContext);
 
@@ -34,6 +36,7 @@ function NavBar() {
           <p>{order.length === 0 ? null : order.length}</p>
         </StyledCart>
       </StyledFlex>
+      <CartModal modalCart={modalCart} setModalCart={setModalCart} />
     </StyledNavBar>
   );
 }
