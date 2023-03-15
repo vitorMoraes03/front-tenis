@@ -28,11 +28,11 @@ function SelectFilter({ shoes, setShoes }) {
   }, [option]);
 
   return (
-      <select onChange={handleChange}>
-        <option value="Ordernar por">Ordenar por</option>
-        <option value="Menor preço">Menor preço</option>
-        <option value="Maior preço">Maior preço</option>
-      </select>
+    <select onChange={handleChange}>
+      <option value="Ordernar por">Ordenar por</option>
+      <option value="Menor preço">Menor preço</option>
+      <option value="Maior preço">Maior preço</option>
+    </select>
   );
 }
 

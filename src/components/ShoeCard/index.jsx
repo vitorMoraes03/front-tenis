@@ -27,7 +27,7 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
         color: element.color,
         src: element.src,
         alt: element.alt,
-        idCart: uuidv4()
+        idCart: uuidv4(),
       },
     ]);
   }
@@ -57,7 +57,14 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
             ))}
           </select>
         </div>
-        <StyledBtnShop onClick={() => addShoes(element)}>Comprar</StyledBtnShop>
+        <StyledBtnShop
+          onClick={(e) => {
+            e.stopPropagation();
+            addShoes();
+          }}
+        >
+          Comprar
+        </StyledBtnShop>
       </div>
     </StyledShoeCard>
   );

@@ -11,18 +11,19 @@ function CartModal({ modalCart, setModalCart }) {
   const modalRef = useRef(null);
   const navigate = useNavigate();
   const [modalInitialized, setModalInitialized] = useState(false);
+  const [emptyCart, setEmptyCart] = useState(false);
 
   function handleClickOutside(e) {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
-      setModalCart(false);
       setModalInitialized(false);
+      setModalCart(false);
       document.removeEventListener('click', handleClickOutside);
     }
   }
 
-  function closeModal(){
-    setModalCart(false);
+  function closeModal() {
     setModalInitialized(false);
+    setModalCart(false);
     document.removeEventListener('click', handleClickOutside);
   }
 
@@ -38,11 +39,23 @@ function CartModal({ modalCart, setModalCart }) {
     }
   }, [modalInitialized]);
 
+  useEffect(
+    () => (order.length === 0 ? setEmptyCart(true) : setEmptyCart(false)),
+    [order]
+  );
+
   const handleCheckout = () => {
-    setModalCart(false);
     setModalInitialized(false);
+    setModalCart(false);
     document.removeEventListener('click', handleClickOutside);
     navigate('/checkout');
+  };
+
+  const handleShopMore = () => {
+    setModalInitialized(false);
+    setModalCart(false);
+    document.removeEventListener('click', handleClickOutside);
+    navigate('/shop');
   };
 
   return (
@@ -51,23 +64,29 @@ function CartModal({ modalCart, setModalCart }) {
       <StyledContainerCart modalCart={modalCart} ref={modalRef}>
         <div className="main-container">
           <div className="container-title">
-            <h2>Carrinho</h2>
-            <ion-icon name="close-outline" onClick={closeModal}/>
+            <h2>{emptyCart ? 'Carrinho vazio' : 'Carrinho'}</h2>
+            <ion-icon name="close-outline" onClick={closeModal} />
           </div>
           <div>
             {order.map((element) => (
-                <ShoeCardSmall
-                  key={`${element.idCart}-modal`}
-                  element={element}
-                  order={order}
-                  setOrder={setOrder}
-                />
-              ))}
+              <ShoeCardSmall
+                key={`${element.idCart}-modal`}
+                element={element}
+                order={order}
+                setOrder={setOrder}
+              />
+            ))}
           </div>
           <div className="container-button">
-            <StyledBtnLogin onClick={handleCheckout}>
-              Finalizar Compra
-            </StyledBtnLogin>
+            {emptyCart ? (
+              <StyledBtnLogin onClick={handleShopMore}>
+                Continuar comprando
+              </StyledBtnLogin>
+            ) : (
+              <StyledBtnLogin onClick={handleCheckout}>
+                Finalizar Compra
+              </StyledBtnLogin>
+            )}
           </div>
         </div>
       </StyledContainerCart>

@@ -58,7 +58,9 @@ function Shop({ setModalCart, modalCart }) {
             defaultShoes={defaultShoes}
           />
           <SelectFilter shoes={shoes} setShoes={setShoes} />
-          <button type='button' onClick={() => console.log(order)}>order</button>
+          <button type="button" onClick={() => console.log(order)}>
+            order
+          </button>
         </StyledDivShop>
         <StyledGridShop>
           {shoes.map((element) => (

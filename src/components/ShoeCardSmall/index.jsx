@@ -55,10 +55,14 @@ function ShoeCardSmall({ element, order, setOrder }) {
       <div className="price-div">
         <p>R${element.price}</p>
       </div>
-      <button className="btn-trash" onClick={(e) => {
-        e.stopPropagation();
-        deleteItem();
-      }} type="button">
+      <button
+        className="btn-trash"
+        onClick={(e) => {
+          e.stopPropagation();
+          deleteItem();
+        }}
+        type="button"
+      >
         <ion-icon name="trash" />
       </button>
     </StyledShoeSmall>
