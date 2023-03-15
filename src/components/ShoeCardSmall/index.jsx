@@ -29,9 +29,10 @@ const StyledShoeSmall = styled.div`
   }
 `;
 
-function ShoeCardSmall({ element, index, order, setOrder }) {
+// eslint-disable-next-line no-unused-vars
+function ShoeCardSmall({ element, order, setOrder }) {
   function deleteItem() {
-    const updatedOrder = order.filter((_, i) => i !== index);
+    const updatedOrder = order.filter((item) => item.idCart !== element.idCart);
     setOrder(updatedOrder);
   }
 
@@ -54,7 +55,14 @@ function ShoeCardSmall({ element, index, order, setOrder }) {
       <div className="price-div">
         <p>R${element.price}</p>
       </div>
-      <button className="btn-trash" onClick={deleteItem} type="button">
+      <button
+        className="btn-trash"
+        onClick={(e) => {
+          e.stopPropagation();
+          deleteItem();
+        }}
+        type="button"
+      >
         <ion-icon name="trash" />
       </button>
     </StyledShoeSmall>

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {
   StyledCheckOutBackground,
@@ -14,18 +14,17 @@ import ShoeCardSmall from '../../components/ShoeCardSmall';
 function CheckOut() {
   const { order, setOrder } = useContext(CartContext);
   const navigate = useNavigate();
+  const [emptyCart, setEmptyCart] = useState(false);
 
   function priceTotal() {
     const sum = order.reduce((acum, element) => acum + element.price, 0);
     return sum.toFixed(2);
   }
 
-  useEffect(() => {
-    if (order.length === 0) {
-      navigate('/shop');
-      alert('Nada no carrinho'); // double render, ver como vai ficar com o modal
-    }
-  }, [order]);
+  useEffect(
+    () => (order.length === 0 ? setEmptyCart(true) : setEmptyCart(false)),
+    [order]
+  );
 
   const checkOutCart = async () => {
     try {
@@ -63,18 +62,14 @@ function CheckOut() {
             {order.length > 1 ? ' Itens' : ' Item'}
           </h3>
           <div className="checkout-cards">
-            {order.map((element) => {
-              const index = order.indexOf(element);
-              return (
-                <ShoeCardSmall
-                  key={index}
-                  element={element}
-                  index={index}
-                  order={order}
-                  setOrder={setOrder}
-                />
-              );
-            })}
+            {order.map((element) => (
+              <ShoeCardSmall
+                key={element.idCart}
+                element={element}
+                order={order}
+                setOrder={setOrder}
+              />
+            ))}
           </div>
         </div>
         <div>
@@ -89,7 +84,11 @@ function CheckOut() {
         </div>
       </StyledCheckOutContainer>
       <StyledBtnsCheckout>
-        <StyledBtnLogin onClick={checkOutCart}>Comprar</StyledBtnLogin>
+        {emptyCart ? null : (
+          <StyledBtnLogin onClick={checkOutCart}>
+            Finalizar Compra
+          </StyledBtnLogin>
+        )}
       </StyledBtnsCheckout>
     </StyledCheckOutBackground>
   );
