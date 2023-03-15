@@ -63,18 +63,14 @@ function CheckOut() {
             {order.length > 1 ? ' Itens' : ' Item'}
           </h3>
           <div className="checkout-cards">
-            {order.map((element) => {
-              const index = order.indexOf(element);
-              return (
+            {order.map((element) => (
                 <ShoeCardSmall
-                  key={index}
+                  key={element.idCart}
                   element={element}
-                  index={index}
                   order={order}
                   setOrder={setOrder}
                 />
-              );
-            })}
+              ))}
           </div>
         </div>
         <div>

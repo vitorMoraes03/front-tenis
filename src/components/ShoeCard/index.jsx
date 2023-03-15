@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { StyledShoeCard, StyledDivColors, StyledTagColor } from './styles';
 import { StyledBtnShop } from '../../pages/Shop/styles';
 
@@ -25,6 +27,7 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
         color: element.color,
         src: element.src,
         alt: element.alt,
+        idCart: uuidv4()
       },
     ]);
   }

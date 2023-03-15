@@ -20,6 +20,12 @@ function CartModal({ modalCart, setModalCart }) {
     }
   }
 
+  function closeModal(){
+    setModalCart(false);
+    setModalInitialized(false);
+    document.removeEventListener('click', handleClickOutside);
+  }
+
   useEffect(() => {
     if (modalCart) {
       setModalInitialized(true);
@@ -46,21 +52,17 @@ function CartModal({ modalCart, setModalCart }) {
         <div className="main-container">
           <div className="container-title">
             <h2>Carrinho</h2>
-            <ion-icon name="close-outline" />
+            <ion-icon name="close-outline" onClick={closeModal}/>
           </div>
           <div>
-            {order.map((element) => {
-              const index = order.indexOf(element);
-              return (
+            {order.map((element) => (
                 <ShoeCardSmall
-                  key={index}
+                  key={`${element.idCart}-modal`}
                   element={element}
-                  index={index}
                   order={order}
                   setOrder={setOrder}
                 />
-              );
-            })}
+              ))}
           </div>
           <div className="container-button">
             <StyledBtnLogin onClick={handleCheckout}>
