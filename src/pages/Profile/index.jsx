@@ -137,11 +137,9 @@ function Profile() {
         />
       </form>
       <div className="container-btn">
-        <StyledBtnLogin onClick={logOut}>Deslogar</StyledBtnLogin>
-        <StyledBtnLogin onClick={handleSubmit}>
-          Confirmar Modificações
-        </StyledBtnLogin>
-        <StyledBtnLogin onClick={deleteAcc}>Apagar Conta</StyledBtnLogin>
+        <StyledBtnLogin onClick={logOut}>Sair</StyledBtnLogin>
+        <StyledBtnLogin onClick={handleSubmit}>Editar</StyledBtnLogin>
+        <StyledBtnLogin onClick={deleteAcc}>Deletar</StyledBtnLogin>
       </div>
     </StyledProfileContainer>
   );

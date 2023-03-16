@@ -33,9 +33,6 @@ function NavBar({ modalCart, setModalCart }) {
         <Link to={loggedInUser ? '/profile' : '/login'}>
           <ion-icon name="person-outline" />
         </Link>
-        <Link to="/profile">
-          <ion-icon name="search-outline" />
-        </Link>
         <StyledCart to="/checkout">
           <ion-icon name="cart-outline" />
           <p>{order.length === 0 ? null : order.length}</p>

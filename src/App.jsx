@@ -37,7 +37,7 @@ function App() {
         <AppContainer>
           <NavBar modalCart={modalCart} setModalCart={setModalCart} />
           <StyledPromo>
-            <p>Entrega grátis a partir de 150 reais</p>
+            <p>Entrega grátis para todo o Brasil.</p>
           </StyledPromo>
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />

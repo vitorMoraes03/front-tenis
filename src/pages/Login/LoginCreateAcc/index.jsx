@@ -34,12 +34,12 @@ function LoginCreateAcc() {
     <StyledCreateAcc>
       <h3>Cliente novo?</h3>
       <div>
-        <p>Create an account with us and you will be able to:</p>
+        <p>Crie um conta e você será capaz de:</p>
         <ul>
-          <li>Check out faster</li>
-          <li>Save multiple shipping addresses</li>
-          <li>Access your order history</li>
-          <li>Track new orders</li>
+          <li>Check out mais rápido</li>
+          <li>Frete grátis para todo o Brasil</li>
+          <li>Acesso ao seu histórico de ordens</li>
+          <li>Acompanhe seus pedidos</li>
         </ul>
         <Link to="/signup">
           <StyledBtnLogin>Criar conta</StyledBtnLogin>

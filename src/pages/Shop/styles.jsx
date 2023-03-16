@@ -17,29 +17,24 @@ export const StyledSideCard = styled.div`
   background-color: var(--secondary-shade);
   padding: var(--space-small);
   margin-top: var(--space-small);
-
   ion-icon {
     color: var(--main-color);
     font-size: var(--font-text);
     cursor: pointer;
     --ionicon-stroke-width: 4.2rem;
   }
-
   button {
     border: none;
     background: none;
     display: inline-block;
   }
-
   .div-h4 {
     display: flex;
     justify-content: space-between;
   }
-
   .ul-tags {
     margin-top: 1rem;
   }
-
   .ul-tags > li {
     display: flex;
     gap: 0.5rem;
@@ -50,7 +45,6 @@ export const StyledDivShop = styled.div`
   display: flex;
   gap: var(--space-small);
   justify-content: center;
-
   input {
     border: none;
     outline: none;
@@ -59,7 +53,6 @@ export const StyledDivShop = styled.div`
     color: rgba(25, 14, 2, 0.7);
     height: 100%;
   }
-
   .div-search-filter {
     border-bottom: 1px solid var(--main-color);
     display: flex;
@@ -76,11 +69,9 @@ export const StyledGridShop = styled.div`
 
 export const StyledBtnShop = styled(StyledBtn)`
   color: var(--main-white);
-
   &::before {
     background-color: var(--main-shade);
   }
-
   &::after {
     background-color: #2e1a04;
   }
