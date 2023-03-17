@@ -10,13 +10,13 @@ function SignUp() {
   const { setLoggedInUser } = useContext(AuthContext);
 
   const [form, setForm] = useState({
-    // Criar um objeto igual para as msgs?
     email: '',
     password: '',
     confirmPassword: '',
     firstName: '',
     lastName: '',
     birthday: '',
+    // '1990-03-20'
   });
 
   const [emailMsg, setEmailMsg] = useState('');
@@ -25,6 +25,8 @@ function SignUp() {
   const [firstNameMsg, setFirstNameMsg] = useState('');
   const [lastNameMsg, setLastNameMsg] = useState('');
   const [birthdayMsg, setBirthdayMsg] = useState('');
+  
+  let submitOk = true;
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -33,59 +35,97 @@ function SignUp() {
   const checkEmail = () => {
     if (form.email === '') {
       setEmailMsg('Campo Obrigatório.');
+      submitOk = false;
+      return;
+    };
+    const regex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm;
+    if (!regex.test(form.email)) {
+      setEmailMsg('Preencher corretamente.');
+      submitOk = false;
       return;
     }
-    const regex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm;
-    if (!regex.test(form.email)) setEmailMsg('Preencher corretamente.');
+    setEmailMsg('');
   };
 
   const checkPassword = () => {
     if (form.password === '') {
       setPasswordMsg('Campo Obrigatório.');
+      submitOk = false;
       return;
     }
     const regex = /^(?=.*\d).{4,10}$/gm;
-    if (!regex.test(form.password)) setPasswordMsg('Preencher corretamente.');
+    if (!regex.test(form.password)) {
+      setPasswordMsg('Preencher corretamente.')
+      submitOk = false;
+      return;
+    };
+    setPasswordMsg('');
   };
+
+  const checkPasswordEquality = () => {
+    if(form.password !== form.confirmPassword){
+      setConfirmPasswordMsg('Devem ser iguais.');
+      setPasswordMsg('Devem ser iguais.');
+      submitOk = false;
+      return true;
+    }
+    return false;
+  }
 
   const checkConfirmPassword = () => {
     if (form.confirmPassword === '') {
       setConfirmPasswordMsg('Campo Obrigatório.');
+      submitOk = false;
       return;
     }
     const regex = /^(?=.*\d).{4,10}$/gm;
-    if (!regex.test(form.password))
+    if (!regex.test(form.password)) {
       setConfirmPasswordMsg('Preencher corretamente.');
+      submitOk = false;
+      return;
+    }
+    if(!checkPasswordEquality()) setConfirmPasswordMsg('');;
   };
+
+
 
   const checkFirstName = () => {
     if (form.firstName === '') {
       setFirstNameMsg('Campo Obrigatório.');
+      submitOk = false;
       return;
     }
     const regex = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
-    if (!regex.test(form.firstName)) setFirstNameMsg('Preencher corretamente.');
+    if (!regex.test(form.firstName)) {
+      setFirstNameMsg('Preencher corretamente.')
+      submitOk = false;
+      return;
+    };
+    setFirstNameMsg('');
   };
 
   const checkLastName = () => {
     if (form.lastName === '') {
       setLastNameMsg('Campo Obrigatório.');
+      submitOk = false;
       return;
     }
     const regex = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
-    if (!regex.test(form.firstName)) setLastNameMsg('Preencher corretamente.');
+    if (!regex.test(form.firstName)) {
+      setLastNameMsg('Preencher corretamente.')
+      submitOk = false;
+      return;
+    };
+    setLastNameMsg('');
   };
 
   const checkBirthday = () => {
     if (form.birthday === '') {
       setBirthdayMsg('Campo Obrigatório.');
+      submitOk = false;
+      return;
     }
-  };
-
-  const birthdayFormat = () => {
-    const date = new Date(form.birthday);
-    // eslint-disable-next-line no-unused-vars
-    const formattedDate = date.toLocaleDateString('pt-BR');
+    setBirthdayMsg('');
   };
 
   const handleSubmit = async (e) => {
@@ -96,7 +136,10 @@ function SignUp() {
     checkFirstName();
     checkLastName();
     checkBirthday();
-    birthdayFormat();
+
+    if(submitOk === false) return;
+
+    console.log('submitStatus', submitOk); 
 
     try {
       const res = await api.post('/user/signup', form);
