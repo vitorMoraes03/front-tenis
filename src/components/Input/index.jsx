@@ -1,5 +1,6 @@
 import { InputWrapper } from '../../global';
 
+// eslint-disable-next-line no-unused-vars
 export function Input({ text, type, handler, value, field, span }) {
   const name = field.charAt(0).toLowerCase() + field.slice(1);
 
@@ -15,6 +16,7 @@ export function Input({ text, type, handler, value, field, span }) {
         name={name}
         onChange={handler}
         value={value}
+        maxLength={25}
       />
       <span>{span}</span>
     </InputWrapper>

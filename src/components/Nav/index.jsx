@@ -3,7 +3,6 @@
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import imgNav from '../../images/logo_modern.png';
-import { StyledFlex } from '../../global';
 import { AuthContext } from '../../contexts/authContext';
 import { CartContext } from '../../contexts/cartContext';
 import {
@@ -17,6 +16,12 @@ import CartModal from '../Modals/Cart';
 function NavBar({ modalCart, setModalCart }) {
   const { loggedInUser } = useContext(AuthContext);
   const { order } = useContext(CartContext);
+
+  const handleClick = () => {
+    if (order.length > 0) {
+      setModalCart(true);
+    }
+  };
 
   return (
     <StyledNavBar>
@@ -33,10 +38,7 @@ function NavBar({ modalCart, setModalCart }) {
         <Link to={loggedInUser ? '/profile' : '/login'}>
           <ion-icon name="person-outline" />
         </Link>
-        <Link to="/profile">
-          <ion-icon name="search-outline" />
-        </Link>
-        <StyledCart to="/checkout">
+        <StyledCart onClick={() => handleClick()}>
           <ion-icon name="cart-outline" />
           <p>{order.length === 0 ? null : order.length}</p>
         </StyledCart>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import imgHome from '../../../images/woman-3.2-shoes-waves.png';
-import imgSideSecond from '../../../images/allstar-jeans-men.png';
-import imgSideThird from '../../../images/allstar-orange.png';
+import imgSideSecond from '../../../images/teste-1.png';
+import imgSideThird from '../../../images/DenizD_wearing_neon_jordan_shoes.png';
 
 const StyledMain = styled.div`
   display: grid;

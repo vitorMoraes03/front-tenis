@@ -1,26 +1,51 @@
-import styled from 'styled-components';
-import img5 from '../../../images/rdy-5.png';
-import img6 from '../../../images/rdy-6-2.0.png';
-import img7 from '../../../images/rdy-7.png';
-
-const StyledGallery = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-big);
-  height: 45rem;
-
-  img {
-    width: 30rem;
-  }
-`;
+import { useState } from 'react';
+// import img1 from '../../../images/rdy-2.png';
+import img1 from '../../../images/vitoristvan_shoes_modern_style_ultrarealistic_1.png';
+import img2 from '../../../images/RRRRRR_sneaker_high_fear.png';
+import img3 from '../../../images/vitoristvan_shoes_modern_style_ultrarealistic.png';
+import { StyledBtnShop } from '../../Shop/styles';
+import { StyledGallery, StyledImgContainer } from './styles';
 
 function Gallery() {
+  const [firstHover, setFirstHover] = useState(false);
+  const [secondHover, setSecondHover] = useState(false);
+  const [thirdHover, setThirdHover] = useState(false);
+
   return (
     <StyledGallery>
-      <img src={img7} alt="" />
-      <img src={img5} alt="" />
-      <img src={img6} alt="" />
+      <StyledImgContainer
+        hover={firstHover}
+        onMouseEnter={() => setFirstHover(true)}
+        onMouseLeave={() => setFirstHover(false)}
+      >
+        <img src={img1} alt="Sample shoes 1" />
+        <div>
+          <StyledBtnShop>Comprar</StyledBtnShop>
+          <h3>Didas VX</h3>
+        </div>
+      </StyledImgContainer>
+      <StyledImgContainer
+        hover={secondHover}
+        onMouseEnter={() => setSecondHover(true)}
+        onMouseLeave={() => setSecondHover(false)}
+      >
+        <img src={img2} alt="Sample shoes 2" />
+        <div>
+          <StyledBtnShop>Comprar</StyledBtnShop>
+          <h3>Niko C</h3>
+        </div>
+      </StyledImgContainer>
+      <StyledImgContainer
+        hover={thirdHover}
+        onMouseEnter={() => setThirdHover(true)}
+        onMouseLeave={() => setThirdHover(false)}
+      >
+        <img src={img3} alt="Sample shoes 3" />
+        <div>
+          <StyledBtnShop>Comprar</StyledBtnShop>
+          <h3>Zans Orange</h3>
+        </div>
+      </StyledImgContainer>
     </StyledGallery>
   );
 }

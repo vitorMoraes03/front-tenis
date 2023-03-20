@@ -133,7 +133,6 @@ function Footer() {
         <StyledFooterMedia>
           <h3>Siga-nos</h3>
           <StyledFlex>
-            <ion-icon name="logo-instagram" />
             <ion-icon name="logo-linkedin" />
             <ion-icon name="logo-github" />
           </StyledFlex>

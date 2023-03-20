@@ -10,13 +10,13 @@ function SignUp() {
   const { setLoggedInUser } = useContext(AuthContext);
 
   const [form, setForm] = useState({
-    // Criar um objeto igual para as msgs?
     email: '',
     password: '',
     confirmPassword: '',
     firstName: '',
     lastName: '',
     birthday: '',
+    // '1990-03-20'
   });
 
   const [emailMsg, setEmailMsg] = useState('');
@@ -26,77 +26,138 @@ function SignUp() {
   const [lastNameMsg, setLastNameMsg] = useState('');
   const [birthdayMsg, setBirthdayMsg] = useState('');
 
+  let submitOk = true;
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const checkEmail = () => {
-    if (form.email === '') {
-      setEmailMsg('Campo Obrigatório.');
+  const checkInput = (input, regex, setMsg) => {
+    if (input === '') {
+      setMsg('Campo Obrigatório.');
+      submitOk = false;
       return;
     }
-    const regex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm;
-    if (!regex.test(form.email)) setEmailMsg('Preencher corretamente.');
-  };
-
-  const checkPassword = () => {
-    if (form.password === '') {
-      setPasswordMsg('Campo Obrigatório.');
+    if (regex?.test(input) === false) {
+      setMsg('Preencher corretamente.');
+      submitOk = false;
       return;
     }
-    const regex = /^(?=.*\d).{4,10}$/gm;
-    if (!regex.test(form.password)) setPasswordMsg('Preencher corretamente.');
+    setMsg('');
   };
 
-  const checkConfirmPassword = () => {
-    if (form.confirmPassword === '') {
-      setConfirmPasswordMsg('Campo Obrigatório.');
-      return;
-    }
-    const regex = /^(?=.*\d).{4,10}$/gm;
-    if (!regex.test(form.password))
-      setConfirmPasswordMsg('Preencher corretamente.');
-  };
+  const regexEmail = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm;
+  const regexPassword = /^(?=.*\d).{4,10}$/gm;
+  const regexConfirmPassword = /^(?=.*\d).{4,10}$/gm;
+  const regexSurname = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
 
-  const checkFirstName = () => {
-    if (form.firstName === '') {
-      setFirstNameMsg('Campo Obrigatório.');
-      return;
-    }
-    const regex = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
-    if (!regex.test(form.firstName)) setFirstNameMsg('Preencher corretamente.');
-  };
-
-  const checkLastName = () => {
-    if (form.lastName === '') {
-      setLastNameMsg('Campo Obrigatório.');
-      return;
-    }
-    const regex = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
-    if (!regex.test(form.firstName)) setLastNameMsg('Preencher corretamente.');
-  };
-
-  const checkBirthday = () => {
-    if (form.birthday === '') {
-      setBirthdayMsg('Campo Obrigatório.');
+  const checkPasswordEquality = () => {
+    if (form.password !== form.confirmPassword) {
+      setConfirmPasswordMsg('Devem ser iguais.');
+      setPasswordMsg('Devem ser iguais.');
+      submitOk = false;
     }
   };
 
-  const birthdayFormat = () => {
-    const date = new Date(form.birthday);
-    // eslint-disable-next-line no-unused-vars
-    const formattedDate = date.toLocaleDateString('pt-BR');
-  };
+  // const checkEmail = () => {
+  //   if (form.email === '') {
+  //     setEmailMsg('Campo Obrigatório.');
+  //     submitOk = false;
+  //     return;
+  //   };
+  //   const regex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm;
+  //   if (!regex.test(form.email)) {
+  //     setEmailMsg('Preencher corretamente.');
+  //     submitOk = false;
+  //     return;
+  //   }
+  //   setEmailMsg('');
+  // };
+
+  // const checkPassword = () => {
+  //   if (form.password === '') {
+  //     setPasswordMsg('Campo Obrigatório.');
+  //     submitOk = false;
+  //     return;
+  //   }
+  //   const regex = /^(?=.*\d).{4,10}$/gm;
+  //   if (!regex.test(form.password)) {
+  //     setPasswordMsg('Preencher corretamente.')
+  //     submitOk = false;
+  //     return;
+  //   };
+  //   setPasswordMsg('');
+  // };
+
+  // const checkConfirmPassword = () => {
+  //   if (form.confirmPassword === '') {
+  //     setConfirmPasswordMsg('Campo Obrigatório.');
+  //     submitOk = false;
+  //     return;
+  //   }
+  //   const regex = /^(?=.*\d).{4,10}$/gm;
+  //   if (!regex.test(form.password)) {
+  //     setConfirmPasswordMsg('Preencher corretamente.');
+  //     submitOk = false;
+  //     return;
+  //   }
+  //   if(!checkPasswordEquality()) setConfirmPasswordMsg('');;
+  // };
+
+  // const checkFirstName = () => {
+  //   if (form.firstName === '') {
+  //     setFirstNameMsg('Campo Obrigatório.');
+  //     submitOk = false;
+  //     return;
+  //   }
+  //   const regex = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
+  //   if (!regex.test(form.firstName)) {
+  //     setFirstNameMsg('Preencher corretamente.')
+  //     submitOk = false;
+  //     return;
+  //   };
+  //   setFirstNameMsg('');
+  // };
+
+  // const checkLastName = () => {
+  //   if (form.lastName === '') {
+  //     setLastNameMsg('Campo Obrigatório.');
+  //     submitOk = false;
+  //     return;
+  //   }
+  //   const regex = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
+  //   if (!regex.test(form.firstName)) {
+  //     setLastNameMsg('Preencher corretamente.')
+  //     submitOk = false;
+  //     return;
+  //   };
+  //   setLastNameMsg('');
+  // };
+
+  // const checkBirthday = () => {
+  //   if (form.birthday === '') {
+  //     setBirthdayMsg('Campo Obrigatório.');
+  //     submitOk = false;
+  //     return;
+  //   }
+  //   setBirthdayMsg('');
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    checkEmail();
-    checkPassword();
-    checkConfirmPassword();
-    checkFirstName();
-    checkLastName();
-    checkBirthday();
-    birthdayFormat();
+    checkInput(form.email, regexEmail, setEmailMsg);
+    checkInput(
+      form.confirmPassword,
+      regexConfirmPassword,
+      setConfirmPasswordMsg
+    );
+    checkInput(form.password, regexPassword, setPasswordMsg);
+    checkInput(form.firstName, regexSurname, setFirstNameMsg);
+    checkInput(form.lastName, regexSurname, setLastNameMsg);
+    checkInput(form.birthday, null, setBirthdayMsg);
+    checkPasswordEquality();
+
+    if (submitOk === false) return;
 
     try {
       const res = await api.post('/user/signup', form);

@@ -14,7 +14,6 @@ function LoginForm() {
     email: '',
     password: '',
   });
-
   const [emailMsg, setEmailMsg] = useState('');
   const [passwordMsg, setPasswordMsg] = useState('');
 
@@ -26,29 +25,34 @@ function LoginForm() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (formLogin.email === '') {
       setEmailMsg('Campo obrigatório.');
-      return;
+      return false;
     }
     if (!emailRegex.test(formLogin.email)) {
       setEmailMsg('Email incorreto.');
+      return false;
     }
+    setEmailMsg('');
+    return true;
   }
 
   function checkPassword() {
     const passwordRegex = /^(?=.*\d).{4,10}$/gm;
     if (formLogin.password === '') {
       setPasswordMsg('Campo obrigatório.');
-      return;
+      return false;
     }
     if (!passwordRegex.test(formLogin.password)) {
       setPasswordMsg('Password incorreto.');
+      return false;
     }
+    setPasswordMsg('');
+    return true;
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    checkEmail();
-    checkPassword();
-    if (emailMsg !== '' || passwordMsg !== '') return;
+    if (!checkEmail()) return;
+    if (!checkPassword()) return;
 
     try {
       const res = await api.post('/user/login', formLogin);
@@ -57,6 +61,13 @@ function LoginForm() {
       navigate('/');
     } catch (err) {
       console.log(err);
+      if (err.response.status === 401) {
+        setPasswordMsg('Password incorreto.');
+      }
+      if (err.response.status === 404) {
+        setPasswordMsg('Email ou password inválidos.');
+        setEmailMsg('Email ou password inválidos.');
+      }
     }
   };
 
