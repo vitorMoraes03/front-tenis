@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { StyledSignUpContainer, StyledBtnSignUp } from './styles';
@@ -26,7 +25,7 @@ function SignUp() {
   const [firstNameMsg, setFirstNameMsg] = useState('');
   const [lastNameMsg, setLastNameMsg] = useState('');
   const [birthdayMsg, setBirthdayMsg] = useState('');
-  
+
   let submitOk = true;
 
   const handleChange = (e) => {
@@ -34,10 +33,10 @@ function SignUp() {
   };
 
   const checkInput = (input, regex, setMsg) => {
-    if(input === ''){
+    if (input === '') {
       setMsg('Campo Obrigatório.');
       submitOk = false;
-      return
+      return;
     }
     if (regex?.test(input) === false) {
       setMsg('Preencher corretamente.');
@@ -53,12 +52,12 @@ function SignUp() {
   const regexSurname = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
 
   const checkPasswordEquality = () => {
-    if(form.password !== form.confirmPassword){
+    if (form.password !== form.confirmPassword) {
       setConfirmPasswordMsg('Devem ser iguais.');
       setPasswordMsg('Devem ser iguais.');
       submitOk = false;
     }
-  }
+  };
 
   // const checkEmail = () => {
   //   if (form.email === '') {
@@ -147,14 +146,18 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     checkInput(form.email, regexEmail, setEmailMsg);
-    checkInput(form.confirmPassword, regexConfirmPassword, setConfirmPasswordMsg);
+    checkInput(
+      form.confirmPassword,
+      regexConfirmPassword,
+      setConfirmPasswordMsg
+    );
     checkInput(form.password, regexPassword, setPasswordMsg);
     checkInput(form.firstName, regexSurname, setFirstNameMsg);
     checkInput(form.lastName, regexSurname, setLastNameMsg);
-    checkInput(form.birthday, null , setBirthdayMsg);
+    checkInput(form.birthday, null, setBirthdayMsg);
     checkPasswordEquality();
 
-    if(submitOk === false) return;
+    if (submitOk === false) return;
 
     try {
       const res = await api.post('/user/signup', form);

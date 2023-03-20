@@ -31,7 +31,7 @@ export const StyledImgContainer = styled.div`
     width: 100%;
     height: 100%;
     opacity: ${(props) => (props.hover ? 0.5 : 1)};
-    z-index: ${(props) => (props.hover ? -1 : 100)};
+    z-index: ${(props) => (props.hover ? -1 : 50)};
   }
 
   img {

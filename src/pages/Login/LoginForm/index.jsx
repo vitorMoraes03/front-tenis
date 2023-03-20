@@ -51,8 +51,8 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!checkEmail()) return;
-    if(!checkPassword()) return;
+    if (!checkEmail()) return;
+    if (!checkPassword()) return;
 
     try {
       const res = await api.post('/user/login', formLogin);
@@ -61,10 +61,10 @@ function LoginForm() {
       navigate('/');
     } catch (err) {
       console.log(err);
-      if(err.response.status === 401){
+      if (err.response.status === 401) {
         setPasswordMsg('Password incorreto.');
       }
-      if(err.response.status === 404){
+      if (err.response.status === 404) {
         setPasswordMsg('Email ou password inválidos.');
         setEmailMsg('Email ou password inválidos.');
       }

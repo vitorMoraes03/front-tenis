@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { StyledFlex } from '../../global';
 
 export const StyledNavBar = styled.nav`
@@ -60,8 +59,9 @@ export const StyledContainerUser = styled(StyledFlex)`
   padding-right: var(--space-medium);
 `;
 
-export const StyledCart = styled(Link)`
+export const StyledCart = styled.div`
   position: relative;
+  cursor: pointer;
 
   p {
     position: absolute;

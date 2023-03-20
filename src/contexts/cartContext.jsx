@@ -1,4 +1,4 @@
-import { createContext, useState, useMemo } from 'react';
+import { createContext, useState, useMemo, useEffect } from 'react';
 
 const CartContext = createContext([]);
 // {shoesName: , id: , quantity: }
@@ -10,6 +10,16 @@ function CartContextComponent({ children }) {
     () => ({ order, setOrder }),
     [order, setOrder]
   );
+
+  useEffect(() => {
+    const getOrder = localStorage.getItem('storedOrder');
+    setOrder(JSON.parse(getOrder || '""'));
+  }, []);
+
+  useEffect(() => {
+    if (order.length === 0) return;
+    localStorage.setItem('storedOrder', JSON.stringify(order));
+  }, [order]);
 
   return (
     <CartContext.Provider value={cartContextValue}>
