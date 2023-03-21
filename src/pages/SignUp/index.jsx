@@ -4,6 +4,7 @@ import { StyledSignUpContainer, StyledBtnSignUp } from './styles';
 import api from '../../api/api';
 import { AuthContext } from '../../contexts/authContext';
 import { Input } from '../../components/Input';
+import PopUp from '../../components/Modals/PopUp';
 
 function SignUp() {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ function SignUp() {
   const [lastNameMsg, setLastNameMsg] = useState('');
   const [birthdayMsg, setBirthdayMsg] = useState('');
   const startingRef = useRef(null);
+  const [modalOpen, setModalOpen] = useState(false);
  
   let submitOk = true;
 
@@ -225,6 +227,8 @@ function SignUp() {
           handler={handleChange}
         />
         <StyledBtnSignUp>Criar Conta</StyledBtnSignUp>
+        <button type="button" onClick={() => setModalOpen(!modalOpen)}>teste modal</button>
+        {modalOpen ? <PopUp>teste</PopUp> : null}
       </form>
     </StyledSignUpContainer>
   );
