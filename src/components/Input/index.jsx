@@ -1,7 +1,15 @@
 import { InputWrapper } from '../../global';
 
 // eslint-disable-next-line no-unused-vars
-export function Input({ text, type, handler, value, field, span }) {
+export function Input({
+  text,
+  type,
+  handler,
+  value,
+  field,
+  span,
+  placeholder,
+}) {
   const name = field.charAt(0).toLowerCase() + field.slice(1);
 
   return (
@@ -17,6 +25,7 @@ export function Input({ text, type, handler, value, field, span }) {
         onChange={handler}
         value={value}
         maxLength={25}
+        placeholder={placeholder}
       />
       <span>{span}</span>
     </InputWrapper>

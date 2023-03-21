@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledLoginContainer } from '../Login/LoginContainer';
+import { StyledLoginContainer } from '../Login/LoginContainer/styles';
 import { StyledBtn } from '../../global';
 
 export const StyledShopContainer = styled(StyledLoginContainer)`

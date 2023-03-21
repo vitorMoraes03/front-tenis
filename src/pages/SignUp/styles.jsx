@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { StyledLoginContainer } from '../Login/LoginContainer';
-import { StyledBtnLogin } from '../Login/styles';
+import { StyledLoginContainer } from '../Login/LoginContainer/styles';
+import { StyledBtnLogin } from '../Login/LoginForm/styles';
 
 export const StyledSignUpContainer = styled(StyledLoginContainer)`
   h1 {

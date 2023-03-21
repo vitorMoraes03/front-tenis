@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { StyledBtn } from '../../global';
+import { StyledBtn } from '../../../global';
 
 export const StyledForm = styled.form`
   width: 50%;
-  //padding: 6rem var(--space-medium);
 `;
+
 export const StyledContainerBtn = styled.div`
   display: flex;
   justify-content: center;

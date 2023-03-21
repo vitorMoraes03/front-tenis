@@ -1,16 +1,16 @@
 /* eslint-disable no-unused-vars */
-import { PopUpContainer, OverlayPopUp, StyledBtnPopUp } from "./styles";
+import { PopUpContainer, OverlayPopUp, StyledBtnPopUp } from './styles';
 
-function PopUp({ children }){
+function PopUp({ children }) {
   return (
     <>
-    <OverlayPopUp/>
-        <PopUpContainer>
-            <p>{children}</p>
-            <StyledBtnPopUp>Teste</StyledBtnPopUp>
-        </PopUpContainer>
+      <OverlayPopUp />
+      <PopUpContainer>
+        <p>{children}</p>
+        <StyledBtnPopUp>Teste</StyledBtnPopUp>
+      </PopUpContainer>
     </>
-  )
-};
+  );
+}
 
 export default PopUp;

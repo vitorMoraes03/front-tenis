@@ -16,7 +16,7 @@ function CartContextComponent({ children }) {
     setOrder(JSON.parse(getOrder || '""'));
   }, []);
 
-  // A idéia é tirar o SetItem baseado em Order, 
+  // A idéia é tirar o SetItem baseado em Order,
   // e passar para o momento mais específico
   // de criação da order.
   // addShoes no ShoeCard, deleteItem no ShoeCardSmall

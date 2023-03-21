@@ -3,34 +3,27 @@ import { useNavigate } from 'react-router-dom';
 import api from '../../api/api';
 import { AuthContext } from '../../contexts/authContext';
 import { CartContext } from '../../contexts/cartContext';
-import { StyledBtnLogin } from '../Login/styles';
+import { StyledBtnLogin } from '../Login/LoginForm/styles';
 import { Input } from '../../components/Input';
 import { StyledProfileContainer } from './style';
-
-/*
-
-Quando dou reload na página, os dados do contexto se perde (naturalmente),
-e as infos do profile somem. Como corrigir isso?
-
-*/
+import { allRegex } from '../../global';
 
 function Profile() {
   const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
   const { user } = loggedInUser;
   const { setOrder } = useContext(CartContext);
   const navigate = useNavigate();
-
   const [edition, setEdition] = useState({
     email: user.email,
     firstName: user.firstName,
     lastName: user.lastName,
     birthday: user.birthday.slice(0, 10),
   });
-
   const [emailMsg, setEmailMsg] = useState('');
   const [firstNameMsg, setFirstNameMsg] = useState('');
   const [lastNameMsg, setLastNameMsg] = useState('');
   const [birthdayMsg, setBirthdayMsg] = useState('');
+  const { emailRegex, surNameRegex } = allRegex;
 
   const handleChange = (e) => {
     setEdition({ ...edition, [e.target.name]: e.target.value });
@@ -58,8 +51,7 @@ function Profile() {
       setEmailMsg('Campo Obrigatório.');
       return;
     }
-    const regex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm;
-    if (!regex.test(edition.email)) setEmailMsg('Preencher corretamente.');
+    if (!emailRegex.test(edition.email)) setEmailMsg('Preencher corretamente.');
   }
 
   function checkFirstName() {
@@ -67,8 +59,7 @@ function Profile() {
       setFirstNameMsg('Campo Obrigatório.');
       return;
     }
-    const regex = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
-    if (!regex.test(edition.firstName))
+    if (!surNameRegex.test(edition.firstName))
       setFirstNameMsg('Preencher corretamente.');
   }
 
@@ -77,8 +68,7 @@ function Profile() {
       setLastNameMsg('Campo Obrigatório.');
       return;
     }
-    const regex = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
-    if (!regex.test(edition.firstName))
+    if (!surNameRegex.test(edition.firstName))
       setLastNameMsg('Preencher corretamente.');
   }
 

@@ -6,20 +6,16 @@ import {
   StyledCheckOutContainer,
   StyledBtnSmall,
 } from './styles';
-import { StyledBtnLogin } from '../Login/styles';
+import { StyledBtnLogin } from '../Login/LoginForm/styles';
 import { CartContext } from '../../contexts/cartContext';
 import api from '../../api/api';
 import ShoeCardSmall from '../../components/ShoeCardSmall';
+import { priceTotal } from '../../global';
 
 function CheckOut() {
   const { order, setOrder } = useContext(CartContext);
   const navigate = useNavigate();
   const [emptyCart, setEmptyCart] = useState(false);
-
-  function priceTotal() {
-    const sum = order.reduce((acum, element) => acum + element.price, 0);
-    return sum.toFixed(2);
-  }
 
   useEffect(
     () => (order.length === 0 ? setEmptyCart(true) : setEmptyCart(false)),
@@ -34,7 +30,7 @@ function CheckOut() {
       }));
 
       const finalOrder = {
-        priceTotal: priceTotal(),
+        priceTotal: priceTotal(order),
         shoes,
       };
 

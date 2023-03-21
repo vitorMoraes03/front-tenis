@@ -12,19 +12,16 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
         font-family: 'Roboto', sans-serif;
         color: var(--main-white);
-
         --font-text: 1.4rem;
         --font-medium: 1.5rem;
         --font-big: 1.8rem;
         --font-logo: 3.4rem;
         --icons-size: 3.2rem;
-        
         --main-color: #190e02; //black
         --main-shade: #8c8680; //tint-black
         --secondary-color: #e27c12; //orange
         --secondary-shade: #fafaf7; //gray
         --main-white: #fff3e8; //white
-
         --space-small: 1.5rem;
         --space-medium: 3rem;
         --space-big: 10rem;
@@ -52,8 +49,6 @@ export const GlobalStyle = createGlobalStyle`
            border-bottom: 1px solid var(--main-color);
         } 
 `;
-
-// Default Const Styles
 
 export const StyledFlex = styled.div`
   display: flex;
@@ -136,3 +131,15 @@ export const StyledBtn = styled.button`
     opacity: 1;
   }
 `;
+
+export function priceTotal(order) {
+  const sum = order.reduce((acum, element) => acum + element.price, 0);
+  return sum.toFixed(2);
+}
+
+export const allRegex = {
+  emailRegex: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm,
+  passwordRegex: /^(?=.*\d).{4,10}$/gm,
+  confirmPasswordRegex: /^(?=.*\d).{4,10}$/gm,
+  surNameRegex: /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/,
+};

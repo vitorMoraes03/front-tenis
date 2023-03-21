@@ -4,12 +4,11 @@ import { useState, useContext } from 'react';
 import { InputWrapper } from '../../../global';
 import { AuthContext } from '../../../contexts/authContext';
 import api from '../../../api/api';
-import { StyledForm, StyledContainerBtn, StyledBtnLogin } from '../styles';
+import { StyledForm, StyledContainerBtn, StyledBtnLogin } from './styles';
 
 function LoginForm() {
   const navigate = useNavigate();
   const { setLoggedInUser } = useContext(AuthContext);
-
   const [formLogin, setFormLogin] = useState({
     email: '',
     password: '',
