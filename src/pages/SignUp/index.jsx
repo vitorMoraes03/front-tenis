@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { StyledSignUpContainer, StyledBtnSignUp } from './styles';
 import api from '../../api/api';
 import { AuthContext } from '../../contexts/authContext';
@@ -25,7 +25,8 @@ function SignUp() {
   const [firstNameMsg, setFirstNameMsg] = useState('');
   const [lastNameMsg, setLastNameMsg] = useState('');
   const [birthdayMsg, setBirthdayMsg] = useState('');
-
+  const startingRef = useRef(null);
+ 
   let submitOk = true;
 
   const handleChange = (e) => {
@@ -156,7 +157,8 @@ function SignUp() {
     checkInput(form.lastName, regexSurname, setLastNameMsg);
     checkInput(form.birthday, null, setBirthdayMsg);
     checkPasswordEquality();
-
+    startingRef.current.scrollIntoView({ behavior: "smooth" });
+    
     if (submitOk === false) return;
 
     try {
@@ -172,7 +174,7 @@ function SignUp() {
 
   return (
     <StyledSignUpContainer>
-      <h1>Cadastro</h1>
+      <h1 ref={startingRef}>Cadastro</h1>
       <form onSubmit={handleSubmit}>
         <Input
           field="Email"
