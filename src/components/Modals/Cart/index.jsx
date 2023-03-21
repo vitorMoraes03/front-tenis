@@ -68,14 +68,16 @@ function CartModal({ modalCart, setModalCart }) {
             <ion-icon name="close-outline" onClick={closeModal} />
           </div>
           <div>
-            {order.map((element) => (
-              <ShoeCardSmall
-                key={`${element.idCart}-modal`}
-                element={element}
-                order={order}
-                setOrder={setOrder}
-              />
-            ))}
+            {order
+              ? order.map((element) => (
+                  <ShoeCardSmall
+                    key={`${element.idCart}-modal`}
+                    element={element}
+                    order={order}
+                    setOrder={setOrder}
+                  />
+                ))
+              : null}
           </div>
           <div className="container-button">
             {emptyCart ? (

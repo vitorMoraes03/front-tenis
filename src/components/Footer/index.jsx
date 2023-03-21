@@ -46,8 +46,15 @@ function Footer() {
         <StyledFooterMedia>
           <h3>Siga-nos</h3>
           <StyledFlex>
-            <ion-icon name="logo-linkedin" />
-            <ion-icon name="logo-github" />
+            <Link
+              to="https://www.linkedin.com/in/vitorr-moraes/"
+              target="_blank"
+            >
+              <ion-icon name="logo-linkedin" />
+            </Link>
+            <Link to="https://github.com/vitorMoraes03" target="_blank">
+              <ion-icon name="logo-github" />
+            </Link>
           </StyledFlex>
         </StyledFooterMedia>
       </StyledFooterMain>

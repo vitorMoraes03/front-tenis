@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 export const StyledFooter = styled.footer`
   color: var(--main-white);
-  font-size: var(--font-medium);     
-  z-index: 100;      
-  position: relative;                
+  font-size: var(--font-medium);
+  z-index: 100;
+  position: relative;
 
   ion-icon {
     font-size: var(--icons-size);

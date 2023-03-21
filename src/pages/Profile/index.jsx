@@ -36,6 +36,7 @@ function Profile() {
 
   const logOut = async () => {
     localStorage.removeItem('loggedInUser');
+    // localStorage.removeItem('storedOrder');
     setLoggedInUser(null);
     navigate('/');
   };

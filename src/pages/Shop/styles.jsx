@@ -3,21 +3,16 @@ import { StyledLoginContainer } from '../Login/LoginContainer';
 import { StyledBtn } from '../../global';
 
 export const StyledShopContainer = styled(StyledLoginContainer)`
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
 `;
 
 export const StyledShopMain = styled.div`
-  padding-left: 20%;
+  padding-left: var(--space-medium);
 `;
 
 export const StyledShopSide = styled.div`
-  border: 1px solid red;
-  width: 15%;
-  height: 40rem;
-  overflow: hidden;
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
+  padding-top: var(--space-medium);
 `;
 
 export const StyledSideCard = styled.div`
