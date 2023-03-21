@@ -94,7 +94,6 @@ export const StyledBtn = styled.button`
   border: none;
   z-index: 98;
   transition: all 0.2s ease;
-  //white-space: nowrap;
 
   &::before,
   &::after {
@@ -131,11 +130,6 @@ export const StyledBtn = styled.button`
     opacity: 1;
   }
 `;
-
-export function priceTotal(order) {
-  const sum = order.reduce((acum, element) => acum + element.price, 0);
-  return sum.toFixed(2);
-}
 
 export const allRegex = {
   emailRegex: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm,

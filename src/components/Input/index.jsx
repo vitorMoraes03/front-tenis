@@ -9,6 +9,7 @@ export function Input({
   field,
   span,
   placeholder,
+  small,
 }) {
   const name = field.charAt(0).toLowerCase() + field.slice(1);
 
@@ -16,7 +17,7 @@ export function Input({
     <InputWrapper>
       <label htmlFor={`input${field}`}>
         {text}
-        <small>Obrigatório</small>
+        <small>{small}</small>
       </label>
       <input
         id={`input${field}`}

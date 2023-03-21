@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NavBar from './components/Nav';
 import Home from './pages/Home';
 import Footer from './components/Footer';
@@ -15,6 +16,16 @@ import { AppContainer, StyledPromo } from './styles';
 
 function App() {
   const [modalCart, setModalCart] = useState(false);
+  const [promoText, setPromoText] = useState(
+    'Entrega grátis para todo o Brasil.'
+  );
+
+  useEffect(() => {
+    setInterval(() => {
+      if (promoText !== 'Entrega grátis para todo o Brasil.')
+        setPromoText('Entrega grátis para todo o Brasil.');
+    }, 10000);
+  }, [promoText]);
 
   return (
     <AuthContextComponent>
@@ -23,21 +34,30 @@ function App() {
         <AppContainer>
           <NavBar modalCart={modalCart} setModalCart={setModalCart} />
           <StyledPromo>
-            <p>Entrega grátis para todo o Brasil.</p>
+            <p>{promoText}</p>
           </StyledPromo>
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/signup"
+              element={<SignUp setPromoText={setPromoText} />}
+            />
+            <Route
+              path="/profile"
+              element={<Profile setPromoText={setPromoText} />}
+            />
             <Route
               path="/shop"
               element={
                 <Shop setModalCart={setModalCart} modalCart={modalCart} />
               }
             />
-            <Route path="/checkout" element={<CheckOut />} />
+            <Route
+              path="/checkout"
+              element={<CheckOut setPromoText={setPromoText} />}
+            />
           </Routes>
           <Footer />
         </AppContainer>

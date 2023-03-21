@@ -6,6 +6,7 @@ export const StyledFooter = styled.footer`
   font-size: var(--font-medium);
   z-index: 100;
   position: relative;
+  padding: var(--space-small);
 
   ion-icon {
     font-size: var(--icons-size);
@@ -22,6 +23,15 @@ export const StyledFooter = styled.footer`
     text-decoration: none;
     color: var(--main-white);
   }
+
+  img {
+    height: var(--icons-size);
+  }
+
+  p {
+    font-size: var(--font-text);
+    opacity: 0.7;
+  }
 `;
 
 export const StyledFooterMain = styled.div`
@@ -29,43 +39,6 @@ export const StyledFooterMain = styled.div`
   padding: var(--space-medium) var(--space-big);
   justify-content: space-between;
   align-items: center;
-`;
-
-export const StyledFooterCta = styled.div`
-  h3 {
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: var(--space-small);
-  }
-
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  input {
-    padding: 1rem;
-    color: rgba(25, 14, 2, 0.7);
-    background-color: var(--main-white);
-  }
-
-  ion-icon {
-    font-size: var(--icons-size);
-  }
-`;
-
-export const StyledFooterUls = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-small);
-
-  li {
-    font-size: var(--font-big);
-    display: inline;
-    padding: var(--space-small);
-  }
 `;
 
 export const StyledFooterMedia = styled.div`
@@ -77,22 +50,5 @@ export const StyledFooterMedia = styled.div`
 
   ion-icon {
     cursor: pointer;
-  }
-`;
-
-export const StyledFooterBottom = styled.div`
-  display: flex;
-  border-top: 1px solid rgba(255, 243, 232, 0.3);
-  padding: var(--space-small) var(--space-medium);
-  justify-content: space-between;
-  align-items: center;
-
-  p {
-    font-size: var(--font-text);
-    opacity: 0.7;
-  }
-
-  img {
-    height: var(--icons-size);
   }
 `;

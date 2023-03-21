@@ -8,7 +8,7 @@ import { Input } from '../../components/Input';
 import { StyledProfileContainer } from './style';
 import { allRegex } from '../../global';
 
-function Profile() {
+function Profile({ setPromoText }) {
   const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
   const { user } = loggedInUser;
   const { setOrder } = useContext(CartContext);
@@ -16,12 +16,10 @@ function Profile() {
   const [edition, setEdition] = useState({
     email: user.email,
     firstName: user.firstName,
-    lastName: user.lastName,
-    birthday: user.birthday.slice(0, 10),
+    birthday: user.birthday?.slice(0, 10),
   });
   const [emailMsg, setEmailMsg] = useState('');
   const [firstNameMsg, setFirstNameMsg] = useState('');
-  const [lastNameMsg, setLastNameMsg] = useState('');
   const [birthdayMsg, setBirthdayMsg] = useState('');
   const { emailRegex, surNameRegex } = allRegex;
 
@@ -41,6 +39,7 @@ function Profile() {
     try {
       await api.delete('/user/delete');
       logOut();
+      setPromoText('Usuário deletado.');
     } catch (err) {
       console.log(err.response.data);
     }
@@ -63,15 +62,6 @@ function Profile() {
       setFirstNameMsg('Preencher corretamente.');
   }
 
-  function checkLastName() {
-    if (edition.lastName === '') {
-      setLastNameMsg('Campo Obrigatório.');
-      return;
-    }
-    if (!surNameRegex.test(edition.firstName))
-      setLastNameMsg('Preencher corretamente.');
-  }
-
   function checkBirthday() {
     if (edition.birthday === '') {
       setBirthdayMsg('Campo Obrigatório.');
@@ -82,7 +72,6 @@ function Profile() {
     e.preventDefault();
     checkEmail();
     checkFirstName();
-    checkLastName();
     checkBirthday();
     try {
       const userEdited = await api.put('/user/edit', edition);
@@ -90,6 +79,7 @@ function Profile() {
     } catch (err) {
       console.log(err);
     }
+    setPromoText('Usuário editado.');
     navigate('/');
   };
 
@@ -104,6 +94,7 @@ function Profile() {
           span={emailMsg}
           type="text"
           handler={handleChange}
+          small="Obrigatório"
         />
         <Input
           field="FirstName"
@@ -112,14 +103,7 @@ function Profile() {
           span={firstNameMsg}
           type="text"
           handler={handleChange}
-        />
-        <Input
-          field="LastName"
-          text="Sobrenome"
-          value={edition.lastName}
-          span={lastNameMsg}
-          type="text"
-          handler={handleChange}
+          small="Obrigatório"
         />
         <Input
           field="Birthday"

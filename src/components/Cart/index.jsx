@@ -2,9 +2,9 @@
 import { useContext, useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StyledContainerCart, OverlayStyle } from './styles';
-import ShoeCardSmall from '../../ShoeCardSmall';
-import { CartContext } from '../../../contexts/cartContext';
-import { StyledBtnLogin } from '../../../pages/Login/LoginForm/styles';
+import ShoeCardSmall from '../ShoeCardSmall';
+import { CartContext } from '../../contexts/cartContext';
+import { StyledBtnLogin } from '../../pages/Login/LoginForm/styles';
 
 function CartModal({ modalCart, setModalCart }) {
   const { order, setOrder } = useContext(CartContext);

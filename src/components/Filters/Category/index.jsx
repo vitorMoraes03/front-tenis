@@ -18,7 +18,7 @@ function CategorySideFilter({ setShoes, defaultShoes }) {
       setArrCategory(copyArr);
       return;
     }
-    
+
     setArrCategory([...arrCategory, category]);
   }
 

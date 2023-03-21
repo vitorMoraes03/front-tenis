@@ -39,7 +39,6 @@ function Shop({ setModalCart, modalCart }) {
   return (
     <StyledShopContainer>
       <StyledShopSide>
-        {/* <div className='side-wrapper'> */}
         <ColorSideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
         <GenderSideFilter
           shoes={shoes}
@@ -49,7 +48,6 @@ function Shop({ setModalCart, modalCart }) {
         <PriceSideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
         <CategorySideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
         <SizeSideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
-        {/* </div> */}
       </StyledShopSide>
       <StyledShopMain>
         <h1>Shop</h1>

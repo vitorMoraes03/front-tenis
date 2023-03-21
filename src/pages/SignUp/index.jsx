@@ -4,10 +4,9 @@ import { StyledSignUpContainer, StyledBtnSignUp } from './styles';
 import api from '../../api/api';
 import { AuthContext } from '../../contexts/authContext';
 import { Input } from '../../components/Input';
-import PopUp from '../../components/Modals/PopUp';
 import { allRegex } from '../../global';
 
-function SignUp() {
+function SignUp({ setPromoText }) {
   const navigate = useNavigate();
   const { setLoggedInUser } = useContext(AuthContext);
   const [form, setForm] = useState({
@@ -15,18 +14,13 @@ function SignUp() {
     password: '',
     confirmPassword: '',
     firstName: '',
-    lastName: '',
     birthday: '',
-    // '1990-03-20'
   });
   const [emailMsg, setEmailMsg] = useState('');
   const [passwordMsg, setPasswordMsg] = useState('');
   const [confirmPasswordMsg, setConfirmPasswordMsg] = useState('');
   const [firstNameMsg, setFirstNameMsg] = useState('');
-  const [lastNameMsg, setLastNameMsg] = useState('');
-  const [birthdayMsg, setBirthdayMsg] = useState('');
   const startingRef = useRef(null);
-  const [modalOpen, setModalOpen] = useState(false);
   let submitOk = true;
   const { emailRegex, passwordRegex, confirmPasswordRegex, surNameRegex } =
     allRegex;
@@ -67,8 +61,6 @@ function SignUp() {
     );
     checkInput(form.password, passwordRegex, setPasswordMsg);
     checkInput(form.firstName, surNameRegex, setFirstNameMsg);
-    checkInput(form.lastName, surNameRegex, setLastNameMsg);
-    checkInput(form.birthday, null, setBirthdayMsg);
     checkPasswordEquality();
 
     if (submitOk === false) {
@@ -81,6 +73,7 @@ function SignUp() {
       setLoggedInUser({ ...res.data });
       localStorage.setItem('loggedInUser', JSON.stringify(res.data));
       setForm({ ...form, password: '', confirmPassword: '' });
+      setPromoText('Usuário criado com sucesso.');
       navigate('/');
     } catch (err) {
       console.log(err);
@@ -98,6 +91,7 @@ function SignUp() {
           span={emailMsg}
           type="text"
           handler={handleChange}
+          small="Obrigatório"
         />
         <Input
           field="Password"
@@ -106,7 +100,8 @@ function SignUp() {
           span={passwordMsg}
           type="string" // password
           handler={handleChange}
-          placeholder="Deve conter um digíto numérico"
+          placeholder="Deve conter um digíto numérico..."
+          small="Obrigatório"
         />
         <Input
           field="ConfirmPassword"
@@ -115,37 +110,27 @@ function SignUp() {
           span={confirmPasswordMsg}
           type="string" // password
           handler={handleChange}
-          placeholder="Deve conter um digíto numérico"
+          small="Obrigatório"
         />
         <Input
           field="FirstName"
-          text="Primeiro Nome"
+          text="Nome de usuário"
           value={form.firstName}
           span={firstNameMsg}
           type="text"
           handler={handleChange}
-        />
-        <Input
-          field="LastName"
-          text="Sobrenome"
-          value={form.lastName}
-          span={lastNameMsg}
-          type="text"
-          handler={handleChange}
+          small="Obrigatório"
         />
         <Input
           field="Birthday"
           text="Data de nascimento"
           value={form.birthday}
-          span={birthdayMsg}
+          // span={birthdayMsg}
           type="date"
           handler={handleChange}
+          small="Opcional"
         />
         <StyledBtnSignUp>Criar Conta</StyledBtnSignUp>
-        <button type="button" onClick={() => setModalOpen(!modalOpen)}>
-          teste modal
-        </button>
-        {modalOpen ? <PopUp>teste</PopUp> : null}
       </form>
     </StyledSignUpContainer>
   );

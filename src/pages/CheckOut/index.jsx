@@ -10,9 +10,8 @@ import { StyledBtnLogin } from '../Login/LoginForm/styles';
 import { CartContext } from '../../contexts/cartContext';
 import api from '../../api/api';
 import ShoeCardSmall from '../../components/ShoeCardSmall';
-import { priceTotal } from '../../global';
 
-function CheckOut() {
+function CheckOut({ setPromoText }) {
   const { order, setOrder } = useContext(CartContext);
   const navigate = useNavigate();
   const [emptyCart, setEmptyCart] = useState(false);
@@ -21,6 +20,11 @@ function CheckOut() {
     () => (order.length === 0 ? setEmptyCart(true) : setEmptyCart(false)),
     [order]
   );
+
+  function priceTotal() {
+    const sum = order.reduce((acum, element) => acum + element.price, 0);
+    return sum.toFixed(2);
+  }
 
   const checkOutCart = async () => {
     try {
@@ -36,6 +40,7 @@ function CheckOut() {
 
       await api.post('/order/create', finalOrder);
       setOrder([]);
+      setPromoText('Compra realizada com sucesso.');
       navigate('/');
     } catch (err) {
       console.log(err);

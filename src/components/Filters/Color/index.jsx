@@ -1,5 +1,4 @@
 /* eslint-disable no-plusplus */
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
@@ -48,6 +47,27 @@ function ColorSideFilter({ setShoes, defaultShoes }) {
     setShoes(filteredArr);
   }, [filteredArr]);
 
+  function translationColors(color) {
+    switch (color) {
+      case 'black':
+        return 'Preto';
+      case 'white':
+        return 'Branco';
+      case 'blue':
+        return 'Azul';
+      case 'green':
+        return 'Preto';
+      case 'brown':
+        return 'Marrom';
+      case 'gray':
+        return 'Cinza';
+      case 'orange':
+        return 'Laranja';
+      default:
+        return undefined;
+    }
+  }
+
   return (
     <StyledSideCard>
       <div className="div-h4">
@@ -75,7 +95,7 @@ function ColorSideFilter({ setShoes, defaultShoes }) {
                   value={element}
                   id={element}
                 />
-                {element}
+                {translationColors(element)}
               </label>
             </li>
           ))}
