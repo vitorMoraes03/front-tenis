@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/api';
 import { AuthContext } from '../../contexts/authContext';
+import { CartContext } from '../../contexts/cartContext';
 import { StyledBtnLogin } from '../Login/styles';
 import { Input } from '../../components/Input';
 import { StyledProfileContainer } from './style';
@@ -16,6 +17,7 @@ e as infos do profile somem. Como corrigir isso?
 function Profile() {
   const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
   const { user } = loggedInUser;
+  const { setOrder } = useContext(CartContext);
   const navigate = useNavigate();
 
   const [edition, setEdition] = useState({
@@ -36,7 +38,8 @@ function Profile() {
 
   const logOut = async () => {
     localStorage.removeItem('loggedInUser');
-    // localStorage.removeItem('storedOrder');
+    localStorage.removeItem('storedOrder');
+    setOrder([]);
     setLoggedInUser(null);
     navigate('/');
   };
