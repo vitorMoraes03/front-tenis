@@ -16,10 +16,16 @@ function CartContextComponent({ children }) {
     setOrder(JSON.parse(getOrder || '""'));
   }, []);
 
-  useEffect(() => {
-    if (order.length === 0) return;
-    localStorage.setItem('storedOrder', JSON.stringify(order));
-  }, [order]);
+  // A idéia é tirar o SetItem baseado em Order, 
+  // e passar para o momento mais específico
+  // de criação da order.
+  // addShoes no ShoeCard, deleteItem no ShoeCardSmall
+  // localStorage.setItem('storedOrder', JSON.stringify(order));
+
+  // useEffect(() => {
+  //   if (order.length === 0) return;
+  //   localStorage.setItem('storedOrder', JSON.stringify(order));
+  // }, [order]);
 
   return (
     <CartContext.Provider value={cartContextValue}>

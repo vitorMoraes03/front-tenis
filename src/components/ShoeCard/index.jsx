@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { StyledShoeCard, StyledDivColors, StyledTagColor } from './styles';
 import { StyledBtnShop } from '../../pages/Shop/styles';
@@ -31,6 +31,10 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
       },
     ]);
   }
+
+  useEffect(() => {
+    localStorage.setItem('storedOrder', JSON.stringify(order));
+  }, [addShoes]);
 
   return (
     <StyledShoeCard key={element._id}>

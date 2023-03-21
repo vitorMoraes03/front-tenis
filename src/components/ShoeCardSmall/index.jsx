@@ -34,6 +34,7 @@ function ShoeCardSmall({ element, order, setOrder }) {
   function deleteItem() {
     const updatedOrder = order.filter((item) => item.idCart !== element.idCart);
     setOrder(updatedOrder);
+    localStorage.setItem('storedOrder', JSON.stringify(updatedOrder));
   }
 
   return (
