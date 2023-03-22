@@ -9,10 +9,10 @@ function Main() {
   return (
     <StyledMain>
       <StyledFeatured>
-        <div className='main-title'>
-          <div className='text-wrapper'>
-          <h1>Comece seu ano com leveza.</h1>
-          <p>Espumas de última tecnologia.</p>
+        <div className="main-title">
+          <div className="text-wrapper">
+            <h1>Comece seu ano com leveza</h1>
+            <p>Espumas de última tecnologia</p>
           </div>
         </div>
       </StyledFeatured>
@@ -25,7 +25,7 @@ function Main() {
       <StyledThirdSide>
         <div>
           <h2>Bem vindo ao futuro</h2>
-          <p>A um clique de você</p>
+          <p>Os últimos lançamentos do mercado</p>
         </div>
       </StyledThirdSide>
     </StyledMain>

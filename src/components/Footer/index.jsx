@@ -8,7 +8,7 @@ function Footer() {
   return (
     <StyledFooter>
       <StyledFooterMain>
-        <p>© 2023 Made Shoes Copyright</p>
+        <p>© 2023 Sem fins comerciais.</p>
         <StyledFooterMedia>
           <h3>Siga-nos</h3>
           <StyledFlex>

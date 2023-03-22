@@ -80,10 +80,10 @@ function CategorySideFilter({ setShoes, defaultShoes }) {
               <input
                 type="checkbox"
                 onClick={handleCategory}
-                value="Dia a dia"
+                value="Sofisticado"
                 id="category-daily"
               />
-              Dia a dia
+              Sofisticado
             </label>
           </li>
           <li>

@@ -137,3 +137,20 @@ export const allRegex = {
   confirmPasswordRegex: /^(?=.*\d).{4,10}$/,
   surNameRegex: /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/,
 };
+
+export function shuffle(array) {
+  const newArr = array;
+  let currentIndex = newArr.length;
+  let randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    [newArr[currentIndex], newArr[randomIndex]] = [
+      newArr[randomIndex],
+      newArr[currentIndex],
+    ];
+  }
+
+  return newArr;
+}

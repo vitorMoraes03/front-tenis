@@ -17,21 +17,18 @@ import { AppContainer, StyledPromo } from './styles';
 function App() {
   const [modalCart, setModalCart] = useState(false);
   const defaultText = 'Entrega grátis para todo o Brasil.';
-  const [promoText, setPromoText] = useState(
-    defaultText
-  );
+  const [promoText, setPromoText] = useState(defaultText);
   const { loggedInUser } = useContext(AuthContext);
 
   useEffect(() => {
     setTimeout(() => {
       if (promoText !== 'Entrega grátis para todo o Brasil.')
-      setPromoText('Entrega grátis para todo o Brasil.');
+        setPromoText('Entrega grátis para todo o Brasil.');
     }, 15000);
 
-    if(loggedInUser){
+    if (loggedInUser) {
       setPromoText(defaultText);
     }
-
   }, [promoText, loggedInUser]);
 
   return (
@@ -46,7 +43,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<Login/>} />
+            <Route path="/login" element={<Login />} />
             <Route
               path="/signup"
               element={<SignUp setPromoText={setPromoText} />}
@@ -63,7 +60,7 @@ function App() {
             />
             <Route
               path="/checkout"
-              element={<CheckOut setPromoText={setPromoText}/>}
+              element={<CheckOut setPromoText={setPromoText} />}
             />
           </Routes>
           <Footer />

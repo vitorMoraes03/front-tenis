@@ -3,7 +3,19 @@ import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
 function ColorSideFilter({ setShoes, defaultShoes }) {
-  const colorList = ['white', 'black', 'blue', 'green', 'brown', 'gray'];
+  const colorList = [
+    'white',
+    'black',
+    'blue',
+    'green',
+    'brown',
+    'gray',
+    'orange',
+    'yellow',
+    'pink',
+    'red',
+    'purple',
+  ];
   const [colorOpen, setColorOpen] = useState(false);
   const [arrColors, setArrColors] = useState([]);
   const [filteredArr, setFilteredArr] = useState([]);
@@ -63,6 +75,14 @@ function ColorSideFilter({ setShoes, defaultShoes }) {
         return 'Cinza';
       case 'orange':
         return 'Laranja';
+      case 'pink':
+        return 'Rosa';
+      case 'yellow':
+        return 'Amarelo';
+      case 'red':
+        return 'Vermelho';
+      case 'purple':
+        return 'Roxo';
       default:
         return undefined;
     }
@@ -85,7 +105,7 @@ function ColorSideFilter({ setShoes, defaultShoes }) {
         </button>
       </div>
       {colorOpen ? (
-        <ul className="ul-tags">
+        <ul className="ul-tags tags-colors">
           {colorList.map((element) => (
             <li key={element}>
               <label htmlFor={element}>

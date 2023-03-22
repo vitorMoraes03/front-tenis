@@ -16,6 +16,7 @@ import CategorySideFilter from '../../components/Filters/Category';
 import SizeSideFilter from '../../components/Filters/Size/size';
 import SearchFilter from '../../components/Filters/Search';
 import SelectFilter from '../../components/Filters/Select';
+import { shuffle } from '../../global';
 
 function Shop({ setModalCart, modalCart }) {
   const { order, setOrder } = useContext(CartContext);
@@ -25,8 +26,9 @@ function Shop({ setModalCart, modalCart }) {
   async function getAllShoes() {
     try {
       const allShoes = await api.get('/shoes');
-      setShoes(allShoes.data);
-      setDefaultShoes(allShoes.data);
+      const shuffledShoes = shuffle(allShoes.data);
+      setShoes(shuffledShoes);
+      setDefaultShoes(shuffledShoes);
     } catch (err) {
       console.log(err);
     }

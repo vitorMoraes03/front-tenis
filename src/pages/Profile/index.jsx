@@ -77,8 +77,8 @@ function Profile({ setPromoText }) {
       const userEdited = await api.put('/user/edit', edition);
       const objEdited = {
         user: userEdited.data,
-        token: loggedInUser.token
-      }
+        token: loggedInUser.token,
+      };
       localStorage.setItem('loggedInUser', JSON.stringify(objEdited));
       setLoggedInUser(objEdited);
     } catch (err) {
