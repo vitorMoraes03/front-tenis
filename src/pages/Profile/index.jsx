@@ -2,33 +2,26 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/api';
 import { AuthContext } from '../../contexts/authContext';
-import { StyledBtnLogin } from '../Login/styles';
+import { CartContext } from '../../contexts/cartContext';
+import { StyledBtnLogin } from '../Login/LoginForm/styles';
 import { Input } from '../../components/Input';
 import { StyledProfileContainer } from './style';
+import { allRegex } from '../../global';
 
-/*
-
-Quando dou reload na página, os dados do contexto se perde (naturalmente),
-e as infos do profile somem. Como corrigir isso?
-
-*/
-
-function Profile() {
+function Profile({ setPromoText }) {
   const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
   const { user } = loggedInUser;
+  const { setOrder } = useContext(CartContext);
   const navigate = useNavigate();
-
   const [edition, setEdition] = useState({
     email: user.email,
     firstName: user.firstName,
-    lastName: user.lastName,
-    birthday: user.birthday.slice(0, 10),
+    birthday: user.birthday?.slice(0, 10),
   });
-
   const [emailMsg, setEmailMsg] = useState('');
   const [firstNameMsg, setFirstNameMsg] = useState('');
-  const [lastNameMsg, setLastNameMsg] = useState('');
   const [birthdayMsg, setBirthdayMsg] = useState('');
+  const { emailRegex, surNameRegex } = allRegex;
 
   const handleChange = (e) => {
     setEdition({ ...edition, [e.target.name]: e.target.value });
@@ -36,6 +29,8 @@ function Profile() {
 
   const logOut = async () => {
     localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('storedOrder');
+    setOrder([]);
     setLoggedInUser(null);
     navigate('/');
   };
@@ -44,6 +39,7 @@ function Profile() {
     try {
       await api.delete('/user/delete');
       logOut();
+      setPromoText('Usuário deletado.');
     } catch (err) {
       console.log(err.response.data);
     }
@@ -54,8 +50,7 @@ function Profile() {
       setEmailMsg('Campo Obrigatório.');
       return;
     }
-    const regex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm;
-    if (!regex.test(edition.email)) setEmailMsg('Preencher corretamente.');
+    if (!emailRegex.test(edition.email)) setEmailMsg('Preencher corretamente.');
   }
 
   function checkFirstName() {
@@ -63,19 +58,8 @@ function Profile() {
       setFirstNameMsg('Campo Obrigatório.');
       return;
     }
-    const regex = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
-    if (!regex.test(edition.firstName))
+    if (!surNameRegex.test(edition.firstName))
       setFirstNameMsg('Preencher corretamente.');
-  }
-
-  function checkLastName() {
-    if (edition.lastName === '') {
-      setLastNameMsg('Campo Obrigatório.');
-      return;
-    }
-    const regex = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
-    if (!regex.test(edition.firstName))
-      setLastNameMsg('Preencher corretamente.');
   }
 
   function checkBirthday() {
@@ -88,14 +72,19 @@ function Profile() {
     e.preventDefault();
     checkEmail();
     checkFirstName();
-    checkLastName();
     checkBirthday();
     try {
       const userEdited = await api.put('/user/edit', edition);
-      localStorage.setItem('loggedInUser', JSON.stringify(userEdited));
+      const objEdited = {
+        user: userEdited.data,
+        token: loggedInUser.token
+      }
+      localStorage.setItem('loggedInUser', JSON.stringify(objEdited));
+      setLoggedInUser(objEdited);
     } catch (err) {
       console.log(err);
     }
+    setPromoText('Usuário editado.');
     navigate('/');
   };
 
@@ -110,6 +99,7 @@ function Profile() {
           span={emailMsg}
           type="text"
           handler={handleChange}
+          small="Obrigatório"
         />
         <Input
           field="FirstName"
@@ -118,14 +108,7 @@ function Profile() {
           span={firstNameMsg}
           type="text"
           handler={handleChange}
-        />
-        <Input
-          field="LastName"
-          text="Sobrenome"
-          value={edition.lastName}
-          span={lastNameMsg}
-          type="text"
-          handler={handleChange}
+          small="Obrigatório"
         />
         <Input
           field="Birthday"
@@ -134,6 +117,7 @@ function Profile() {
           span={birthdayMsg}
           type="date"
           handler={handleChange}
+          small="Opcional"
         />
       </form>
       <div className="container-btn">

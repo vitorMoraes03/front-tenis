@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledLoginContainer } from '../Login/LoginContainer';
+import { StyledLoginContainer } from '../Login/LoginContainer/styles';
 import { StyledBtn } from '../../global';
 
 export const StyledShopContainer = styled(StyledLoginContainer)`
@@ -7,10 +7,16 @@ export const StyledShopContainer = styled(StyledLoginContainer)`
   grid-template-columns: 1fr 4fr;
 `;
 
-export const StyledShopMain = styled.div``;
+export const StyledShopMain = styled.div`
+  padding-left: var(--space-medium);
+`;
 
 export const StyledShopSide = styled.div`
-  padding-right: var(--space-medium);
+  padding-top: var(--space-medium);
+
+  li {
+    margin-left: 2px;
+  }
 `;
 
 export const StyledSideCard = styled.div`
@@ -35,9 +41,13 @@ export const StyledSideCard = styled.div`
   .ul-tags {
     margin-top: 1rem;
   }
-  .ul-tags > li {
+  label {
     display: flex;
-    gap: 0.5rem;
+    gap: 2px;
+  }
+  .tags-price {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 `;
 

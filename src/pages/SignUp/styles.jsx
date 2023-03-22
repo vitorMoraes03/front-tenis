@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { StyledLoginContainer } from '../Login/LoginContainer';
-import { StyledBtnLogin } from '../Login/styles';
+import { StyledLoginContainer } from '../Login/LoginContainer/styles';
+import { StyledBtnLogin } from '../Login/LoginForm/styles';
 
 export const StyledSignUpContainer = styled(StyledLoginContainer)`
   h1 {
@@ -15,7 +15,7 @@ export const StyledSignUpContainer = styled(StyledLoginContainer)`
 
   small {
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--main-shade);
   }
 

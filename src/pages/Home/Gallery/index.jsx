@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import img1 from '../../../images/rdy-2.png';
 import img1 from '../../../images/vitoristvan_shoes_modern_style_ultrarealistic_1.png';
 import img2 from '../../../images/RRRRRR_sneaker_high_fear.png';
 import img3 from '../../../images/vitoristvan_shoes_modern_style_ultrarealistic.png';

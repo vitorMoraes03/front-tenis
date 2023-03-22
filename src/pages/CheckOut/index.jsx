@@ -6,25 +6,39 @@ import {
   StyledCheckOutContainer,
   StyledBtnSmall,
 } from './styles';
-import { StyledBtnLogin } from '../Login/styles';
+import { StyledBtnLogin } from '../Login/LoginForm/styles';
 import { CartContext } from '../../contexts/cartContext';
+import { AuthContext } from '../../contexts/authContext';
 import api from '../../api/api';
 import ShoeCardSmall from '../../components/ShoeCardSmall';
 
-function CheckOut() {
+function CheckOut({ setPromoText }) {
   const { order, setOrder } = useContext(CartContext);
+  const { loggedInUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [emptyCart, setEmptyCart] = useState(false);
-
-  function priceTotal() {
-    const sum = order.reduce((acum, element) => acum + element.price, 0);
-    return sum.toFixed(2);
-  }
 
   useEffect(
     () => (order.length === 0 ? setEmptyCart(true) : setEmptyCart(false)),
     [order]
   );
+
+  useEffect(() => {
+    if(!loggedInUser){
+      navigate("/login");
+      window.scrollTo(0, 0);
+      setPromoText("Você precisa estar logado para finalizar sua compra.")
+    }
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  function priceTotal() {
+    const sum = order.reduce((acum, element) => acum + element.price, 0);
+    return sum.toFixed(2);
+  }
 
   const checkOutCart = async () => {
     try {
@@ -34,12 +48,13 @@ function CheckOut() {
       }));
 
       const finalOrder = {
-        priceTotal: priceTotal(),
+        priceTotal: priceTotal(order),
         shoes,
       };
 
       await api.post('/order/create', finalOrder);
       setOrder([]);
+      setPromoText('Compra realizada com sucesso.');
       navigate('/');
     } catch (err) {
       console.log(err);

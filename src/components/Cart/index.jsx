@@ -2,9 +2,9 @@
 import { useContext, useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StyledContainerCart, OverlayStyle } from './styles';
-import ShoeCardSmall from '../../ShoeCardSmall';
-import { CartContext } from '../../../contexts/cartContext';
-import { StyledBtnLogin } from '../../../pages/Login/styles';
+import ShoeCardSmall from '../ShoeCardSmall';
+import { CartContext } from '../../contexts/cartContext';
+import { StyledBtnLogin } from '../../pages/Login/LoginForm/styles';
 
 function CartModal({ modalCart, setModalCart }) {
   const { order, setOrder } = useContext(CartContext);
@@ -68,14 +68,16 @@ function CartModal({ modalCart, setModalCart }) {
             <ion-icon name="close-outline" onClick={closeModal} />
           </div>
           <div>
-            {order.map((element) => (
-              <ShoeCardSmall
-                key={`${element.idCart}-modal`}
-                element={element}
-                order={order}
-                setOrder={setOrder}
-              />
-            ))}
+            {order
+              ? order.map((element) => (
+                  <ShoeCardSmall
+                    key={`${element.idCart}-modal`}
+                    element={element}
+                    order={order}
+                    setOrder={setOrder}
+                  />
+                ))
+              : null}
           </div>
           <div className="container-button">
             {emptyCart ? (

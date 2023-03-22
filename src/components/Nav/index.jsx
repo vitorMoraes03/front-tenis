@@ -11,7 +11,7 @@ import {
   StyledCart,
   StyledContainerUser,
 } from './styles';
-import CartModal from '../Modals/Cart';
+import CartModal from '../Cart';
 
 function NavBar({ modalCart, setModalCart }) {
   const { loggedInUser } = useContext(AuthContext);
@@ -31,7 +31,6 @@ function NavBar({ modalCart, setModalCart }) {
           <h1>Motion</h1>
         </Link>
         <Link to="./shop">Shop</Link>
-        <Link to="">Quem somos</Link>
       </StyledLinks>
       <StyledContainerUser>
         {loggedInUser ? <p>{`Olá, ${loggedInUser.user.firstName}`}</p> : null}

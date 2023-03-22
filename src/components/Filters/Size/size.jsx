@@ -63,7 +63,7 @@ function SizeSideFilter({ setShoes, defaultShoes }) {
         </button>
       </div>
       {sizeOpen ? (
-        <ul className="ul-tags">
+        <ul className="ul-tags tags-price">
           {sizeList.map((element) => (
             <li key={element}>
               <label htmlFor={element}>
