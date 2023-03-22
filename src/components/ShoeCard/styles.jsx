@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { StyledBtnShop } from '../../pages/Shop/styles';
 
 export const StyledShoeCard = styled.div`
   font-size: var(--font-big);
@@ -27,6 +28,10 @@ export const StyledShoeCard = styled.div`
   select {
     padding: 1px;
   }
+
+  .p-gender {
+    font-weight: 450;
+  }
 `;
 
 export const StyledDivColors = styled.div`
@@ -39,4 +44,9 @@ export const StyledTagColor = styled.div`
   background-color: ${(props) => props.backgroundColor};
   width: var(--font-big);
   height: var(--font-big);
+`;
+
+export const StyledBtnCart = styled(StyledBtnShop)`
+  padding: inherit;
+  align-self: flex-end;
 `;

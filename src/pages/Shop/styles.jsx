@@ -29,23 +29,29 @@ export const StyledSideCard = styled.div`
     cursor: pointer;
     --ionicon-stroke-width: 4.2rem;
   }
+
   button {
     border: none;
     background: none;
     display: inline-block;
   }
+
   .div-h4 {
     display: flex;
     justify-content: space-between;
   }
+
   .ul-tags {
     margin-top: 1rem;
   }
+
   label {
     display: flex;
     gap: 2px;
   }
-  .tags-price {
+
+  .tags-price,
+  .tags-colors {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
@@ -55,6 +61,7 @@ export const StyledDivShop = styled.div`
   display: flex;
   gap: var(--space-small);
   justify-content: center;
+
   input {
     border: none;
     outline: none;
@@ -63,6 +70,7 @@ export const StyledDivShop = styled.div`
     color: rgba(25, 14, 2, 0.7);
     height: 100%;
   }
+
   .div-search-filter {
     border-bottom: 1px solid var(--main-color);
     display: flex;

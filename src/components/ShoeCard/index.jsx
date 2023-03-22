@@ -2,8 +2,12 @@
 /* eslint-disable no-underscore-dangle */
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { StyledShoeCard, StyledDivColors, StyledTagColor } from './styles';
-import { StyledBtnShop } from '../../pages/Shop/styles';
+import {
+  StyledShoeCard,
+  StyledDivColors,
+  StyledTagColor,
+  StyledBtnCart,
+} from './styles';
 
 function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
   const objectKeys = Object.keys(element.sizeAndStock);
@@ -42,7 +46,7 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
       <div className="shoe-card-infos">
         <div className="shoe-card-text">
           <h4>{element.shoesName}</h4>
-          <p>{element.price}</p>
+          <p>R$ {element.price.toFixed(2)}</p>
           <StyledDivColors>
             {element.color.map((singleColor) => (
               <StyledTagColor
@@ -51,7 +55,7 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
               />
             ))}
           </StyledDivColors>
-          <p>{element.gender}</p>
+          <p className="p-gender">{element.gender}</p>
           <p>{element.category}</p>
           <select onChange={handleSelectChange} value={selectedOption}>
             {objectKeys.map((key) => (
@@ -61,14 +65,14 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
             ))}
           </select>
         </div>
-        <StyledBtnShop
+        <StyledBtnCart
           onClick={(e) => {
             e.stopPropagation();
             addShoes();
           }}
         >
           Comprar
-        </StyledBtnShop>
+        </StyledBtnCart>
       </div>
     </StyledShoeCard>
   );

@@ -20,7 +20,7 @@ function Gallery() {
         <img src={img1} alt="Sample shoes 1" />
         <div>
           <StyledBtnShop>Comprar</StyledBtnShop>
-          <h3>Didas VX</h3>
+          <h3>Motion Sand</h3>
         </div>
       </StyledImgContainer>
       <StyledImgContainer
@@ -31,7 +31,7 @@ function Gallery() {
         <img src={img2} alt="Sample shoes 2" />
         <div>
           <StyledBtnShop>Comprar</StyledBtnShop>
-          <h3>Niko C</h3>
+          <h3>Motion W.S.</h3>
         </div>
       </StyledImgContainer>
       <StyledImgContainer
@@ -42,7 +42,7 @@ function Gallery() {
         <img src={img3} alt="Sample shoes 3" />
         <div>
           <StyledBtnShop>Comprar</StyledBtnShop>
-          <h3>Zans Orange</h3>
+          <h3>Asics Riverblue</h3>
         </div>
       </StyledImgContainer>
     </StyledGallery>
