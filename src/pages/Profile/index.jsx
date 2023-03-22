@@ -75,7 +75,12 @@ function Profile({ setPromoText }) {
     checkBirthday();
     try {
       const userEdited = await api.put('/user/edit', edition);
-      localStorage.setItem('loggedInUser', JSON.stringify(userEdited));
+      const objEdited = {
+        user: userEdited.data,
+        token: loggedInUser.token
+      }
+      localStorage.setItem('loggedInUser', JSON.stringify(objEdited));
+      setLoggedInUser(objEdited);
     } catch (err) {
       console.log(err);
     }
@@ -112,6 +117,7 @@ function Profile({ setPromoText }) {
           span={birthdayMsg}
           type="date"
           handler={handleChange}
+          small="Opcional"
         />
       </form>
       <div className="container-btn">

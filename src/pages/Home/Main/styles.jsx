@@ -23,14 +23,18 @@ export const StyledFeatured = styled.section`
   background-size: cover;
   position: relative;
 
-  div {
+  .main-title {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 0;
+    width: 100%;
+  }
+
+  .text-wrapper {
     display: flex;
+    width: 45%;
     flex-direction: column;
     gap: var(--space-small);
+    padding: var(--space-medium);
     text-align: center;
   }
 `;

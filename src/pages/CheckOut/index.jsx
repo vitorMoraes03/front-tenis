@@ -8,11 +8,13 @@ import {
 } from './styles';
 import { StyledBtnLogin } from '../Login/LoginForm/styles';
 import { CartContext } from '../../contexts/cartContext';
+import { AuthContext } from '../../contexts/authContext';
 import api from '../../api/api';
 import ShoeCardSmall from '../../components/ShoeCardSmall';
 
 function CheckOut({ setPromoText }) {
   const { order, setOrder } = useContext(CartContext);
+  const { loggedInUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [emptyCart, setEmptyCart] = useState(false);
 
@@ -20,6 +22,18 @@ function CheckOut({ setPromoText }) {
     () => (order.length === 0 ? setEmptyCart(true) : setEmptyCart(false)),
     [order]
   );
+
+  useEffect(() => {
+    if(!loggedInUser){
+      navigate("/login");
+      window.scrollTo(0, 0);
+      setPromoText("Você precisa estar logado para finalizar sua compra.")
+    }
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   function priceTotal() {
     const sum = order.reduce((acum, element) => acum + element.price, 0);

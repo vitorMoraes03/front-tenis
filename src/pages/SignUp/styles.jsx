@@ -15,7 +15,7 @@ export const StyledSignUpContainer = styled(StyledLoginContainer)`
 
   small {
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--main-shade);
   }
 

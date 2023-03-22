@@ -35,7 +35,8 @@ function SignUp({ setPromoText }) {
       submitOk = false;
       return;
     }
-    if (regex?.test(input) === false) {
+    const newRegex = regex;
+    if (!newRegex.test(input)) {
       setMsg('Preencher corretamente.');
       submitOk = false;
       return;

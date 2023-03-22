@@ -132,8 +132,8 @@ export const StyledBtn = styled.button`
 `;
 
 export const allRegex = {
-  emailRegex: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm,
-  passwordRegex: /^(?=.*\d).{4,10}$/gm,
-  confirmPasswordRegex: /^(?=.*\d).{4,10}$/gm,
+  emailRegex: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
+  passwordRegex: /^(?=.*\d).{4,10}$/,
+  confirmPasswordRegex: /^(?=.*\d).{4,10}$/,
   surNameRegex: /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/,
 };

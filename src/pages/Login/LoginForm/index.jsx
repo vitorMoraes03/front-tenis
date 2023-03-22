@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+// eslint-disable-next-line no-unused-vars
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { InputWrapper } from '../../../global';
@@ -105,7 +106,7 @@ function LoginForm() {
         <StyledBtnLogin type="submit" onClick={handleSubmit}>
           Login
         </StyledBtnLogin>
-        <Link to="">Esqueceu seu password?</Link>
+        {/* <Link to="">Esqueceu seu password?</Link> */}
       </StyledContainerBtn>
     </StyledForm>
   );

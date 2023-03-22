@@ -9,21 +9,23 @@ function Main() {
   return (
     <StyledMain>
       <StyledFeatured>
-        <div>
+        <div className='main-title'>
+          <div className='text-wrapper'>
           <h1>Comece seu ano com leveza.</h1>
-          <p>Edição limitada.</p>
+          <p>Espumas de última tecnologia.</p>
+          </div>
         </div>
       </StyledFeatured>
       <StyledSecondSide>
         <div>
-          <h2>Lançamento Converse 2023</h2>
+          <h2>Lançamento Nike Rexus</h2>
           <p>Compre agora</p>
         </div>
       </StyledSecondSide>
       <StyledThirdSide>
         <div>
           <h2>Bem vindo ao futuro</h2>
-          <p>Compre linha Modern</p>
+          <p>A um clique de você</p>
         </div>
       </StyledThirdSide>
     </StyledMain>

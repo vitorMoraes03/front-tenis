@@ -9,10 +9,10 @@ function LoginCreateAcc() {
       <div>
         <p>Crie um conta e você será capaz de:</p>
         <ul>
-          <li>Check out mais rápido</li>
-          <li>Frete grátis para todo o Brasil</li>
-          <li>Acesso ao seu histórico de ordens</li>
-          <li>Acompanhe seus pedidos</li>
+          <li>Finalizar seus pedidos</li>
+          <li>Frete gratuito para todo o Brasil</li>
+          <li>Promoções exclusivas</li>
+          <li>Editar o seu perfil</li>
         </ul>
         <Link to="/signup">
           <StyledBtnLogin>Criar conta</StyledBtnLogin>
