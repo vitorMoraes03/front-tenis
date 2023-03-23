@@ -42,6 +42,12 @@ export const StyledContainerCart = styled.div`
   ion-icon:hover {
     cursor: pointer;
   }
+
+  @media (max-width: 600px) {
+    .main-container {
+    width: 70%;
+  }
+  }
 `;
 
 export const OverlayStyle = styled.div`

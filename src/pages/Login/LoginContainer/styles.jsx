@@ -19,4 +19,8 @@ export const StyledLoginContainer = styled.div`
   }
 `;
 
-export const StyledSmallContainer = styled(StyledFlex)``;
+export const StyledSmallContainer = styled(StyledFlex)`
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+`;

@@ -5,10 +5,21 @@ import { StyledBtn } from '../../global';
 export const StyledShopContainer = styled(StyledLoginContainer)`
   display: grid;
   grid-template-columns: 1fr 4fr;
+  position: relative;
+
+  @media (max-width: 600px) {
+    display: auto;
+    padding: var(--space-medium);
+  }
 `;
 
 export const StyledShopMain = styled.div`
   padding-left: var(--space-medium);
+
+  .filter-mobile {
+    text-align: center;
+    padding: var(--space-small);
+  }
 `;
 
 export const StyledShopSide = styled.div`
@@ -55,6 +66,19 @@ export const StyledSideCard = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
+  @media (max-width: 600px) {
+    background-color: var(--main-white);
+
+    li {
+      padding: 2px;
+    }
+
+    .tags-price,
+    .tags-colors {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
 `;
 
 export const StyledDivShop = styled.div`
@@ -83,6 +107,11 @@ export const StyledGridShop = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   gap: var(--space-medium);
   padding-top: var(--space-big);
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5.2rem;
+  }
 `;
 
 export const StyledBtnShop = styled(StyledBtn)`

@@ -6,7 +6,10 @@ export const StyledFooter = styled.footer`
   font-size: var(--font-medium);
   z-index: 100;
   position: relative;
-  padding: var(--space-small);
+  display: flex;
+  padding: var(--space-medium) var(--space-big);
+  justify-content: space-between;
+  align-items: center;
 
   ion-icon {
     font-size: var(--icons-size);
@@ -32,13 +35,10 @@ export const StyledFooter = styled.footer`
     font-size: var(--font-text);
     opacity: 0.7;
   }
-`;
 
-export const StyledFooterMain = styled.div`
-  display: flex;
-  padding: var(--space-medium) var(--space-big);
-  justify-content: space-between;
-  align-items: center;
+  @media (max-width: 600px) {
+    padding: var(--space-medium);
+  }
 `;
 
 export const StyledFooterMedia = styled.div`

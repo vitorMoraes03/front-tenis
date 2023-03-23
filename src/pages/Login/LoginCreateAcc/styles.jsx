@@ -25,6 +25,11 @@ const StyledCreateAcc = styled.div`
     margin-bottom: 0.5rem;
     padding-left: 1rem;
   }
+
+  @media (max-width: 600px) {
+    width: auto;
+    margin-top: 5rem;
+  }
 `;
 
 export default StyledCreateAcc;

@@ -9,4 +9,8 @@ export const StyledProfileContainer = styled(StyledSignUpContainer)`
     justify-content: center;
     margin-top: var(--space-medium);
   }
+
+  @media (max-width: 600px) {
+    padding-bottom: 10rem;
+  }
 `;

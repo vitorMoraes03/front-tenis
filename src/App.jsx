@@ -36,7 +36,7 @@ function App() {
       <CartContextComponent>
         <GlobalStyle />
         <AppContainer>
-          <NavBar modalCart={modalCart} setModalCart={setModalCart} />
+          <NavBar modalCart={modalCart} setModalCart={setModalCart} setPromoText={setPromoText} defaultText={defaultText}/>
           <StyledPromo>
             <p>{promoText}</p>
           </StyledPromo>

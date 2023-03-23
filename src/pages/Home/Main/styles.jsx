@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import imgHome from '../../../images/woman-3.2-shoes-waves.png';
 import imgSideSecond from '../../../images/teste-1.png';
 import imgSideThird from '../../../images/DenizD_wearing_neon_jordan_shoes.png';
@@ -14,6 +13,18 @@ export const StyledMain = styled.div`
 
   h1 {
     font-size: 4rem;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-areas:
+      'featured'
+      'second'
+      'third';
+    grid-template-columns: 1fr;
+
+    h1 {
+      font-size: 2.2rem;
+    }
   }
 `;
 
