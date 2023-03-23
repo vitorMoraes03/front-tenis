@@ -3,6 +3,10 @@ import { StyledBtn } from '../../../global';
 
 export const StyledForm = styled.form`
   width: 50%;
+
+  @media (max-width: 600px) {
+    width: auto;
+  }
 `;
 
 export const StyledContainerBtn = styled.div`

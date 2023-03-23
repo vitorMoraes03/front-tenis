@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const AppContainer = styled.div`
-  padding-top: 8rem; // Atençao, problemático, responsividade...
+  padding-top: 8rem;
   background-color: var(--main-color);
 `;
 

@@ -52,6 +52,10 @@ export const StyledCheckOutContainer = styled.div`
   .checkout-cards {
     border-bottom: 1px solid var(--main-color);
   }
+
+  @media (max-width: 600px) {
+    width: auto;
+  }
 `;
 
 export const StyledBtnSmall = styled(StyledBtnLogin)`

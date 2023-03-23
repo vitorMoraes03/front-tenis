@@ -7,6 +7,12 @@ export const StyledGallery = styled.section`
   gap: var(--space-big);
   height: 45rem;
   margin: var(--space-small) auto;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    height: 140rem;
+    gap: 0;
+  }
 `;
 
 export const StyledImgContainer = styled.div`

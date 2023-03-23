@@ -27,6 +27,12 @@ export const GlobalStyle = createGlobalStyle`
         --space-big: 10rem;
     }
 
+    @media (max-width: 600px){
+        html {
+            font-size: 42.5%;
+        }
+}
+
     h1,
     h2, 
     h3 {
@@ -55,6 +61,10 @@ export const StyledFlex = styled.div`
   gap: var(--space-medium);
   padding: var(--space-small);
   align-items: center;
+
+  @media (max-width: 600px) {
+    gap: var(--space-small);
+  }
 `;
 
 const StyledInputWrapper = styled.div`
@@ -153,4 +163,12 @@ export function shuffle(array) {
   }
 
   return newArr;
+}
+
+export function isSmallScreen() {
+  const mediaQuery = window.matchMedia('(max-width: 600px)');
+  if (mediaQuery.matches) {
+    return true;
+  }
+  return false;
 }
