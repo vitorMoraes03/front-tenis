@@ -58,7 +58,6 @@ function CheckOut({ setPromoText }) {
       navigate('/');
     } catch (err) {
       console.log(err);
-      alert('erro na compra');
     }
   };
 
