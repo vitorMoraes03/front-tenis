@@ -35,7 +35,8 @@ function SizeSideFilter({ setShoes, defaultShoes }) {
       arrRes.push(filtered);
     }
 
-    setFilteredArr(arrRes.flat());
+    const uniqueArr = [...new Set(arrRes.flat())];
+    setFilteredArr(uniqueArr);
   }, [arrSizes]);
 
   useEffect(() => {

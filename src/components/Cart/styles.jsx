@@ -45,8 +45,8 @@ export const StyledContainerCart = styled.div`
 
   @media (max-width: 600px) {
     .main-container {
-    width: 70%;
-  }
+      width: 70%;
+    }
   }
 `;
 

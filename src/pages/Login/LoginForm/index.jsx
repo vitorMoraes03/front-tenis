@@ -1,21 +1,23 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-// eslint-disable-next-line no-unused-vars
-import { Link, useNavigate } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState, useContext, useEffect } from 'react';
 import { InputWrapper } from '../../../global';
 import { AuthContext } from '../../../contexts/authContext';
+import { CartContext } from '../../../contexts/cartContext';
 import api from '../../../api/api';
 import { StyledForm, StyledContainerBtn, StyledBtnLogin } from './styles';
 
-function LoginForm() {
+function LoginForm({ promoText }) {
   const navigate = useNavigate();
   const { setLoggedInUser } = useContext(AuthContext);
+  const { order } = useContext(CartContext);
   const [formLogin, setFormLogin] = useState({
     email: '',
     password: '',
   });
   const [emailMsg, setEmailMsg] = useState('');
   const [passwordMsg, setPasswordMsg] = useState('');
+  const [goToCheckout, setGoToCheckout] = useState(false);
 
   function handleChange(e) {
     setFormLogin({ ...formLogin, [e.target.name]: e.target.value });
@@ -58,6 +60,10 @@ function LoginForm() {
       const res = await api.post('/user/login', formLogin);
       setLoggedInUser({ ...res.data });
       localStorage.setItem('loggedInUser', JSON.stringify(res.data));
+      if (goToCheckout) {
+        navigate('/checkout');
+        return;
+      }
       navigate('/');
     } catch (err) {
       console.log(err);
@@ -71,6 +77,15 @@ function LoginForm() {
     }
   };
 
+  useEffect(() => {
+    if (order.length === 0) {
+      setGoToCheckout(false);
+      return;
+    }
+    if (promoText === 'Você precisa estar logado para finalizar sua compra.');
+    setGoToCheckout(true);
+  }, [promoText, order]);
+
   return (
     <StyledForm>
       <InputWrapper>
@@ -78,7 +93,6 @@ function LoginForm() {
           Endereço de Email:
           <input
             id="inputEmail"
-            // type="password"
             type="text"
             name="email"
             onChange={handleChange}
@@ -93,7 +107,7 @@ function LoginForm() {
           Password:
           <input
             id="inputPassword"
-            type="text"
+            type="password"
             name="password"
             onChange={handleChange}
             value={formLogin.password}
@@ -106,7 +120,6 @@ function LoginForm() {
         <StyledBtnLogin type="submit" onClick={handleSubmit}>
           Login
         </StyledBtnLogin>
-        {/* <Link to="">Esqueceu seu password?</Link> */}
       </StyledContainerBtn>
     </StyledForm>
   );

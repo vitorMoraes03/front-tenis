@@ -36,14 +36,19 @@ function App() {
       <CartContextComponent>
         <GlobalStyle />
         <AppContainer>
-          <NavBar modalCart={modalCart} setModalCart={setModalCart} setPromoText={setPromoText} defaultText={defaultText}/>
+          <NavBar
+            modalCart={modalCart}
+            setModalCart={setModalCart}
+            setPromoText={setPromoText}
+            defaultText={defaultText}
+          />
           <StyledPromo>
             <p>{promoText}</p>
           </StyledPromo>
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login promoText={promoText} />} />
             <Route
               path="/signup"
               element={<SignUp setPromoText={setPromoText} />}

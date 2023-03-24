@@ -9,12 +9,16 @@ function ModalSideFilter({
   shoes,
   setFilterModal,
   filterModal,
-  btnRef
+  btnRef,
 }) {
   const sideRef = useRef(null);
 
   function handleClickOutside(e) {
-    if (sideRef.current && !sideRef.current.contains(e.target) && !btnRef.current.contains(e.target)) {
+    if (
+      sideRef.current &&
+      !sideRef.current.contains(e.target) &&
+      !btnRef.current.contains(e.target)
+    ) {
       setFilterModal(false);
       document.removeEventListener('click', handleClickOutside);
     }

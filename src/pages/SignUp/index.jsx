@@ -99,7 +99,7 @@ function SignUp({ setPromoText }) {
           text="Password"
           value={form.password}
           span={passwordMsg}
-          type="string" // password
+          type="password"
           handler={handleChange}
           placeholder="Deve conter um digíto numérico..."
           small="Obrigatório"
@@ -109,7 +109,7 @@ function SignUp({ setPromoText }) {
           text="Confirme o password"
           value={form.confirmPassword}
           span={confirmPasswordMsg}
-          type="string" // password
+          type="password"
           handler={handleChange}
           small="Obrigatório"
         />
@@ -126,7 +126,6 @@ function SignUp({ setPromoText }) {
           field="Birthday"
           text="Data de nascimento"
           value={form.birthday}
-          // span={birthdayMsg}
           type="date"
           handler={handleChange}
           small="Opcional"

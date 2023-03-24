@@ -4,6 +4,7 @@ import {
   StyledSecondSide,
   StyledThirdSide,
 } from './styles';
+import { isSmallScreen } from '../../../global';
 
 function Main() {
   return (
@@ -12,7 +13,7 @@ function Main() {
         <div className="main-title">
           <div className="text-wrapper">
             <h1>Comece seu ano com leveza</h1>
-            <p>Espumas de última tecnologia</p>
+            {isSmallScreen() ? null : <p>Espumas de última tecnologia</p>}
           </div>
         </div>
       </StyledFeatured>
