@@ -8,7 +8,7 @@ export const StyledShopContainer = styled(StyledLoginContainer)`
   position: relative;
 
   @media (max-width: 600px) {
-    display: auto;
+    display: inline-block;
     padding: var(--space-medium);
   }
 `;
@@ -19,6 +19,10 @@ export const StyledShopMain = styled.div`
   .filter-mobile {
     text-align: center;
     padding: var(--space-small);
+  }
+
+  @media (max-width: 600px) {
+    padding-left: 0;
   }
 `;
 
