@@ -39,21 +39,22 @@ function Shop({ setModalCart, modalCart }) {
 
   return (
     <StyledShopContainer>
-      {isSmallScreen() ? null : (
+      {isSmallScreen() ? (
+        <ModalSideFilter
+          shoes={shoes}
+          setShoes={setShoes}
+          defaultShoes={defaultShoes}
+          setFilterModal={setFilterModal}
+          filterModal={filterModal}
+          btnRef={btnRef}
+        />
+      ) : (
         <SideShop
           shoes={shoes}
           setShoes={setShoes}
           defaultShoes={defaultShoes}
         />
       )}
-      <ModalSideFilter
-        shoes={shoes}
-        setShoes={setShoes}
-        defaultShoes={defaultShoes}
-        setFilterModal={setFilterModal}
-        filterModal={filterModal}
-        btnRef={btnRef}
-      />
       <StyledShopMain>
         <h1>Shop</h1>
         <StyledDivShop>
@@ -66,7 +67,10 @@ function Shop({ setModalCart, modalCart }) {
         </StyledDivShop>
         {isSmallScreen ? (
           <div className="filter-mobile">
-            <StyledBtnShop onClick={() => setFilterModal(!filterModal)} ref={btnRef}>
+            <StyledBtnShop
+              onClick={() => setFilterModal(!filterModal)}
+              ref={btnRef}
+            >
               Filtros
             </StyledBtnShop>
           </div>

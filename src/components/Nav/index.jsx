@@ -12,7 +12,6 @@ import {
   StyledContainerUser,
 } from './styles';
 import CartModal from '../Cart';
-import { isSmallScreen } from '../../global';
 
 function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
   const { loggedInUser } = useContext(AuthContext);
@@ -20,11 +19,11 @@ function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
 
   const handleClick = () => {
     if (order.length > 0) {
-      setPromoText(defaultText)
+      setPromoText(defaultText);
       setModalCart(true);
-      return
+      return;
     }
-    setPromoText('Carrinho vazio.')
+    setPromoText('Carrinho vazio.');
   };
 
   return (
@@ -34,7 +33,7 @@ function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
           <img src={imgNav} alt="Logo Sneakers" />
           <h1>Motion</h1>
         </Link>
-        {isSmallScreen() ? null : <Link to="./shop">Shop</Link>}
+        <Link to="./shop">Shop</Link>
       </StyledLinks>
       <StyledContainerUser>
         {loggedInUser ? <p>{`Olá, ${loggedInUser.user.firstName}`}</p> : null}

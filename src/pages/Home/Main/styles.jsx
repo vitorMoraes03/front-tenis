@@ -45,8 +45,14 @@ export const StyledFeatured = styled.section`
     width: 45%;
     flex-direction: column;
     gap: var(--space-small);
-    padding: var(--space-medium);
+    padding: var(--space-medium) var(--space-small);
     text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .text-wrapper {
+      width: 40%;
+    }
   }
 `;
 
