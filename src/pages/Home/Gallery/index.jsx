@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import img1 from '../../../images/vitoristvan_shoes_modern_style_ultrarealistic_1.png';
 import img2 from '../../../images/RRRRRR_sneaker_high_fear.png';
 import img3 from '../../../images/vitoristvan_shoes_modern_style_ultrarealistic.png';
@@ -9,6 +10,12 @@ function Gallery() {
   const [firstHover, setFirstHover] = useState(false);
   const [secondHover, setSecondHover] = useState(false);
   const [thirdHover, setThirdHover] = useState(false);
+  const navigate = useNavigate();
+
+  const handleBtn = () => {
+    navigate('/shop');
+    window.scrollTo(0, 0);
+  }
 
   return (
     <StyledGallery>
@@ -19,7 +26,7 @@ function Gallery() {
       >
         <img src={img1} alt="Sample shoes 1" />
         <div>
-          <StyledBtnShop>Comprar</StyledBtnShop>
+          <StyledBtnShop onClick={handleBtn}>Comprar</StyledBtnShop>
           <h3>Motion Sand</h3>
         </div>
       </StyledImgContainer>
@@ -30,7 +37,7 @@ function Gallery() {
       >
         <img src={img2} alt="Sample shoes 2" />
         <div>
-          <StyledBtnShop>Comprar</StyledBtnShop>
+          <StyledBtnShop onClick={handleBtn}>Comprar</StyledBtnShop>
           <h3>Motion W.S.</h3>
         </div>
       </StyledImgContainer>
@@ -41,7 +48,7 @@ function Gallery() {
       >
         <img src={img3} alt="Sample shoes 3" />
         <div>
-          <StyledBtnShop>Comprar</StyledBtnShop>
+          <StyledBtnShop onClick={handleBtn}>Comprar</StyledBtnShop>
           <h3>Asics Riverblue</h3>
         </div>
       </StyledImgContainer>
