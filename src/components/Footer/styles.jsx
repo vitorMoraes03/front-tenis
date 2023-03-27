@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const StyledFooter = styled.footer`
   color: var(--main-white);
   font-size: var(--font-medium);
-  z-index: 100;
+  // z-index: 100;
   position: relative;
   display: flex;
   padding: var(--space-medium) var(--space-big);

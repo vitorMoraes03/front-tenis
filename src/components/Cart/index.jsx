@@ -80,15 +80,10 @@ function CartModal({ modalCart, setModalCart }) {
               : null}
           </div>
           <div className="container-button">
-            {emptyCart ? (
-              <StyledBtnLogin onClick={handleShopMore}>
-                Continuar comprando
-              </StyledBtnLogin>
-            ) : (
-              <StyledBtnLogin onClick={handleCheckout}>
-                Finalizar Compra
-              </StyledBtnLogin>
+            {emptyCart ? null : (
+              <StyledBtnLogin onClick={handleCheckout}>Checkout</StyledBtnLogin>
             )}
+            <StyledBtnLogin onClick={handleShopMore}>Voltar</StyledBtnLogin>
           </div>
         </div>
       </StyledContainerCart>

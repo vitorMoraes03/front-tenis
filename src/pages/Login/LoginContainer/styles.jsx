@@ -20,6 +20,7 @@ export const StyledLoginContainer = styled.div`
 
   @media (max-width: 600px) {
     min-height: 100vh;
+    min-width: 100vw;
     padding: var(--space-medium);
   }
 `;
