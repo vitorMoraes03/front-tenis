@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const AppContainer = styled.div`
   padding-top: 8rem;
   background-color: var(--main-color);
+
+  @media (max-width: 800px) {
+    max-width: 100vw;
+  }
 `;
 
 export const StyledPromo = styled.div`
