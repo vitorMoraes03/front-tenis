@@ -5,7 +5,7 @@ import { OverlayStyle } from '../Cart/styles';
 // eslint-disable-next-line import/prefer-default-export
 export const ModalSideContainer = styled.div`
   position: fixed;
-  width: 80%;
+  width: 100%;
   background-color: var(--secondary-shade);
   padding: var(--space-medium);
   right: ${(props) => (props.filterModal ? '0' : '-50rem')};
