@@ -67,7 +67,7 @@ function CheckOut({ setPromoText }) {
         <div className="checkout-title">
           <h2>Resumo da Compra:</h2>
           <Link to="/shop">
-            <StyledBtnSmall>Continuar Compra</StyledBtnSmall>
+            <StyledBtnSmall>Voltar</StyledBtnSmall>
           </Link>
         </div>
         <div className="checkout-main">
