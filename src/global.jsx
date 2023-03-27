@@ -27,12 +27,6 @@ export const GlobalStyle = createGlobalStyle`
         --space-big: 10rem;
     }
 
-    @media (max-width: 600px){
-        html {
-            font-size: 42.5%;
-        }
-}
-
     h1,
     h2, 
     h3 {
