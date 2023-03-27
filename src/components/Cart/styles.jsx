@@ -6,7 +6,7 @@ export const StyledContainerCart = styled.div`
   width: 100%;
   height: fit-content;
   top: 100%;
-  z-index: ${(props) => (props.modalCart ? 100 : -1)};
+  z-index: ${(props) => (props.modalCart ? 1000 : -1)};
   opacity: ${(props) => (props.modalCart ? 1 : 0)};
   transition: all 0.25s ease-out;
   transform: ${(props) =>
@@ -33,6 +33,8 @@ export const StyledContainerCart = styled.div`
 
   .container-button {
     padding-top: var(--space-small);
+    gap: var(--space-small);
+    display: flex;
   }
 
   img {
@@ -45,7 +47,7 @@ export const StyledContainerCart = styled.div`
 
   @media (max-width: 600px) {
     .main-container {
-      width: 70%;
+      width: 95%;
     }
   }
 `;

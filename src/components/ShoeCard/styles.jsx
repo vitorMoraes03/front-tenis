@@ -4,9 +4,9 @@ export const StyledShoeCard = styled.div`
   width: 28rem;
   height: 50rem;
 
-  ion-icon { 
+  ion-icon {
     font-size: var(--icons-size);
-    align-self: flex-end;
+    align-self: center;
     cursor: pointer;
   }
 
@@ -69,6 +69,10 @@ export const StyledShoeCard = styled.div`
     img {
       width: 80%;
     }
+
+    ion-icon {
+      align-self: flex-end;
+    }
   }
 `;
 
@@ -83,4 +87,3 @@ export const StyledTagColor = styled.div`
   width: 2.2rem;
   height: 2.2rem;
 `;
-
