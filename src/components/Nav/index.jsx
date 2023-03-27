@@ -38,7 +38,7 @@ function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
       </StyledLinks>
       <StyledContainerUser>
         {loggedInUser ? (
-          <div className='div-hello'>
+          <div className="div-hello">
             <p>Olá,</p>
             <p>{loggedInUser.user.firstName}</p>
           </div>
