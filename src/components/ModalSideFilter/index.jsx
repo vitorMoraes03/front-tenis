@@ -24,18 +24,6 @@ function ModalSideFilter({
     }
   }
 
-  // function closeModal() {
-  //   setModalInitialized(false);
-  //   setModalCart(false);
-  //   document.removeEventListener('click', handleClickOutside);
-  // }
-
-  // useEffect(() => {
-  //   if (modalCart) {
-  //     setModalInitialized(true);
-  //   }
-  // }, [modalCart]);
-
   useEffect(() => {
     if (filterModal) {
       document.addEventListener('click', handleClickOutside);
