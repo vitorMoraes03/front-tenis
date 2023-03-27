@@ -1,8 +1,28 @@
 import styled from 'styled-components';
-import { StyledBtnShop } from '../../pages/Shop/styles';
 
 export const StyledShoeCard = styled.div`
-  font-size: var(--font-big);
+  width: 28rem;
+  height: 50rem;
+
+  ion-icon { 
+    font-size: var(--icons-size);
+    align-self: flex-end;
+    cursor: pointer;
+  }
+
+  ion-icon:hover {
+    color: var(--main-shade);
+  }
+
+  p,
+  select {
+    font-size: var(--font-big);
+  }
+
+  button {
+    font-weight: 600;
+    padding: 1rem;
+  }
 
   img {
     width: 100%;
@@ -18,6 +38,7 @@ export const StyledShoeCard = styled.div`
 
   h4 {
     margin-bottom: var(--space-small);
+    font-size: 2.2rem;
   }
 
   .shoe-card-text > p,
@@ -27,10 +48,27 @@ export const StyledShoeCard = styled.div`
 
   select {
     padding: 1px;
+    width: 8rem;
   }
 
   .p-gender {
     font-weight: 450;
+  }
+
+  .size-pick {
+    font-size: var(--space-small);
+  }
+
+  @media (max-width: 600px) {
+    height: 45rem;
+
+    .container-img {
+      text-align: center;
+    }
+
+    img {
+      width: 80%;
+    }
   }
 `;
 
@@ -42,11 +80,7 @@ export const StyledDivColors = styled.div`
 
 export const StyledTagColor = styled.div`
   background-color: ${(props) => props.backgroundColor};
-  width: var(--font-big);
-  height: var(--font-big);
+  width: 2.2rem;
+  height: 2.2rem;
 `;
 
-export const StyledBtnCart = styled(StyledBtnShop)`
-  padding: inherit;
-  align-self: flex-end;
-`;

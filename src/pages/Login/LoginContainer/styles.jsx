@@ -17,6 +17,11 @@ export const StyledLoginContainer = styled.div`
     font-weight: 800;
     padding: var(--space-medium);
   }
+
+  @media (max-width: 600px) {
+    min-height: 100vh;
+    padding: var(--space-medium);
+  }
 `;
 
 export const StyledSmallContainer = styled(StyledFlex)`

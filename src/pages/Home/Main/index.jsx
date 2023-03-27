@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   StyledMain,
   StyledFeatured,
@@ -12,7 +13,15 @@ function Main() {
       <StyledFeatured>
         <div className="main-title">
           <div className="text-wrapper">
-            <h1>Comece seu ano com leveza</h1>
+            {isSmallScreen() ? (
+              <Link to="/shop">
+                {' '}
+                <h1>Comece seu ano com leveza</h1>
+              </Link>
+            ) : (
+              <h1>Comece seu ano com leveza</h1>
+            )}
+
             {isSmallScreen() ? null : <p>Espumas de última tecnologia</p>}
           </div>
         </div>
@@ -20,13 +29,17 @@ function Main() {
       <StyledSecondSide>
         <div>
           <h2>Lançamento Nike Rexus</h2>
-          <p>Compre agora</p>
+          <Link to="/shop">
+            <p>Compre agora</p>
+          </Link>
         </div>
       </StyledSecondSide>
       <StyledThirdSide>
         <div>
           <h2>Bem vindo ao futuro</h2>
-          <p>Os últimos lançamentos do mercado</p>
+          <Link to="/shop">
+            <p>Os últimos lançamentos do mercado</p>
+          </Link>
         </div>
       </StyledThirdSide>
     </StyledMain>

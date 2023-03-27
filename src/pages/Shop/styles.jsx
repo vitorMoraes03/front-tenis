@@ -113,7 +113,7 @@ export const StyledGridShop = styled.div`
   padding-top: var(--space-big);
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     padding-top: 5.2rem;
   }
 `;

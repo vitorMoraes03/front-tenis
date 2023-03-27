@@ -15,7 +15,7 @@ function Gallery() {
   const handleBtn = () => {
     navigate('/shop');
     window.scrollTo(0, 0);
-  }
+  };
 
   return (
     <StyledGallery>

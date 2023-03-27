@@ -10,7 +10,7 @@ export const ModalSideContainer = styled.div`
   padding: var(--space-medium);
   right: ${(props) => (props.filterModal ? '0' : '-50rem')};
   top: 3rem;
-  z-index: 100;
+  z-index: 1000;
   border-radius: 2px;
   transition: all 0.25s ease-out;
 
