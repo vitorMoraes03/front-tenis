@@ -13,6 +13,8 @@ export const ModalSideContainer = styled.div`
   z-index: 1000;
   border-radius: 2px;
   transition: all 0.25s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
 
   ion-icon {
     font-size: 2.2rem;
