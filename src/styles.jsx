@@ -12,6 +12,7 @@ export const AppContainer = styled.div`
 export const StyledPromo = styled.div`
   text-align: center;
   border-top: 1px solid rgba(255, 243, 232, 0.3);
+  max-width: 100vw;
 
   p {
     padding: 1.2rem;

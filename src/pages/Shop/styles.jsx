@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { StyledLoginContainer } from '../Login/LoginContainer/styles';
-import { StyledBtn } from '../../global';
+import { StyledBtn, StyledFlex } from '../../global';
 
 export const StyledShopContainer = styled(StyledLoginContainer)`
   display: grid;
@@ -80,7 +80,7 @@ export const StyledSideCard = styled.div`
 
     .tags-price,
     .tags-colors {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 `;
@@ -132,3 +132,7 @@ export const StyledBtnShop = styled(StyledBtn)`
     background-color: #2e1a04;
   }
 `;
+
+export const StyledBtnsContainer = styled(StyledFlex)`
+  justify-content: center;
+`
