@@ -3,7 +3,7 @@ import Main from './Main';
 import Gallery from './Gallery';
 import BigImage from './BigImage';
 
-function Home() {
+function Home({ searchInput, setSearchInput }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -11,7 +11,8 @@ function Home() {
   return (
     <>
       <Main />
-      <Gallery />
+      <Gallery   searchInput={searchInput}
+  setSearchInput={setSearchInput}/>
       <BigImage />
     </>
   );

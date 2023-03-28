@@ -16,9 +16,10 @@ import { AppContainer, StyledPromo } from './styles';
 
 function App() {
   const [modalCart, setModalCart] = useState(false);
-  const defaultText = 'Imagens geradas por Inteligência Artificial.';
+  const defaultText = 'Imagens criadas com Inteligência Artificial.';
   const [promoText, setPromoText] = useState(defaultText);
   const { loggedInUser } = useContext(AuthContext);
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     setTimeout(() => {
@@ -46,7 +47,8 @@ function App() {
           </StyledPromo>
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<Home                 searchInput={searchInput}
+                setSearchInput={setSearchInput}/>} />
             <Route path="/login" element={<Login promoText={promoText} />} />
             <Route
               path="/signup"
@@ -59,7 +61,10 @@ function App() {
             <Route
               path="/shop"
               element={
-                <Shop setModalCart={setModalCart} modalCart={modalCart} />
+                <Shop setModalCart={setModalCart} 
+                modalCart={modalCart} 
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}/>
               }
             />
             <Route

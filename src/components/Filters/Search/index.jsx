@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
-function SearchFilter({ setShoes, defaultShoes }) {
-  const [searchInput, setSearchInput] = useState('');
+function SearchFilter({ setShoes, defaultShoes, searchInput, setSearchInput }) {
 
   function handleChange(e) {
     setSearchInput(e.target.value);
   }
 
   useEffect(() => {
+    if(defaultShoes.length === 0) return;
     if (!searchInput) {
       setShoes(defaultShoes);
     }
@@ -16,8 +16,9 @@ function SearchFilter({ setShoes, defaultShoes }) {
       const searchChars = searchInput.toLowerCase().split('');
       return searchChars.every((char, i) => char === objChars[i]);
     });
-    setShoes(filtered);
-  }, [searchInput]);
+    setShoes(filtered); 
+  }, [searchInput, defaultShoes]);
+
 
   return (
     <div className="div-search-filter">

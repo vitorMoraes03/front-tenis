@@ -6,14 +6,16 @@ import img3 from '../../../images/vitoristvan_shoes_modern_style_ultrarealistic.
 import { StyledBtnShop } from '../../Shop/styles';
 import { StyledGallery, StyledImgContainer } from './styles';
 
-function Gallery() {
+// eslint-disable-next-line no-unused-vars
+function Gallery({ searchInput, setSearchInput }) {
   const [firstHover, setFirstHover] = useState(false);
   const [secondHover, setSecondHover] = useState(false);
   const [thirdHover, setThirdHover] = useState(false);
   const navigate = useNavigate();
 
-  const handleBtn = () => {
-    navigate('/shop');
+  function handleBtn(string) {
+    setSearchInput(string);
+    navigate("/shop");
     window.scrollTo(0, 0);
   };
 
@@ -26,7 +28,7 @@ function Gallery() {
       >
         <img src={img1} alt="Sample shoes 1" />
         <div>
-          <StyledBtnShop onClick={handleBtn}>Comprar</StyledBtnShop>
+          <StyledBtnShop onClick={() => handleBtn('Motion Sand')}>Comprar</StyledBtnShop>
           <h3>Motion Sand</h3>
         </div>
       </StyledImgContainer>
@@ -37,7 +39,7 @@ function Gallery() {
       >
         <img src={img2} alt="Sample shoes 2" />
         <div>
-          <StyledBtnShop onClick={handleBtn}>Comprar</StyledBtnShop>
+          <StyledBtnShop onClick={() => handleBtn('Motion W.S.')}>Comprar</StyledBtnShop>
           <h3>Motion W.S.</h3>
         </div>
       </StyledImgContainer>
@@ -48,7 +50,7 @@ function Gallery() {
       >
         <img src={img3} alt="Sample shoes 3" />
         <div>
-          <StyledBtnShop onClick={handleBtn}>Comprar</StyledBtnShop>
+          <StyledBtnShop onClick={() => handleBtn('Asics Riverblue')}>Comprar</StyledBtnShop>
           <h3>Asics Riverblue</h3>
         </div>
       </StyledImgContainer>
