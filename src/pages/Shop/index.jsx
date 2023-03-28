@@ -5,7 +5,7 @@ import {
   StyledGridShop,
   StyledShopMain,
   StyledBtnShop,
-  StyledBtnsContainer
+  StyledBtnsContainer,
 } from './styles';
 import api from '../../api/api';
 import { CartContext } from '../../contexts/cartContext';
@@ -39,6 +39,11 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
     setShoes(defaultShoes);
   }, []);
 
+  const seeAll = () => {
+    setShoes(defaultShoes);
+    setSearchInput('');
+  };
+
   return (
     <StyledShopContainer>
       {isSmallScreen() ? (
@@ -70,17 +75,17 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
           <SelectFilter shoes={shoes} setShoes={setShoes} />
         </StyledDivShop>
         <StyledBtnsContainer>
-        {isSmallScreen() ? (
-          <div className="filter-mobile">
-            <StyledBtnShop
-              onClick={() => setFilterModal(!filterModal)}
-              ref={btnRef}
-            >
-              Filtros
-            </StyledBtnShop>
-          </div>
-        ) : null}
-        <StyledBtnShop onClick={() => setShoes(defaultShoes)}>Ver todos</StyledBtnShop>
+          {isSmallScreen() ? (
+            <div className="filter-mobile">
+              <StyledBtnShop
+                onClick={() => setFilterModal(!filterModal)}
+                ref={btnRef}
+              >
+                Filtros
+              </StyledBtnShop>
+            </div>
+          ) : null}
+          <StyledBtnShop onClick={seeAll}>Ver todos</StyledBtnShop>
         </StyledBtnsContainer>
         <StyledGridShop>
           {shoes.length === 0 ? (

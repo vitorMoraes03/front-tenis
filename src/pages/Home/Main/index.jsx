@@ -11,14 +11,14 @@ function Main() {
   return (
     <StyledMain>
       <StyledFeatured>
-        <div className="main-title">
-          <div className="text-wrapper">
-            <Link to="/shop">
+        <Link to="/shop">
+          <div className="main-title">
+            <div className="text-wrapper">
               <h1>Comece seu ano com leveza</h1>
-            </Link>
-            {isSmallScreen() ? null : <p>Espumas de última tecnologia</p>}
+              {isSmallScreen() ? null : <p>Espumas de última tecnologia</p>}
+            </div>
           </div>
-        </div>
+        </Link>
       </StyledFeatured>
       <StyledSecondSide>
         <div>

@@ -135,4 +135,4 @@ export const StyledBtnShop = styled(StyledBtn)`
 
 export const StyledBtnsContainer = styled(StyledFlex)`
   justify-content: center;
-`
+`;
