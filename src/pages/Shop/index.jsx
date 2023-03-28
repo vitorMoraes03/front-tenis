@@ -79,6 +79,11 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
           </div>
         ) : null}
         <StyledGridShop>
+          {shoes.length === 0 ? (
+            <div className="loading-container">
+              <h2>Carregando...</h2>
+            </div>
+          ) : null}
           {shoes.map((element) => (
             <ShoeCard
               element={element}
