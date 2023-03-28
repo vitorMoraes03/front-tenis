@@ -26,7 +26,6 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
     try {
       const allShoes = await api.get('/shoes');
       const shuffledShoes = shuffle(allShoes.data);
-      setShoes(shuffledShoes);
       setDefaultShoes(shuffledShoes);
     } catch (err) {
       console.log(err);
@@ -35,6 +34,8 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
 
   useEffect(() => {
     getAllShoes();
+    if(searchInput) return;
+    setShoes(defaultShoes);
   }, []);
 
   return (
