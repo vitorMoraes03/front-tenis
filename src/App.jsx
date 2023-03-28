@@ -16,14 +16,13 @@ import { AppContainer, StyledPromo } from './styles';
 
 function App() {
   const [modalCart, setModalCart] = useState(false);
-  const defaultText = 'Entrega grátis para todo o Brasil.';
+  const defaultText = 'Imagens geradas por Inteligência Artificial.';
   const [promoText, setPromoText] = useState(defaultText);
   const { loggedInUser } = useContext(AuthContext);
 
   useEffect(() => {
     setTimeout(() => {
-      if (promoText !== 'Entrega grátis para todo o Brasil.')
-        setPromoText('Entrega grátis para todo o Brasil.');
+      if (promoText !== defaultText) setPromoText(defaultText);
     }, 15000);
 
     if (loggedInUser) {
