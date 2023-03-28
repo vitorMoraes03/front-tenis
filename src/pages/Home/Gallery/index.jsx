@@ -15,9 +15,9 @@ function Gallery({ searchInput, setSearchInput }) {
 
   function handleBtn(string) {
     setSearchInput(string);
-    navigate("/shop");
+    navigate('/shop');
     window.scrollTo(0, 0);
-  };
+  }
 
   return (
     <StyledGallery>
@@ -28,7 +28,9 @@ function Gallery({ searchInput, setSearchInput }) {
       >
         <img src={img1} alt="Sample shoes 1" />
         <div>
-          <StyledBtnShop onClick={() => handleBtn('Motion Sand')}>Comprar</StyledBtnShop>
+          <StyledBtnShop onClick={() => handleBtn('Motion Sand')}>
+            Comprar
+          </StyledBtnShop>
           <h3>Motion Sand</h3>
         </div>
       </StyledImgContainer>
@@ -39,7 +41,9 @@ function Gallery({ searchInput, setSearchInput }) {
       >
         <img src={img2} alt="Sample shoes 2" />
         <div>
-          <StyledBtnShop onClick={() => handleBtn('Motion W.S.')}>Comprar</StyledBtnShop>
+          <StyledBtnShop onClick={() => handleBtn('Motion W.S.')}>
+            Comprar
+          </StyledBtnShop>
           <h3>Motion W.S.</h3>
         </div>
       </StyledImgContainer>
@@ -50,7 +54,9 @@ function Gallery({ searchInput, setSearchInput }) {
       >
         <img src={img3} alt="Sample shoes 3" />
         <div>
-          <StyledBtnShop onClick={() => handleBtn('Asics Riverblue')}>Comprar</StyledBtnShop>
+          <StyledBtnShop onClick={() => handleBtn('Asics Riverblue')}>
+            Comprar
+          </StyledBtnShop>
           <h3>Asics Riverblue</h3>
         </div>
       </StyledImgContainer>

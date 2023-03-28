@@ -11,8 +11,7 @@ function Home({ searchInput, setSearchInput }) {
   return (
     <>
       <Main />
-      <Gallery   searchInput={searchInput}
-  setSearchInput={setSearchInput}/>
+      <Gallery searchInput={searchInput} setSearchInput={setSearchInput} />
       <BigImage />
     </>
   );

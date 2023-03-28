@@ -34,7 +34,7 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
 
   useEffect(() => {
     getAllShoes();
-    if(searchInput) return;
+    if (searchInput) return;
     setShoes(defaultShoes);
   }, []);
 

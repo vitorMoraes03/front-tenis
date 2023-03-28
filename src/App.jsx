@@ -47,8 +47,15 @@ function App() {
           </StyledPromo>
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Home                 searchInput={searchInput}
-                setSearchInput={setSearchInput}/>} />
+            <Route
+              path="/home"
+              element={
+                <Home
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              }
+            />
             <Route path="/login" element={<Login promoText={promoText} />} />
             <Route
               path="/signup"
@@ -61,10 +68,12 @@ function App() {
             <Route
               path="/shop"
               element={
-                <Shop setModalCart={setModalCart} 
-                modalCart={modalCart} 
-                searchInput={searchInput}
-                setSearchInput={setSearchInput}/>
+                <Shop
+                  setModalCart={setModalCart}
+                  modalCart={modalCart}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
               }
             />
             <Route
