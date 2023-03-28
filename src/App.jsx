@@ -16,14 +16,14 @@ import { AppContainer, StyledPromo } from './styles';
 
 function App() {
   const [modalCart, setModalCart] = useState(false);
-  const defaultText = 'Entrega grátis para todo o Brasil.';
+  const defaultText = 'Imagens criadas com Inteligência Artificial.';
   const [promoText, setPromoText] = useState(defaultText);
   const { loggedInUser } = useContext(AuthContext);
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     setTimeout(() => {
-      if (promoText !== 'Entrega grátis para todo o Brasil.')
-        setPromoText('Entrega grátis para todo o Brasil.');
+      if (promoText !== defaultText) setPromoText(defaultText);
     }, 15000);
 
     if (loggedInUser) {
@@ -47,7 +47,15 @@ function App() {
           </StyledPromo>
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Home />} />
+            <Route
+              path="/home"
+              element={
+                <Home
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              }
+            />
             <Route path="/login" element={<Login promoText={promoText} />} />
             <Route
               path="/signup"
@@ -60,7 +68,12 @@ function App() {
             <Route
               path="/shop"
               element={
-                <Shop setModalCart={setModalCart} modalCart={modalCart} />
+                <Shop
+                  setModalCart={setModalCart}
+                  modalCart={modalCart}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
               }
             />
             <Route

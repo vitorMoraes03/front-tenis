@@ -12,9 +12,9 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
         font-family: 'Roboto', sans-serif;
         color: var(--main-white);
-        --font-text: 1.4rem;
-        --font-medium: 1.5rem;
-        --font-big: 1.8rem;
+        --font-text: 1.6rem;
+        --font-medium: 1.8rem;
+        --font-big: 2rem;
         --font-logo: 3.4rem;
         --icons-size: 3.2rem;
         --main-color: #190e02; //black

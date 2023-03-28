@@ -15,7 +15,7 @@ import SideShop from '../../components/SideShop';
 import { shuffle, isSmallScreen } from '../../global';
 import ModalSideFilter from '../../components/ModalSideFilter';
 
-function Shop({ setModalCart, modalCart }) {
+function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
   const { order, setOrder } = useContext(CartContext);
   const [shoes, setShoes] = useState([]);
   const [defaultShoes, setDefaultShoes] = useState([]);
@@ -26,7 +26,6 @@ function Shop({ setModalCart, modalCart }) {
     try {
       const allShoes = await api.get('/shoes');
       const shuffledShoes = shuffle(allShoes.data);
-      setShoes(shuffledShoes);
       setDefaultShoes(shuffledShoes);
     } catch (err) {
       console.log(err);
@@ -35,6 +34,8 @@ function Shop({ setModalCart, modalCart }) {
 
   useEffect(() => {
     getAllShoes();
+    if (searchInput) return;
+    setShoes(defaultShoes);
   }, []);
 
   return (
@@ -62,6 +63,8 @@ function Shop({ setModalCart, modalCart }) {
             shoes={shoes}
             setShoes={setShoes}
             defaultShoes={defaultShoes}
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
           />
           <SelectFilter shoes={shoes} setShoes={setShoes} />
         </StyledDivShop>

@@ -20,6 +20,10 @@ export const StyledMain = styled.div`
     text-decoration: inherit;
   }
 
+  h2 {
+    font-size: var(--font-medium);
+  }
+
   @media (max-width: 600px) {
     grid-template-areas:
       'featured'
