@@ -29,7 +29,7 @@ O site é responsivo para dispositivos móveis, com algumas modificações simpl
 
 ## Instalação
 
-# Front
+### Front
 
 ```bash
     $git clone https://github.com/vitorMoraes03/front-tenis.git
@@ -37,7 +37,7 @@ O site é responsivo para dispositivos móveis, com algumas modificações simpl
     $npm install
 ```
 
-# Back
+### Back
 
 ```bash
     $git clone https://github.com/vitorMoraes03/back-tenis.git
