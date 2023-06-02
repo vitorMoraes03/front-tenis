@@ -20,7 +20,7 @@ function Main({ setSearchInput }) {
         <Link to="/shop">
           <div className="main-title">
             <div className="text-wrapper">
-              <h1>Comece seu ano com leveza</h1>
+              <h1>O Conforto em seus pés</h1>
               {isSmallScreen() ? null : <p>Espumas de última tecnologia</p>}
             </div>
           </div>
