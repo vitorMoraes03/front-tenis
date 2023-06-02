@@ -1,40 +1,40 @@
 import { Link } from 'react-router-dom';
-import {
-  StyledMain,
-  StyledFeatured,
-  StyledSecondSide,
-  StyledThirdSide,
-} from './styles';
-import { isSmallScreen } from '../../../global';
+import { useEffect, useState } from 'react';
+import { StyledMain, StyledFeatured, StyledSecondSide } from './styles';
+import isSmallScreen from '../../../smallFunctions/isSmallScreen';
+import SingleItem from '../SingleItem';
+import imgSideSecond from '../../../images/teste-1.png';
+import imgSideThird from '../../../images/DenizD_wearing_neon_jordan_shoes.png';
 
-function Main() {
+function Main({ setSearchInput }) {
+  const images = [imgSideSecond, imgSideThird];
+  const [img, setImg] = useState(images[0]);
+
+  useEffect(() => {
+    setImg(images[Math.floor(Math.random() * images.length)]);
+  }, []);
+
   return (
     <StyledMain>
       <StyledFeatured>
         <Link to="/shop">
           <div className="main-title">
             <div className="text-wrapper">
-              <h1>Comece seu ano com leveza</h1>
+              <h1>O Conforto em seus pés</h1>
               {isSmallScreen() ? null : <p>Espumas de última tecnologia</p>}
             </div>
           </div>
         </Link>
       </StyledFeatured>
-      <StyledSecondSide>
+      <StyledSecondSide imgName={img}>
         <div>
-          <h2>Lançamento Nike Rexus</h2>
+          <h2>Novos Lançamentos</h2>
           <Link to="/shop">
             <p>Compre agora</p>
           </Link>
         </div>
       </StyledSecondSide>
-      <StyledThirdSide>
-        <div>
-          <Link to="/shop">
-            <h2>Bem vindo ao futuro</h2>
-          </Link>
-        </div>
-      </StyledThirdSide>
+      <SingleItem setSearchInput={setSearchInput} />
     </StyledMain>
   );
 }

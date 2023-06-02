@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import imgHome from '../../../images/woman-3.2-shoes-waves.png';
-import imgSideSecond from '../../../images/teste-1.png';
-import imgSideThird from '../../../images/DenizD_wearing_neon_jordan_shoes.png';
+
 
 export const StyledMain = styled.div`
   display: grid;
@@ -9,6 +8,7 @@ export const StyledMain = styled.div`
     'featured featured second'
     'featured featured third';
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   height: 100vh;
 
   h1 {
@@ -30,6 +30,7 @@ export const StyledMain = styled.div`
       'second'
       'third';
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 
     h1 {
       font-size: 2.2rem;
@@ -67,6 +68,7 @@ export const StyledFeatured = styled.section`
 
 export const StyledSide = styled.section`
   background-size: cover;
+  background-position: center center;
   position: relative;
 
   div {
@@ -83,9 +85,7 @@ export const StyledSide = styled.section`
 `;
 
 export const StyledSecondSide = styled(StyledSide)`
-  background-image: url(${imgSideSecond});
+  height: 100%;
+  background-image: ${(props) => `url(${props.imgName})`};
 `;
 
-export const StyledThirdSide = styled(StyledSide)`
-  background-image: url(${imgSideThird});
-`;

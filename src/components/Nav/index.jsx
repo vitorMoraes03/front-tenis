@@ -12,7 +12,7 @@ import {
   StyledContainerUser,
 } from './styles';
 import CartModal from '../Cart';
-import { isSmallScreen } from '../../global';
+import isSmallScreen from '../../smallFunctions/isSmallScreen';
 
 function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
   const { loggedInUser } = useContext(AuthContext);

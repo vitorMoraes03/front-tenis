@@ -1,37 +1,29 @@
 import styled from 'styled-components';
 
-export const StyledGallery = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-big);
-  height: 45rem;
-  margin: var(--space-small) auto;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-    height: 140rem;
-    gap: 0;
-  }
+export const StyledSingleItem = styled.section`
+  position: relative;
+  height: 100%;
 `;
 
 export const StyledImgContainer = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: center;
   justify-content: center;
+  align-items: center;
   height: 100%;
 
   div {
     position: relative;
     height: 20%;
+    width: 100%;
   }
 
   h3 {
+    text-align: center;
     transition: all 0.15s ease;
     font-family: 'Ruthie', cursive;
     text-transform: none;
-    font-size: 5.2rem;
+    font-size: 4.2rem;
     font-weight: 500;
     position: absolute;
     width: 100%;
@@ -41,7 +33,7 @@ export const StyledImgContainer = styled.div`
   }
 
   img {
-    width: 30rem;
+    width: 22rem;
   }
 
   button {

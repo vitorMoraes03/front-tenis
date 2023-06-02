@@ -13,8 +13,9 @@ import ShoeCard from '../../components/ShoeCard';
 import SearchFilter from '../../components/Filters/Search';
 import SelectFilter from '../../components/Filters/Select';
 import SideShop from '../../components/SideShop';
-import { shuffle, isSmallScreen } from '../../global';
 import ModalSideFilter from '../../components/ModalSideFilter';
+import shuffle from '../../smallFunctions/shuffle';
+import isSmallScreen from '../../smallFunctions/isSmallScreen';
 
 function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
   const { order, setOrder } = useContext(CartContext);
