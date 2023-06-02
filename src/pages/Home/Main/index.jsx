@@ -5,7 +5,7 @@ import {
   StyledSecondSide,
   StyledThirdSide,
 } from './styles';
-import { isSmallScreen } from '../../../global';
+import isSmallScreen from '../../../smallFunctions/isSmallScreen';
 
 function Main() {
   return (
