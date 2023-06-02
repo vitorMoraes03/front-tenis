@@ -22,7 +22,7 @@ function Main({ setSearchInput }) {
       </StyledFeatured>
       <StyledSecondSide>
         <div>
-          <h2>Lançamento Nike Rexus</h2>
+          <h2>Novos Lançamentos</h2>
           <Link to="/shop">
             <p>Compre agora</p>
           </Link>

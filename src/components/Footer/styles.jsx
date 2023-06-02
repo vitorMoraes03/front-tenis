@@ -7,19 +7,19 @@ export const StyledFooter = styled.footer`
   // z-index: 100;
   position: relative;
   display: flex;
-  padding: var(--space-medium) var(--space-big);
+  padding: 5rem var(--space-big) var(--space-small) var(--space-big);
   justify-content: space-between;
   align-items: center;
-
-  ion-icon {
-    font-size: var(--icons-size);
-  }
 
   ion-icon:hover,
   ion-icon:active,
   a:hover,
   a:active {
     color: var(--main-shade);
+  }
+
+  ion-icon {
+    font-size: 3.2rem;
   }
 
   a {
@@ -38,14 +38,20 @@ export const StyledFooter = styled.footer`
 
   @media (max-width: 600px) {
     padding: var(--space-medium);
+    justify-content: center;
   }
 `;
 
 export const StyledFooterMedia = styled.div`
+  display: flex;
+  gap: var(--space-small);
+  align-items: center;
+
   h3 {
     margin-bottom: var(--space-small);
     text-transform: uppercase;
-    text-align: center;
+    height: 100%;
+    transform: translateY(25%);
   }
 
   ion-icon {
