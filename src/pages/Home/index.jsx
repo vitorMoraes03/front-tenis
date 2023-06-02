@@ -1,20 +1,12 @@
 import { useEffect } from 'react';
 import Main from './Main';
-import Gallery from './Gallery';
-import BigImage from './BigImage';
 
-function Home({ searchInput, setSearchInput }) {
+function Home({ setSearchInput }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
-    <>
-      <Main />
-      <Gallery searchInput={searchInput} setSearchInput={setSearchInput} />
-      <BigImage />
-    </>
-  );
+  return <Main setSearchInput={setSearchInput}/>;
 }
 
 export default Home;

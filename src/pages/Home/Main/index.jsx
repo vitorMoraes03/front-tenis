@@ -3,11 +3,11 @@ import {
   StyledMain,
   StyledFeatured,
   StyledSecondSide,
-  StyledThirdSide,
 } from './styles';
 import isSmallScreen from '../../../smallFunctions/isSmallScreen';
+import SingleItem from '../SingleItem';
 
-function Main() {
+function Main({ setSearchInput }) {
   return (
     <StyledMain>
       <StyledFeatured>
@@ -28,13 +28,7 @@ function Main() {
           </Link>
         </div>
       </StyledSecondSide>
-      <StyledThirdSide>
-        <div>
-          <Link to="/shop">
-            <h2>Bem vindo ao futuro</h2>
-          </Link>
-        </div>
-      </StyledThirdSide>
+      <SingleItem setSearchInput={setSearchInput}/>
     </StyledMain>
   );
 }
