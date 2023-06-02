@@ -10,21 +10,21 @@ function SelectFilter({ shoes, setShoes }) {
 
   useEffect(() => {
     if (option === 'Menor preço') {
-      const copyArr = [...shoes];
+      const copyArr = [...shoes.currentShoes];
       const sorted = copyArr.sort((a, b) => a.price - b.price);
-      setShoes({...shoes, currentShoes: sorted});
+      setShoes({...shoes, currentShoes: [...sorted]});
     }
 
     if (option === 'Maior preço') {
-      const copyArr = [...shoes];
+      const copyArr = [...shoes.currentShoes];
       const sorted = copyArr.sort((a, b) => b.price - a.price);
-      setShoes({...shoes, currentShoes: sorted});
+      setShoes({...shoes, currentShoes: [...sorted]});
     }
 
     if (option === 'Ordernar por') {
-      const copyArr = [...shoes];
-      const ordered = copyArr.sort(() => Math.random() - 0.5)
-      setShoes({...shoes, currentShoes: ordered});
+      const copyArr = [...shoes.currentShoes];
+      const sorted = copyArr.sort(() => Math.random() - 0.5)
+      setShoes({...shoes, currentShoes: [...sorted]});
     }
   }, [option]);
 

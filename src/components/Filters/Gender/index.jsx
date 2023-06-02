@@ -18,7 +18,7 @@ function GenderSideFilter({ shoes, setShoes }) {
 
   useEffect(() => {
     if (genderPick.length === 2) {
-      setShoes({...shoes, shoes: [...shoes.defaultShoes]});
+      setShoes({...shoes, currentShoes: [...shoes.defaultShoes]});
       return;
     }
 
@@ -27,7 +27,7 @@ function GenderSideFilter({ shoes, setShoes }) {
     );
 
     if (filtered.length === 0) {
-      setShoes(shoes.defaultShoes);
+      setShoes({...shoes, currentShoes: [...shoes.defaultShoes]});
     } else setShoes({...shoes, filteredGender: [...filtered.map((obj) => obj._id)]})
   }, [genderPick]);
 

@@ -24,7 +24,7 @@ function SizeSideFilter({ setShoes, shoes }) {
 
   useEffect(() => {
     if (arrSizes.length === 0) {
-      setShoes({...shoes, shoes: [...shoes.defaultShoes]});
+      setShoes({...shoes, currentShoes: [...shoes.defaultShoes]});
       return;
     }
 
@@ -44,7 +44,7 @@ function SizeSideFilter({ setShoes, shoes }) {
       setShoes({...shoes, filteredSize: []});
       return;
     }
-    setShoes(setShoes({...shoes, filteredSize: [...filteredArr.map((obj) => obj._id)]}));
+    setShoes({...shoes, filteredSize: [...filteredArr.map((obj) => obj._id)]});
   }, [filteredArr]);
 
   return (

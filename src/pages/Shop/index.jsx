@@ -35,7 +35,7 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
     try {
       const allShoes = await api.get('/shoes');
       const shuffledShoes = shuffle(allShoes.data);
-      setShoes({...shoes, defaultShoes: shuffledShoes});
+      setShoes({...shoes, defaultShoes: [...shuffledShoes]});
     } catch (err) {
       console.log(err);
     }
@@ -53,7 +53,7 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
   }, []);
 
   const seeAll = () => {
-    setShoes(shoes.defaultShoes);
+    setShoes({...shoes, currentShoes: shoes.defaultShoes});
     setSearchInput('');
   };
 
