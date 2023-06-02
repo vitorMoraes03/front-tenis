@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import imgHome from '../../../images/woman-3.2-shoes-waves.png';
-import imgSideSecond from '../../../images/teste-1.png';
+
 
 export const StyledMain = styled.div`
   display: grid;
@@ -86,6 +86,6 @@ export const StyledSide = styled.section`
 
 export const StyledSecondSide = styled(StyledSide)`
   height: 100%;
-  background-image: url(${imgSideSecond});
+  background-image: ${(props) => `url(${props.imgName})`};
 `;
 

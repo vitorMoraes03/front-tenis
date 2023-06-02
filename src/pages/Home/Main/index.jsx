@@ -1,13 +1,19 @@
 import { Link } from 'react-router-dom';
-import {
-  StyledMain,
-  StyledFeatured,
-  StyledSecondSide,
-} from './styles';
+import { useEffect, useState } from 'react';
+import { StyledMain, StyledFeatured, StyledSecondSide } from './styles';
 import isSmallScreen from '../../../smallFunctions/isSmallScreen';
 import SingleItem from '../SingleItem';
+import imgSideSecond from '../../../images/teste-1.png';
+import imgSideThird from '../../../images/DenizD_wearing_neon_jordan_shoes.png';
 
 function Main({ setSearchInput }) {
+  const images = [imgSideSecond, imgSideThird];
+  const [img, setImg] = useState(images[0]);
+
+  useEffect(() => {
+    setImg(images[Math.floor(Math.random() * images.length)]);
+  }, []);
+
   return (
     <StyledMain>
       <StyledFeatured>
@@ -20,7 +26,7 @@ function Main({ setSearchInput }) {
           </div>
         </Link>
       </StyledFeatured>
-      <StyledSecondSide>
+      <StyledSecondSide imgName={img}>
         <div>
           <h2>Novos Lançamentos</h2>
           <Link to="/shop">
@@ -28,7 +34,7 @@ function Main({ setSearchInput }) {
           </Link>
         </div>
       </StyledSecondSide>
-      <SingleItem setSearchInput={setSearchInput}/>
+      <SingleItem setSearchInput={setSearchInput} />
     </StyledMain>
   );
 }
