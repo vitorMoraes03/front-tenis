@@ -57,12 +57,12 @@ export const StyledLinks = styled(StyledFlex)`
 
 export const StyledContainerUser = styled(StyledFlex)`
   padding-right: var(--space-medium);
+  text-align: center;
 
   @media (max-width: 600px) {
     .div-hello {
       display: flex;
       flex-direction: column;
-      text-align: center;
     }
   }
 `;

@@ -12,18 +12,19 @@ function SelectFilter({ shoes, setShoes }) {
     if (option === 'Menor preço') {
       const copyArr = [...shoes];
       const sorted = copyArr.sort((a, b) => a.price - b.price);
-      setShoes(sorted);
+      setShoes({...shoes, currentShoes: sorted});
     }
 
     if (option === 'Maior preço') {
       const copyArr = [...shoes];
       const sorted = copyArr.sort((a, b) => b.price - a.price);
-      setShoes(sorted);
+      setShoes({...shoes, currentShoes: sorted});
     }
 
     if (option === 'Ordernar por') {
       const copyArr = [...shoes];
-      setShoes(copyArr.sort(() => Math.random() - 0.5));
+      const ordered = copyArr.sort(() => Math.random() - 0.5)
+      setShoes({...shoes, currentShoes: ordered});
     }
   }, [option]);
 

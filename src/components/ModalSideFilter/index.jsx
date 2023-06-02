@@ -5,7 +5,6 @@ import { ModalSideContainer, OverlaySideFilter } from './style';
 
 function ModalSideFilter({
   setShoes,
-  defaultShoes,
   shoes,
   setFilterModal,
   filterModal,
@@ -45,7 +44,6 @@ function ModalSideFilter({
         <SideShop
           shoes={shoes}
           setShoes={setShoes}
-          defaultShoes={defaultShoes}
         />
       </ModalSideContainer>
     </>

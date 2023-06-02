@@ -29,7 +29,6 @@ const StyledShoeSmall = styled.div`
   }
 `;
 
-// eslint-disable-next-line no-unused-vars
 function ShoeCardSmall({ element, order, setOrder }) {
   function deleteItem() {
     const updatedOrder = order.filter((item) => item.idCart !== element.idCart);

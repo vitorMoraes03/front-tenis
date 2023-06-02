@@ -19,29 +19,41 @@ import isSmallScreen from '../../smallFunctions/isSmallScreen';
 
 function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
   const { order, setOrder } = useContext(CartContext);
-  const [shoes, setShoes] = useState([]);
-  const [defaultShoes, setDefaultShoes] = useState([]);
   const [filterModal, setFilterModal] = useState(false);
   const btnRef = useRef(null);
+  const [shoes, setShoes] = useState({
+    currentShoes: [],
+    defaultShoes: [],
+    filteredColor: [],
+    filteredCategory: [],
+    filteredSize: [],
+    filteredPrice: [],
+    filteredGender: [],
+  });
 
   async function getAllShoes() {
     try {
       const allShoes = await api.get('/shoes');
       const shuffledShoes = shuffle(allShoes.data);
-      setDefaultShoes(shuffledShoes);
+      setShoes({...shoes, defaultShoes: shuffledShoes});
     } catch (err) {
       console.log(err);
     }
   }
 
   useEffect(() => {
+    console.log(shoes);
+
+  }, [shoes]);
+
+  useEffect(() => {
     getAllShoes();
     if (searchInput) return;
-    setShoes(defaultShoes);
+    setShoes({...shoes, currentShoes: shoes.defaultShoes});
   }, []);
 
   const seeAll = () => {
-    setShoes(defaultShoes);
+    setShoes(shoes.defaultShoes);
     setSearchInput('');
   };
 
@@ -51,7 +63,6 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
         <ModalSideFilter
           shoes={shoes}
           setShoes={setShoes}
-          defaultShoes={defaultShoes}
           setFilterModal={setFilterModal}
           filterModal={filterModal}
           btnRef={btnRef}
@@ -60,7 +71,6 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
         <SideShop
           shoes={shoes}
           setShoes={setShoes}
-          defaultShoes={defaultShoes}
         />
       )}
       <StyledShopMain>
@@ -69,7 +79,6 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
           <SearchFilter
             shoes={shoes}
             setShoes={setShoes}
-            defaultShoes={defaultShoes}
             searchInput={searchInput}
             setSearchInput={setSearchInput}
           />
@@ -89,12 +98,12 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
           <StyledBtnShop onClick={seeAll}>Ver todos</StyledBtnShop>
         </StyledBtnsContainer>
         <StyledGridShop>
-          {shoes.length === 0 ? (
+          {shoes.currentShoes.length === 0 ? (
             <div className="loading-container">
               <h2>Carregando...</h2>
             </div>
           ) : null}
-          {shoes.map((element) => (
+          {shoes.currentShoes.map((element) => (
             <ShoeCard
               element={element}
               order={order}
