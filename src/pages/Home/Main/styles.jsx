@@ -30,6 +30,7 @@ export const StyledMain = styled.div`
       'second'
       'third';
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 
     h1 {
       font-size: 2.2rem;
@@ -67,6 +68,7 @@ export const StyledFeatured = styled.section`
 
 export const StyledSide = styled.section`
   background-size: cover;
+  background-position: center center;
   position: relative;
 
   div {
