@@ -68,7 +68,7 @@ function ColorSideFilter({ setShoes, defaultShoes }) {
       case 'blue':
         return 'Azul';
       case 'green':
-        return 'Preto';
+        return 'Verde';
       case 'brown':
         return 'Marrom';
       case 'gray':
