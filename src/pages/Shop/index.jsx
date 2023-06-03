@@ -31,6 +31,10 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
     filteredGender: [],
   });
 
+  // tenho que separar o que é shoes e o q é filter
+  // toda vez que filter muda eu atualizo shoes
+  // se forem o msm objeto, vai bugar o useEfect
+
   async function getAllShoes() {
     try {
       const allShoes = await api.get('/shoes');

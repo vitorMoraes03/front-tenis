@@ -26,6 +26,10 @@ function ModalSideFilter({
   useEffect(() => {
     if (filterModal) {
       document.addEventListener('click', handleClickOutside);
+      document.body.style.overflow = 'hidden';
+    }
+    else {
+      document.body.style.overflow = 'unset';
     }
   }, [filterModal]);
 
