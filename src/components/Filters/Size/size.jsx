@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
-function SizeSideFilter({ setShoes, shoes }) {
+function SizeSideFilter({ shoes, filter, setFilter }) {
   const [sizeOpen, setSizeOpen] = useState(false);
   const [arrSizes, setArrSizes] = useState([]);
   const [filteredArr, setFilteredArr] = useState([]);
@@ -24,7 +24,7 @@ function SizeSideFilter({ setShoes, shoes }) {
 
   useEffect(() => {
     if (arrSizes.length === 0) {
-      setShoes({...shoes, currentShoes: [...shoes.defaultShoes]});
+      setFilteredArr([]);
       return;
     }
 
@@ -41,10 +41,10 @@ function SizeSideFilter({ setShoes, shoes }) {
 
   useEffect(() => {
     if (filteredArr.length === 0) {
-      setShoes({...shoes, filteredSize: []});
+      setFilter({...filter, size: []});
       return;
     }
-    setShoes({...shoes, filteredSize: [...filteredArr.map((obj) => obj._id)]});
+    setFilter({...filter, size: [...filteredArr.map((obj) => obj._id)]});
   }, [filteredArr]);
 
   return (

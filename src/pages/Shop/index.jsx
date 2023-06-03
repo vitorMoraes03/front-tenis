@@ -24,11 +24,13 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
   const [shoes, setShoes] = useState({
     currentShoes: [],
     defaultShoes: [],
-    filteredColor: [],
-    filteredCategory: [],
-    filteredSize: [],
-    filteredPrice: [],
-    filteredGender: [],
+  });
+  const [filter, setFilter] = useState({
+    color: [],
+    category: [],
+    size: [],
+    price: [],
+    gender: [],
   });
 
   // tenho que separar o que é shoes e o q é filter
@@ -47,8 +49,9 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
 
   useEffect(() => {
     console.log(shoes);
+    console.log(filter);
 
-  }, [shoes]);
+  }, [shoes, filter]);
 
   useEffect(() => {
     getAllShoes();
@@ -67,6 +70,8 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
         <ModalSideFilter
           shoes={shoes}
           setShoes={setShoes}
+          setFilter={setFilter}
+          filter={filter}
           setFilterModal={setFilterModal}
           filterModal={filterModal}
           btnRef={btnRef}
@@ -75,6 +80,8 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
         <SideShop
           shoes={shoes}
           setShoes={setShoes}
+          setFilter={setFilter}
+          filter={filter}
         />
       )}
       <StyledShopMain>

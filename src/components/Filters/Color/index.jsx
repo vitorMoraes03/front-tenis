@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
-function ColorSideFilter({ setShoes, shoes }) {
+function ColorSideFilter({ shoes, filter, setFilter }) {
   const colorList = [
     'white',
     'black',
@@ -36,7 +36,7 @@ function ColorSideFilter({ setShoes, shoes }) {
 
   useEffect(() => {
     if (arrColors.length === 0) {
-      setShoes({...shoes, shoes: [...shoes.defaultShoes]});
+      setFilteredArr([]);
       return;
     }
 
@@ -55,10 +55,10 @@ function ColorSideFilter({ setShoes, shoes }) {
 
   useEffect(() => {
     if (filteredArr.length === 0) {
-      setShoes({ ...shoes, filteredColor: [] });
+      setFilter({ ...filter, color: [] });
       return;
     }
-    setShoes({ ...shoes, filteredColor: [...filteredArr.map((obj) => obj._id)] });
+    setFilter({ ...filter, color: [...filteredArr.map((obj) => obj._id)] });
   }, [filteredArr]);
 
   function translationColors(color) {

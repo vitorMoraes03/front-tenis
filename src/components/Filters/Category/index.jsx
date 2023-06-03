@@ -1,9 +1,8 @@
 /* eslint-disable no-plusplus */
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
-function CategorySideFilter({ setShoes, shoes }) {
+function CategorySideFilter({ shoes, setFilter, filter }) {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [arrCategory, setArrCategory] = useState([]);
   const [filteredArr, setFilteredArr] = useState([]);
@@ -24,7 +23,7 @@ function CategorySideFilter({ setShoes, shoes }) {
 
   useEffect(() => {
     if (arrCategory.length === 0) {
-      setShoes({...shoes, shoes: [...shoes.defaultShoes]});
+      setFilteredArr([]);
       return;
     }
 
@@ -40,10 +39,10 @@ function CategorySideFilter({ setShoes, shoes }) {
 
   useEffect(() => {
     if (filteredArr.length === 0) {
-      setShoes({...shoes, filteredCategory: []});
+      setFilter({...filter, category: []});
       return;
     }
-    setShoes({...shoes, filteredCategory: [...filteredArr.map((obj) => obj._id)]});
+    setFilter({...filter, category: [...filteredArr.map((obj) => obj._id)]});
   }, [filteredArr]);
 
   return (

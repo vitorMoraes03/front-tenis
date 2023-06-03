@@ -6,6 +6,8 @@ import { ModalSideContainer, OverlaySideFilter } from './style';
 function ModalSideFilter({
   setShoes,
   shoes,
+  setFilter,
+  filter,
   setFilterModal,
   filterModal,
   btnRef,
@@ -48,6 +50,8 @@ function ModalSideFilter({
         <SideShop
           shoes={shoes}
           setShoes={setShoes}
+          setFilter={setFilter}
+          filter={filter}
         />
       </ModalSideContainer>
     </>

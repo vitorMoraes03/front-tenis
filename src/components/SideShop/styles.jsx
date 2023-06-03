@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const StyledShopSide = styled.div`
   padding-top: var(--space-medium);
-  width: max(20rem, 100%);
+  width: 22rem;
   height: fit-content;
 
   li {
@@ -12,5 +12,6 @@ export const StyledShopSide = styled.div`
 
   @media (max-width: 600px) {
     padding-top: 0;
+    width: 100%;
   }
 `;
