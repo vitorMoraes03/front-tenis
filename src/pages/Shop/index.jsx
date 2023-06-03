@@ -16,6 +16,7 @@ import SideShop from '../../components/SideShop';
 import ModalSideFilter from '../../components/ModalSideFilter';
 import shuffle from '../../smallFunctions/shuffle';
 import isSmallScreen from '../../smallFunctions/isSmallScreen';
+import sortSelect from '../../smallFunctions/sortSelect';
 
 function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
   const { order, setOrder } = useContext(CartContext);
@@ -32,10 +33,7 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
     price: [],
     gender: [],
   });
-
-  // tenho que separar o que é shoes e o q é filter
-  // toda vez que filter muda eu atualizo shoes
-  // se forem o msm objeto, vai bugar o useEfect
+  const [option, setOption] = useState('Recomendados');
 
   async function getAllShoes() {
     try {
@@ -72,20 +70,18 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
       shoes.defaultShoes.filter((shoe) => shoe._id === element)
     );
 
-    console.log('commonElements', commonElements);
-
     if (commonElements.length === 0) {
       if (allFiltered.flat().length === 0) {
-        setShoes({ ...shoes, currentShoes: shoes.defaultShoes });
+        const copy = [...shoes.defaultShoes];
+        setShoes({ ...shoes, currentShoes: sortSelect(option, copy) });
       } else {
         setShoes({ ...shoes, currentShoes: [] });
       }
       return;
     }
 
-    setShoes({ ...shoes, currentShoes: [...idToObjects.flat()] });
-
-    // select bugando
+    const sorted = sortSelect(option, idToObjects.flat());
+    setShoes({ ...shoes, currentShoes: [...sorted] });
   }, [filter]);
 
   useEffect(() => {
@@ -128,7 +124,12 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
             searchInput={searchInput}
             setSearchInput={setSearchInput}
           />
-          <SelectFilter shoes={shoes} setShoes={setShoes} />
+          <SelectFilter
+            shoes={shoes}
+            setShoes={setShoes}
+            option={option}
+            setOption={setOption}
+          />
         </StyledDivShop>
         <StyledBtnsContainer>
           {isSmallScreen() ? (
