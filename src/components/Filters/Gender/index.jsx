@@ -19,7 +19,7 @@ function GenderSideFilter({ shoes, filter, setFilter }) {
   useEffect(() => {
     const allFiltered = [];
     genderPick.forEach((gender) => {
-      const filtered = shoes.currentShoes.filter(
+      const filtered = shoes.defaultShoes.filter(
         (element) => element.gender === gender
       );
       allFiltered.push(...filtered);

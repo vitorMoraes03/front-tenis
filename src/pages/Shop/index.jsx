@@ -41,26 +41,61 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
     try {
       const allShoes = await api.get('/shoes');
       const shuffledShoes = shuffle(allShoes.data);
-      setShoes({...shoes, defaultShoes: [...shuffledShoes]});
+      setShoes({ ...shoes, defaultShoes: [...shuffledShoes] });
     } catch (err) {
       console.log(err);
     }
   }
 
   useEffect(() => {
-    console.log(shoes);
-    console.log(filter);
+    console.log('filter', filter);
 
-  }, [shoes, filter]);
+    const allFiltered = [
+      filter.color,
+      filter.category,
+      filter.gender,
+      filter.size,
+      filter.price,
+    ];
+
+    const commonElements = allFiltered.reduce((acc, curr) => {
+      if (curr.length === 0) {
+        return acc;
+      }
+      if (acc.length === 0) {
+        return curr;
+      }
+      return acc.filter((element) => curr.includes(element));
+    });
+
+    const idToObjects = commonElements.map((element) =>
+      shoes.defaultShoes.filter((shoe) => shoe._id === element)
+    );
+
+    console.log('commonElements', commonElements);
+
+    if (commonElements.length === 0) {
+      if (allFiltered.flat().length === 0) {
+        setShoes({ ...shoes, currentShoes: shoes.defaultShoes });
+      } else {
+        setShoes({ ...shoes, currentShoes: [] });
+      }
+      return;
+    }
+
+    setShoes({ ...shoes, currentShoes: [...idToObjects.flat()] });
+
+    // select bugando
+  }, [filter]);
 
   useEffect(() => {
     getAllShoes();
     if (searchInput) return;
-    setShoes({...shoes, currentShoes: shoes.defaultShoes});
+    setShoes({ ...shoes, currentShoes: shoes.defaultShoes });
   }, []);
 
   const seeAll = () => {
-    setShoes({...shoes, currentShoes: shoes.defaultShoes});
+    setShoes({ ...shoes, currentShoes: shoes.defaultShoes });
     setSearchInput('');
   };
 
