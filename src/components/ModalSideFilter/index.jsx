@@ -5,8 +5,9 @@ import { ModalSideContainer, OverlaySideFilter } from './style';
 
 function ModalSideFilter({
   setShoes,
-  defaultShoes,
   shoes,
+  setFilter,
+  filter,
   setFilterModal,
   filterModal,
   btnRef,
@@ -27,6 +28,10 @@ function ModalSideFilter({
   useEffect(() => {
     if (filterModal) {
       document.addEventListener('click', handleClickOutside);
+      document.body.style.overflow = 'hidden';
+    }
+    else {
+      document.body.style.overflow = 'unset';
     }
   }, [filterModal]);
 
@@ -45,7 +50,8 @@ function ModalSideFilter({
         <SideShop
           shoes={shoes}
           setShoes={setShoes}
-          defaultShoes={defaultShoes}
+          setFilter={setFilter}
+          filter={filter}
         />
       </ModalSideContainer>
     </>

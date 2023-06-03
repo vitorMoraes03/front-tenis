@@ -38,6 +38,7 @@ export const StyledSideCard = styled.div`
   background-color: var(--secondary-shade);
   padding: var(--space-small);
   margin-top: var(--space-small);
+
   ion-icon {
     color: var(--main-color);
     font-size: var(--font-text);
@@ -80,7 +81,7 @@ export const StyledSideCard = styled.div`
 
     .tags-price,
     .tags-colors {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
 `;

@@ -5,18 +5,30 @@ import CategorySideFilter from '../Filters/Category';
 import SizeSideFilter from '../Filters/Size/size';
 import { StyledShopSide } from './styles';
 
-function SideShop({ setShoes, defaultShoes, shoes }) {
+function SideShop({ shoes, setFilter, filter }) {
   return (
     <StyledShopSide>
-      <ColorSideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
+      <ColorSideFilter
+        shoes={shoes}
+        setFilter={setFilter}
+        filter={filter}
+      />
       <GenderSideFilter
         shoes={shoes}
-        setShoes={setShoes}
-        defaultShoes={defaultShoes}
+        setFilter={setFilter}
+        filter={filter}
       />
-      {/* <PriceSideFilter setShoes={setShoes} defaultShoes={defaultShoes} /> */}
-      <CategorySideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
-      <SizeSideFilter setShoes={setShoes} defaultShoes={defaultShoes} />
+      {/* <PriceSideFilter shoes={shoes} setFilter={setFilter}  filter={filter}/> */}
+      <CategorySideFilter
+        shoes={shoes}
+        setFilter={setFilter}
+        filter={filter}
+      />
+      <SizeSideFilter
+        shoes={shoes}
+        setFilter={setFilter}
+        filter={filter}
+      />
     </StyledShopSide>
   );
 }

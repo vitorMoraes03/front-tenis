@@ -16,32 +16,82 @@ import SideShop from '../../components/SideShop';
 import ModalSideFilter from '../../components/ModalSideFilter';
 import shuffle from '../../smallFunctions/shuffle';
 import isSmallScreen from '../../smallFunctions/isSmallScreen';
+import sortSelect from '../../smallFunctions/sortSelect';
 
 function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
   const { order, setOrder } = useContext(CartContext);
-  const [shoes, setShoes] = useState([]);
-  const [defaultShoes, setDefaultShoes] = useState([]);
   const [filterModal, setFilterModal] = useState(false);
   const btnRef = useRef(null);
+  const [shoes, setShoes] = useState({
+    currentShoes: [],
+    defaultShoes: [],
+  });
+  const [filter, setFilter] = useState({
+    color: [],
+    category: [],
+    size: [],
+    price: [],
+    gender: [],
+  });
+  const [option, setOption] = useState('Recomendados');
 
   async function getAllShoes() {
     try {
       const allShoes = await api.get('/shoes');
       const shuffledShoes = shuffle(allShoes.data);
-      setDefaultShoes(shuffledShoes);
+      setShoes({ ...shoes, defaultShoes: [...shuffledShoes] });
     } catch (err) {
       console.log(err);
     }
   }
 
   useEffect(() => {
+    console.log('filter', filter);
+
+    const allFiltered = [
+      filter.color,
+      filter.category,
+      filter.gender,
+      filter.size,
+      filter.price,
+    ];
+
+    const commonElements = allFiltered.reduce((acc, curr) => {
+      if (curr.length === 0) {
+        return acc;
+      }
+      if (acc.length === 0) {
+        return curr;
+      }
+      return acc.filter((element) => curr.includes(element));
+    });
+
+    const idToObjects = commonElements.map((element) =>
+      shoes.defaultShoes.filter((shoe) => shoe._id === element)
+    );
+
+    if (commonElements.length === 0) {
+      if (allFiltered.flat().length === 0) {
+        const copy = [...shoes.defaultShoes];
+        setShoes({ ...shoes, currentShoes: sortSelect(option, copy) });
+      } else {
+        setShoes({ ...shoes, currentShoes: [] });
+      }
+      return;
+    }
+
+    const sorted = sortSelect(option, idToObjects.flat());
+    setShoes({ ...shoes, currentShoes: [...sorted] });
+  }, [filter]);
+
+  useEffect(() => {
     getAllShoes();
     if (searchInput) return;
-    setShoes(defaultShoes);
+    setShoes({ ...shoes, currentShoes: shoes.defaultShoes });
   }, []);
 
   const seeAll = () => {
-    setShoes(defaultShoes);
+    setShoes({ ...shoes, currentShoes: shoes.defaultShoes });
     setSearchInput('');
   };
 
@@ -51,7 +101,8 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
         <ModalSideFilter
           shoes={shoes}
           setShoes={setShoes}
-          defaultShoes={defaultShoes}
+          setFilter={setFilter}
+          filter={filter}
           setFilterModal={setFilterModal}
           filterModal={filterModal}
           btnRef={btnRef}
@@ -60,7 +111,8 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
         <SideShop
           shoes={shoes}
           setShoes={setShoes}
-          defaultShoes={defaultShoes}
+          setFilter={setFilter}
+          filter={filter}
         />
       )}
       <StyledShopMain>
@@ -69,11 +121,15 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
           <SearchFilter
             shoes={shoes}
             setShoes={setShoes}
-            defaultShoes={defaultShoes}
             searchInput={searchInput}
             setSearchInput={setSearchInput}
           />
-          <SelectFilter shoes={shoes} setShoes={setShoes} />
+          <SelectFilter
+            shoes={shoes}
+            setShoes={setShoes}
+            option={option}
+            setOption={setOption}
+          />
         </StyledDivShop>
         <StyledBtnsContainer>
           {isSmallScreen() ? (
@@ -89,12 +145,12 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
           <StyledBtnShop onClick={seeAll}>Ver todos</StyledBtnShop>
         </StyledBtnsContainer>
         <StyledGridShop>
-          {shoes.length === 0 ? (
+          {shoes.currentShoes.length === 0 ? (
             <div className="loading-container">
               <h2>Carregando...</h2>
             </div>
           ) : null}
-          {shoes.map((element) => (
+          {shoes.currentShoes.map((element) => (
             <ShoeCard
               element={element}
               order={order}

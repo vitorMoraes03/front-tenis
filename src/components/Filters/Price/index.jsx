@@ -1,10 +1,9 @@
 /* eslint-disable no-plusplus */
-/* eslint-disable no-console */
 
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
-function PriceSideFilter({ setShoes, defaultShoes }) {
+function PriceSideFilter({ shoes, filter, setFilter }) {
   const [priceOpen, setPriceOpen] = useState(false);
   const arrOfValues = [
     [0, 350],
@@ -30,7 +29,7 @@ function PriceSideFilter({ setShoes, defaultShoes }) {
 
   useEffect(() => {
     if (arrPrices.length === 0) {
-      setShoes(defaultShoes);
+      setFilteredArr([]);
       return;
     }
 
@@ -38,7 +37,7 @@ function PriceSideFilter({ setShoes, defaultShoes }) {
     for (let i = 0; i < arrPrices.length; i++) {
       const range = arrPrices[i];
 
-      const filtered = defaultShoes.filter(
+      const filtered = shoes.defaultShoes.filter(
         (obj) =>
           obj.price >= arrOfValues[range][0] &&
           obj.price <= arrOfValues[range][1]
@@ -52,10 +51,10 @@ function PriceSideFilter({ setShoes, defaultShoes }) {
 
   useEffect(() => {
     if (filteredArr.length === 0) {
-      setShoes([]);
+      setFilter({...filter, price: [...shoes.defaultShoes.map((obj) => obj._id)]});
       return;
     }
-    setShoes(filteredArr);
+    setFilter({...filter, price: [...filteredArr.map((obj) => obj._id)]});
   }, [filteredArr]);
 
   return (

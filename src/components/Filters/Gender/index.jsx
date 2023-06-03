@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
-function GenderSideFilter({ shoes, setShoes, defaultShoes }) {
+function GenderSideFilter({ shoes, filter, setFilter }) {
   const [genderPick, setGenderPick] = useState([]);
   const [genderOpen, setGenderOpen] = useState(false);
 
@@ -17,18 +17,15 @@ function GenderSideFilter({ shoes, setShoes, defaultShoes }) {
   }
 
   useEffect(() => {
-    if (genderPick.length === 2) {
-      setShoes(defaultShoes);
-      return;
-    }
+    const allFiltered = [];
+    genderPick.forEach((gender) => {
+      const filtered = shoes.defaultShoes.filter(
+        (element) => element.gender === gender
+      );
+      allFiltered.push(...filtered);
+    });
 
-    const filtered = shoes.filter(
-      (element) => element.gender === genderPick[0]
-    );
-
-    if (filtered.length === 0) {
-      setShoes(defaultShoes);
-    } else setShoes(filtered);
+    setFilter({ ...filter, gender: [...allFiltered.map((obj) => obj._id)] });
   }, [genderPick]);
 
   return (

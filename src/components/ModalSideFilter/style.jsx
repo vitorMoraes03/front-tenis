@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
 import styled from 'styled-components';
 import { OverlayStyle } from '../Cart/styles';
 
-// eslint-disable-next-line import/prefer-default-export
 export const ModalSideContainer = styled.div`
   position: fixed;
   width: 100%;
