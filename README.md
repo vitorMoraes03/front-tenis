@@ -6,14 +6,14 @@
 
 https://motionsneakers.netlify.app/home
 
-## Sobre
+## About
 
 <img src="./src/images/motion-full-gif.gif"/>
 
-**Motion Sneakers** é uma loja online para venda de tênis. Projeto feito com o React, consumindo dados através de um API feita em Node. O usuário pode se cadastrar e realizar compras. O projeto não tem fins comerciais.
+Motion Sneakers is an online store for selling sneakers. The project is built with React and fetches data through a Node API. Users can sign up and make purchases. The project is non-commercial in nature.
 
 
-## Ferramentas
+## Tools
 
 - JavaScript
 - React.js
@@ -21,11 +21,11 @@ https://motionsneakers.netlify.app/home
 - Node.js (Express.js)
 - MongoDB
 
-## Objetivos
+## Goals
 
-A primeira parte foi a construção de uma API utilizando o Express.js, definição de modelos e rotas, com sistema de autenticação. Em seguinda, no front, utilizei o React, onde o maior desafio foi a construção de filtros com extensiva manipulação de arrays, a utilização do contexto do React, e a correta distribuição de props pela aplicação. Apliquei ESLint e Prettier para formatação do código.
+The first part involved building an API using Express.js, defining models and routes, and implementing authentication. On the front end, React was used, and the main challenges included creating filters with extensive array manipulation, utilizing React context, and correctly passing props throughout the application. ESLint and Prettier were applied for code formatting.
 
-O site é responsivo para dispositivos móveis, com algumas modificações simples de layout. O usuário deve fazer cadastro (simplificado) para poder realizar sua compras. Toda a arte foi criada no Midjourney.
+The website is responsive for mobile devices, with some simple layout modifications. Users are required to register (in a simplified manner) in order to make purchases. All artwork was created using Midjourney.
 
 ## Instalação
 
