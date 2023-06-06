@@ -10,7 +10,7 @@ https://motionsneakers.netlify.app/home
 
 <img src="./src/images/motion-full-gif.gif"/>
 
-Motion Sneakers is an online store for selling sneakers. The project is built with React and fetches data through a Node API. Users can sign up and make purchases. The project is non-commercial in nature.
+**Motion Sneakers** is an online store for selling sneakers. The project is built with React and fetches data through a Node API. Users can sign up and make purchases. The project is non-commercial in nature.
 
 
 ## Tools
