@@ -4,7 +4,7 @@
 
 ### Link
 
-https://motionsneakers.netlify.app/home
+https://motionsneakers.netlify.app
 
 ## About
 
