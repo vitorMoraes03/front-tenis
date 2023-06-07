@@ -92,8 +92,7 @@ function CheckOut({ setPromoText }) {
             <p>R${priceTotal()}</p>
           </div>
           <div className="delivery-tax">
-            <p>Frete</p>
-            <p>Grátis</p>
+            <p>Frete Grátis</p>
           </div>
         </div>
       </StyledCheckOutContainer>

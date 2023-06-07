@@ -5,7 +5,7 @@ import { StyledBtnLogin } from '../Login/LoginForm/styles';
 export const StyledCheckOutBackground = styled(StyledLoginContainer)``;
 
 export const StyledCheckOutContainer = styled.div`
-  width: 60%;
+  width: 40%;
   background-color: var(--secondary-shade);
   padding: var(--space-small);
 
@@ -44,9 +44,8 @@ export const StyledCheckOutContainer = styled.div`
   }
 
   .delivery-tax {
-    margin: var(--space-small);
-    display: flex;
-    justify-content: space-between;
+    margin-top: 2px;
+    color: var(--secondary-color);
   }
 
   .checkout-cards {
@@ -63,7 +62,6 @@ export const StyledBtnSmall = styled(StyledBtnLogin)`
 `;
 
 export const StyledBtnsCheckout = styled.div`
-  //temporary, just for testing purpose:
   display: flex;
   gap: 1rem;
   justify-content: center;

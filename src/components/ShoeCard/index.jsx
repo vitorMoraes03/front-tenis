@@ -65,8 +65,15 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
           </select>
         </div>
       </div>
-      <div className='container-card-btn'>
-        <StyledBtnShop>Comprar</StyledBtnShop>
+      <div className="container-card-btn">
+        <StyledBtnShop
+          onClick={(e) => {
+            e.stopPropagation();
+            addShoes();
+          }}
+        >
+          Comprar
+        </StyledBtnShop>
       </div>
     </StyledShoeCard>
   );

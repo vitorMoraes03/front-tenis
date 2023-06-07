@@ -11,6 +11,11 @@ const StyledShoeSmall = styled.div`
   .price-div {
     position: absolute;
     right: 0;
+    color: var(--secondary-color);
+  }
+
+  .shoes-name {
+    font-size: var(--font-big);
   }
 
   ion-icon {
@@ -40,7 +45,9 @@ function ShoeCardSmall({ element, order, setOrder }) {
     <StyledShoeSmall>
       <img src={element.src} alt={element.alt} />
       <div>
-        <p>{element.shoesName}</p>
+        <p className='shoes-name'>{element.shoesName}</p>
+        <p>Tamanho: {element.size}</p>
+        <p>{element.gender}</p>
         <StyledDivColors>
           {element.color.map((singleColor) => (
             <StyledTagColor
@@ -49,11 +56,9 @@ function ShoeCardSmall({ element, order, setOrder }) {
             />
           ))}
         </StyledDivColors>
-        <p>Tamanho: {element.size}</p>
-        <p>{element.gender}</p>
       </div>
       <div className="price-div">
-        <p>R${element.price}</p>
+        <p>R${element.price.toFixed(2)}</p>
       </div>
       <button
         className="btn-trash"
