@@ -29,8 +29,7 @@ function ModalSideFilter({
     if (filterModal) {
       document.addEventListener('click', handleClickOutside);
       document.body.style.overflow = 'hidden';
-    }
-    else {
+    } else {
       document.body.style.overflow = 'unset';
     }
   }, [filterModal]);
@@ -42,11 +41,10 @@ function ModalSideFilter({
       <ModalSideContainer filterModal={filterModal} ref={sideRef}>
         <div className="container-icon">
           <ion-icon
-            name="close-outline"
+            name="arrow-undo-outline"
             onClick={() => setFilterModal(false)}
           />
         </div>
-
         <SideShop
           shoes={shoes}
           setShoes={setShoes}
