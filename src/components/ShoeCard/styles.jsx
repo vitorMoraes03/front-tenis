@@ -41,10 +41,9 @@ export const StyledShoeCard = styled.div`
   }
 
   .shoe-card-tags {
-    text-align: end;
-  }
-
-  .shoe-card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   h4 {
@@ -59,10 +58,34 @@ export const StyledShoeCard = styled.div`
   }
 
   select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-text);
+    font-weight: 600;
+  }
+
+  .size-select-container {
+    display: flex;
+    gap: 2px;
+    align-items: center;
     padding: 2px;
     border: 1px solid var(--main-shade);
     border-radius: 2px;
-    margin-top: 2px;
+    margin-top: 4px;
+    width: fit-content;
+  }
+
+  .size-select-container > ion-icon {
+    font-size: 1.2rem;
+    margin-top: 3px;
+    cursor: inherit;
+
+    &:hover {
+      color: var(--main-color);
+    }
   }
 
   .container-card-btn {

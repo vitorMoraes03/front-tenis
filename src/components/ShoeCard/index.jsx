@@ -56,6 +56,7 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
               />
             ))}
           </StyledDivColors>
+          <div className='size-select-container'>
           <select onChange={handleSelectChange} value={selectedOption}>
             {objectKeys.map((key) => (
               <option value={key} key={key}>
@@ -63,6 +64,8 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
               </option>
             ))}
           </select>
+          <ion-icon name="chevron-down-outline" />
+          </div>
         </div>
       </div>
       <div className="container-card-btn">

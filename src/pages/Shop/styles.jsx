@@ -109,6 +109,25 @@ export const StyledDivShop = styled.div`
     display: flex;
     align-items: center;
   }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .container-select {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--main-color);
+  }
+
+  .container-select ion-icon {
+    font-size: 1.2rem;
+    margin-top: 3px;
+  }
 `;
 
 export const StyledGridShop = styled.div`
