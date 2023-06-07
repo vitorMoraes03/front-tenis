@@ -1,8 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { StyledShoeCard, StyledDivColors, StyledTagColor } from './styles';
+import { StyledBtnShop } from '../../pages/Shop/styles';
 
 function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
   const objectKeys = Object.keys(element.sizeAndStock);
@@ -40,10 +40,14 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
       <div className="container-img">
         <img alt={element.alt} src={element.src} />
       </div>
+      <h4>{element.shoesName}</h4>
       <div className="shoe-card-infos">
         <div className="shoe-card-text">
-          <h4>{element.shoesName}</h4>
           <p>R$ {element.price.toFixed(2)}</p>
+          <p className="p-gender">{element.gender}</p>
+          <p>{element.category}</p>
+        </div>
+        <div className="shoe-card-tags">
           <StyledDivColors>
             {element.color.map((singleColor) => (
               <StyledTagColor
@@ -52,25 +56,17 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
               />
             ))}
           </StyledDivColors>
-          <p className="p-gender">{element.gender}</p>
-          <p>{element.category}</p>
-          <div>
-            <select onChange={handleSelectChange} value={selectedOption}>
-              {objectKeys.map((key) => (
-                <option value={key} key={key}>
-                  {key}
-                </option>
-              ))}
-            </select>
-          </div>
+          <select onChange={handleSelectChange} value={selectedOption}>
+            {objectKeys.map((key) => (
+              <option value={key} key={key}>
+                {key}
+              </option>
+            ))}
+          </select>
         </div>
-        <ion-icon
-          name="bag-add-outline"
-          onClick={(e) => {
-            e.stopPropagation();
-            addShoes();
-          }}
-        />
+      </div>
+      <div className='container-card-btn'>
+        <StyledBtnShop>Comprar</StyledBtnShop>
       </div>
     </StyledShoeCard>
   );
