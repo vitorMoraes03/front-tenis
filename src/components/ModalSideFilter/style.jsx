@@ -27,6 +27,7 @@ export const ModalSideContainer = styled.div`
 
   .container-icon > ion-icon {
     font-size: 2.8rem;
+    cursor: pointer;
   }
 `;
 

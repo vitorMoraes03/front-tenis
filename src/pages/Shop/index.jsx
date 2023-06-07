@@ -46,8 +46,6 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
   }
 
   useEffect(() => {
-    console.log('filter', filter);
-
     const allFiltered = [
       filter.color,
       filter.category,
@@ -89,11 +87,6 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
     if (searchInput) return;
     setShoes({ ...shoes, currentShoes: shoes.defaultShoes });
   }, []);
-
-  const seeAll = () => {
-    setShoes({ ...shoes, currentShoes: shoes.defaultShoes });
-    setSearchInput('');
-  };
 
   return (
     <StyledShopContainer>
@@ -142,7 +135,6 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
               </StyledBtnShop>
             </div>
           ) : null}
-          <StyledBtnShop onClick={seeAll}>Ver todos</StyledBtnShop>
         </StyledBtnsContainer>
         <StyledGridShop>
           {shoes.currentShoes.length === 0 ? (
