@@ -19,6 +19,11 @@ export const StyledShoeCard = styled.div`
     font-size: var(--font-big);
   }
 
+  p:last-child {
+    font-size: var(--font-medium);
+    font-style: italic;
+  }
+
   button {
     font-weight: 600;
     padding: 1rem;
@@ -33,12 +38,18 @@ export const StyledShoeCard = styled.div`
     padding: var(--space-small);
     display: flex;
     justify-content: space-between;
-    align-items: center;
+  }
+
+  .shoe-card-tags {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   h4 {
-    margin-bottom: var(--space-small);
+    margin-top: var(--space-small);
     font-size: 2.2rem;
+    text-align: center;
   }
 
   .shoe-card-text > p,
@@ -47,8 +58,42 @@ export const StyledShoeCard = styled.div`
   }
 
   select {
-    padding: 1px;
-    width: 8rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-text);
+    font-weight: 600;
+  }
+
+  .size-select-container {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    padding: 2px;
+    border: 1px solid var(--main-shade);
+    border-radius: 2px;
+    margin-top: 4px;
+    width: fit-content;
+  }
+
+  .size-select-container > ion-icon {
+    font-size: 1.2rem;
+    margin-top: 3px;
+    cursor: inherit;
+
+    &:hover {
+      color: var(--main-color);
+    }
+  }
+
+  .container-card-btn {
+    text-align: center;
+  }
+
+  button {
+    width: 90%;
   }
 
   .p-gender {

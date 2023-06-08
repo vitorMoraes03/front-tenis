@@ -1,7 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import imgNav from '../../images/logo_modern.png';
 import { AuthContext } from '../../contexts/authContext';
 import { CartContext } from '../../contexts/cartContext';
@@ -17,6 +19,8 @@ import isSmallScreen from '../../smallFunctions/isSmallScreen';
 function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
   const { loggedInUser } = useContext(AuthContext);
   const { order } = useContext(CartContext);
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleClick = () => {
     if (order.length > 0) {
@@ -26,6 +30,22 @@ function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
     }
     setPromoText('Carrinho vazio.');
   };
+
+  function handleLanguage() {
+    const lng = i18n.language;
+    console.log(lng);
+
+    if (lng === 'en-US') {
+      i18n.changeLanguage('pt-BR');
+      localStorage.setItem('language', 'pt-BR');
+      return;
+    }
+
+    if (lng === 'pt-BR') {
+      i18n.changeLanguage('en-US');
+      localStorage.setItem('language', 'en-US');
+    }
+  }
 
   return (
     <StyledNavBar>
@@ -39,7 +59,7 @@ function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
       <StyledContainerUser>
         {loggedInUser ? (
           <div className="div-hello">
-            <p>Olá,</p>
+            <p>{t('Olá,')}</p>
             <p>{loggedInUser.user.firstName}</p>
           </div>
         ) : null}
@@ -50,6 +70,9 @@ function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
           <ion-icon name="cart-outline" />
           <p>{order.length === 0 ? null : order.length}</p>
         </StyledCart>
+        <button type="button" className="language-btn" onClick={handleLanguage}>
+          {i18n.language === 'en-US' ? 'PT' : 'EN'}
+        </button>
       </StyledContainerUser>
       <CartModal modalCart={modalCart} setModalCart={setModalCart} />
     </StyledNavBar>

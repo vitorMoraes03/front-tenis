@@ -1,6 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function SearchFilter({ setShoes, shoes, searchInput, setSearchInput }) {
+  const { t } = useTranslation();
+
   function handleChange(e) {
     setSearchInput(e.target.value);
   }
@@ -21,7 +25,7 @@ function SearchFilter({ setShoes, shoes, searchInput, setSearchInput }) {
   return (
     <div className="div-search-filter">
       <input
-        placeholder="Pesquisar por nome"
+        placeholder={t('Pesquisar por nome')}
         value={searchInput}
         onChange={handleChange}
       />

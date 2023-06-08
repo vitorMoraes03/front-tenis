@@ -35,6 +35,10 @@ export const StyledContainerCart = styled.div`
     padding-top: var(--space-small);
     gap: var(--space-small);
     display: flex;
+
+    button {
+      z-index: ${(props) => (props.modalCart ? 1000 : -1)};
+    }
   }
 
   img {

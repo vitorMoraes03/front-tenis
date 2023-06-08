@@ -25,6 +25,22 @@ export const StyledNavBar = styled.nav`
     text-decoration: none;
     color: var(--main-white);
   }
+
+  .language-btn {
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    color: var(--main-white);
+    font-size: var(--font-big);
+    font-weight: 600;
+    cursor: pointer;
+    width: 3.2rem;
+  }
+
+  .language-btn:hover,
+  .language-btn:active {
+    color: var(--main-shade);
+  }
 `;
 
 export const StyledLinks = styled(StyledFlex)`

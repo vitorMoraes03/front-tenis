@@ -1,11 +1,14 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-plusplus */
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
 function SizeSideFilter({ shoes, filter, setFilter }) {
   const [sizeOpen, setSizeOpen] = useState(false);
   const [arrSizes, setArrSizes] = useState([]);
   const [filteredArr, setFilteredArr] = useState([]);
+  const { t } = useTranslation();
   const sizeList = [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44];
 
   function handleSize(e) {
@@ -50,7 +53,7 @@ function SizeSideFilter({ shoes, filter, setFilter }) {
   return (
     <StyledSideCard>
       <div className="div-h4">
-        <h4>Tamanho</h4>
+        <h4>{t('Tamanho')}</h4>
         <button
           className="btn-color-add"
           type="button"
@@ -74,7 +77,7 @@ function SizeSideFilter({ shoes, filter, setFilter }) {
                   value={element}
                   id={element}
                 />
-                {element}
+                {t(`${element}`)}
               </label>
             </li>
           ))}

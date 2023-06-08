@@ -1,4 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { StyledDivColors, StyledTagColor } from '../ShoeCard/styles';
 
 const StyledShoeSmall = styled.div`
@@ -11,6 +13,11 @@ const StyledShoeSmall = styled.div`
   .price-div {
     position: absolute;
     right: 0;
+    color: var(--secondary-color);
+  }
+
+  .shoes-name {
+    font-size: var(--font-big);
   }
 
   ion-icon {
@@ -30,6 +37,8 @@ const StyledShoeSmall = styled.div`
 `;
 
 function ShoeCardSmall({ element, order, setOrder }) {
+  const { t } = useTranslation();
+
   function deleteItem() {
     const updatedOrder = order.filter((item) => item.idCart !== element.idCart);
     setOrder(updatedOrder);
@@ -40,7 +49,9 @@ function ShoeCardSmall({ element, order, setOrder }) {
     <StyledShoeSmall>
       <img src={element.src} alt={element.alt} />
       <div>
-        <p>{element.shoesName}</p>
+        <p className='shoes-name'>{element.shoesName}</p>
+        <p>{t('Tamanho')}: {element.size}</p>
+        <p>{t(`${element.gender}`)}</p>
         <StyledDivColors>
           {element.color.map((singleColor) => (
             <StyledTagColor
@@ -49,11 +60,9 @@ function ShoeCardSmall({ element, order, setOrder }) {
             />
           ))}
         </StyledDivColors>
-        <p>Tamanho: {element.size}</p>
-        <p>{element.gender}</p>
       </div>
       <div className="price-div">
-        <p>R${element.price}</p>
+        <p>R${element.price.toFixed(2)}</p>
       </div>
       <button
         className="btn-trash"

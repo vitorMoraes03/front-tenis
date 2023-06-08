@@ -52,6 +52,10 @@ export const StyledSideCard = styled.div`
     display: inline-block;
   }
 
+  h4 {
+    font-size: var(--font-big);
+  }
+
   .div-h4 {
     display: flex;
     justify-content: space-between;
@@ -105,13 +109,32 @@ export const StyledDivShop = styled.div`
     display: flex;
     align-items: center;
   }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .container-select {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--main-color);
+  }
+
+  .container-select ion-icon {
+    font-size: 1.2rem;
+    margin-top: 3px;
+  }
 `;
 
 export const StyledGridShop = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: var(--space-medium);
-  padding-top: var(--space-big);
+  padding-top: 7rem;
   justify-items: center;
 
   .loading-container {
