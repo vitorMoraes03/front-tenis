@@ -1,13 +1,16 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
 import { StyledShoeCard, StyledDivColors, StyledTagColor } from './styles';
 import { StyledBtnShop } from '../../pages/Shop/styles';
 
 function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
   const objectKeys = Object.keys(element.sizeAndStock);
   const [selectedOption, setSelectedOption] = useState(objectKeys[0]);
-
+  const { t } = useTranslation();
+ 
   function handleSelectChange(e) {
     setSelectedOption(e.target.value);
   }
@@ -40,12 +43,12 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
       <div className="container-img">
         <img alt={element.alt} src={element.src} />
       </div>
-      <h4>{element.shoesName}</h4>
+      <h4>{t(`${element.shoesName}`)}</h4>
       <div className="shoe-card-infos">
         <div className="shoe-card-text">
           <p>R$ {element.price.toFixed(2)}</p>
-          <p className="p-gender">{element.gender}</p>
-          <p>{element.category}</p>
+          <p className="p-gender">{t(`${element.gender}`)}</p>
+          <p>{t(`${element.category}`)}</p>
         </div>
         <div className="shoe-card-tags">
           <StyledDivColors>
@@ -75,7 +78,7 @@ function ShoeCard({ order, setOrder, element, setModalCart, modalCart }) {
             addShoes();
           }}
         >
-          Comprar
+          {t('Comprar')}
         </StyledBtnShop>
       </div>
     </StyledShoeCard>

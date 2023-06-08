@@ -1,11 +1,14 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-plusplus */
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
 function CategorySideFilter({ shoes, setFilter, filter }) {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [arrCategory, setArrCategory] = useState([]);
   const [filteredArr, setFilteredArr] = useState([]);
+  const { t } = useTranslation();
 
   function handleCategory(e) {
     const category = e.target.value;
@@ -48,7 +51,7 @@ function CategorySideFilter({ shoes, setFilter, filter }) {
   return (
     <StyledSideCard>
       <div className="div-h4">
-        <h4>Categorias</h4>
+        <h4>{t('Categorias')}</h4>
         <button
           className="btn-color-add"
           type="button"
@@ -71,7 +74,7 @@ function CategorySideFilter({ shoes, setFilter, filter }) {
                 value="Casual"
                 id="category-casual"
               />
-              Casual
+              {t('Casual')}
             </label>
           </li>
           <li>
@@ -82,7 +85,7 @@ function CategorySideFilter({ shoes, setFilter, filter }) {
                 value="Sofisticado"
                 id="category-daily"
               />
-              Sofisticado
+              {t('Sofisticado')}
             </label>
           </li>
           <li>
@@ -93,7 +96,7 @@ function CategorySideFilter({ shoes, setFilter, filter }) {
                 value="Esportivo"
                 id="category-sports"
               />
-              Esportivo
+              {t('Esportivo')}
             </label>
           </li>
         </ul>

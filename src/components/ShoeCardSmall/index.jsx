@@ -1,4 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { StyledDivColors, StyledTagColor } from '../ShoeCard/styles';
 
 const StyledShoeSmall = styled.div`
@@ -35,6 +37,8 @@ const StyledShoeSmall = styled.div`
 `;
 
 function ShoeCardSmall({ element, order, setOrder }) {
+  const { t } = useTranslation();
+
   function deleteItem() {
     const updatedOrder = order.filter((item) => item.idCart !== element.idCart);
     setOrder(updatedOrder);
@@ -46,8 +50,8 @@ function ShoeCardSmall({ element, order, setOrder }) {
       <img src={element.src} alt={element.alt} />
       <div>
         <p className='shoes-name'>{element.shoesName}</p>
-        <p>Tamanho: {element.size}</p>
-        <p>{element.gender}</p>
+        <p>{t('Tamanho')}: {element.size}</p>
+        <p>{t(`${element.gender}`)}</p>
         <StyledDivColors>
           {element.color.map((singleColor) => (
             <StyledTagColor

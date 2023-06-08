@@ -1,7 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/order */
 import { useState, useEffect } from 'react';
 import { StyledSideCard } from '../../../pages/Shop/styles';
+import { useTranslation } from 'react-i18next'; 
 
 function GenderSideFilter({ shoes, filter, setFilter }) {
+  const { t } = useTranslation();
   const [genderPick, setGenderPick] = useState([]);
   const [genderOpen, setGenderOpen] = useState(false);
 
@@ -31,7 +35,7 @@ function GenderSideFilter({ shoes, filter, setFilter }) {
   return (
     <StyledSideCard>
       <div className="div-h4">
-        <h4>Gênero</h4>
+        <h4>{t('Gênero')}</h4>
         <button
           className="btn-color-add"
           type="button"
@@ -54,7 +58,7 @@ function GenderSideFilter({ shoes, filter, setFilter }) {
                 value="Feminino"
                 id="input-feminino"
               />
-              Feminino
+              {t('Feminino')}
             </label>
           </li>
           <li>
@@ -65,7 +69,7 @@ function GenderSideFilter({ shoes, filter, setFilter }) {
                 value="Masculino"
                 id="input-masculino"
               />
-              Masculino
+              {t('Masculino')}
             </label>
           </li>
         </ul>

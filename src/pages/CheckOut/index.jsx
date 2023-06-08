@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   StyledCheckOutBackground,
   StyledBtnsCheckout,
@@ -13,6 +15,7 @@ import api from '../../api/api';
 import ShoeCardSmall from '../../components/ShoeCardSmall';
 
 function CheckOut({ setPromoText }) {
+  const { t } = useTranslation();
   const { order, setOrder } = useContext(CartContext);
   const { loggedInUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -65,9 +68,9 @@ function CheckOut({ setPromoText }) {
     <StyledCheckOutBackground>
       <StyledCheckOutContainer>
         <div className="checkout-title">
-          <h2>Resumo da Compra:</h2>
+          <h2>{t('Resumo da Compra')}</h2>
           <Link to="/shop">
-            <StyledBtnSmall>Voltar</StyledBtnSmall>
+            <StyledBtnSmall>{t('Voltar')}</StyledBtnSmall>
           </Link>
         </div>
         <div className="checkout-main">
@@ -88,18 +91,18 @@ function CheckOut({ setPromoText }) {
         </div>
         <div>
           <div>
-            <p className="total-price">Preço total</p>
+            <p className="total-price">{t('Preço total')}</p>
             <p>R${priceTotal()}</p>
           </div>
           <div className="delivery-tax">
-            <p>Frete Grátis</p>
+            <p>{t('Frete Grátis')}</p>
           </div>
         </div>
       </StyledCheckOutContainer>
       <StyledBtnsCheckout>
         {emptyCart ? null : (
           <StyledBtnLogin onClick={checkOutCart}>
-            Finalizar Compra
+            {t('Finalizar compra')}
           </StyledBtnLogin>
         )}
       </StyledBtnsCheckout>

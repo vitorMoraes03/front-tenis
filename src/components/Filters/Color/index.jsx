@@ -1,8 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-plusplus */
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyledSideCard } from '../../../pages/Shop/styles';
 
 function ColorSideFilter({ shoes, filter, setFilter }) {
+  const { t } = useTranslation();
   const colorList = [
     'white',
     'black',
@@ -93,7 +96,7 @@ function ColorSideFilter({ shoes, filter, setFilter }) {
   return (
     <StyledSideCard>
       <div className="div-h4">
-        <h4>Cor</h4>
+        <h4>{t('Cor')}</h4>
         <button
           className="btn-color-add"
           type="button"
@@ -117,7 +120,7 @@ function ColorSideFilter({ shoes, filter, setFilter }) {
                   value={element}
                   id={element}
                 />
-                {translationColors(element)}
+                {t(`${translationColors(element)}`)}
               </label>
             </li>
           ))}

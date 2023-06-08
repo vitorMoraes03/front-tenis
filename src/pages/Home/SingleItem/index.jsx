@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import img1 from '../../../images/vitoristvan_shoes_modern_style_ultrarealistic_1.png';
 import img2 from '../../../images/RRRRRR_sneaker_high_fear.png';
 import img3 from '../../../images/vitoristvan_shoes_modern_style_ultrarealistic.png';
@@ -9,6 +11,7 @@ import { StyledImgContainer, StyledSingleItem } from './styles';
 function SingleItem({ setSearchInput }) {
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   function handleBtn(string) {
     setSearchInput(string);
@@ -46,7 +49,7 @@ function SingleItem({ setSearchInput }) {
         <img src={shoesPick.src} alt={shoesPick.alt} />
         <div>
           <StyledBtnShop onClick={() => handleBtn(shoesPick.shoesName)}>
-            Comprar
+            {t('Comprar')}
           </StyledBtnShop>
           <h3>{shoesPick.shoesName}</h3>
         </div>

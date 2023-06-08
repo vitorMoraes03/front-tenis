@@ -1,4 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useState, useEffect, useContext, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   StyledShopContainer,
   StyledDivShop,
@@ -34,6 +36,7 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
     gender: [],
   });
   const [option, setOption] = useState('Recomendados');
+  const { t } = useTranslation();
 
   async function getAllShoes() {
     try {
@@ -131,7 +134,7 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
                 onClick={() => setFilterModal(!filterModal)}
                 ref={btnRef}
               >
-                Filtros
+                {t('Filtros')}
               </StyledBtnShop>
             </div>
           ) : null}
@@ -139,7 +142,7 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
         <StyledGridShop>
           {shoes.currentShoes.length === 0 ? (
             <div className="loading-container">
-              <h2>Carregando...</h2>
+              <h2>{t('Carregando')}...</h2>
             </div>
           ) : null}
           {shoes.currentShoes.map((element) => (
@@ -153,6 +156,7 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
             />
           ))}
         </StyledGridShop>
+        {/* Quando length for menor/igual que 9 e não for página 1 */}
       </StyledShopMain>
     </StyledShopContainer>
   );
