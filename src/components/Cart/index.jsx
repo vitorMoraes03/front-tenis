@@ -1,12 +1,15 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-unused-vars */
 import { useContext, useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { StyledContainerCart, OverlayStyle } from './styles';
 import ShoeCardSmall from '../ShoeCardSmall';
 import { CartContext } from '../../contexts/cartContext';
 import { StyledBtnLogin } from '../../pages/Login/LoginForm/styles';
 
 function CartModal({ modalCart, setModalCart }) {
+  const { t } = useTranslation();
   const { order, setOrder } = useContext(CartContext);
   const modalRef = useRef(null);
   const navigate = useNavigate();
@@ -64,7 +67,7 @@ function CartModal({ modalCart, setModalCart }) {
       <StyledContainerCart modalCart={modalCart} ref={modalRef}>
         <div className="main-container">
           <div className="container-title">
-            <h2>{emptyCart ? 'Carrinho vazio' : 'Carrinho'}</h2>
+            <h2>{emptyCart ? t('Carrinho vazio') : t('Carrinho')}</h2>
             <ion-icon name="close-outline" onClick={closeModal} />
           </div>
           <div>
@@ -81,9 +84,9 @@ function CartModal({ modalCart, setModalCart }) {
           </div>
           <div className="container-button">
             {emptyCart ? null : (
-              <StyledBtnLogin onClick={handleCheckout}>Checkout</StyledBtnLogin>
+              <StyledBtnLogin onClick={handleCheckout}>{t('Checkout')}</StyledBtnLogin>
             )}
-            <StyledBtnLogin onClick={handleShopMore}>Voltar</StyledBtnLogin>
+            <StyledBtnLogin onClick={handleShopMore}>{t('Voltar')}</StyledBtnLogin>
           </div>
         </div>
       </StyledContainerCart>

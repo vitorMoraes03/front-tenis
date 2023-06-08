@@ -28,7 +28,7 @@ function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
       setModalCart(true);
       return;
     }
-    setPromoText('Carrinho vazio.');
+    setPromoText(t('Carrinho vazio.'));
   };
 
   function handleLanguage() {
@@ -51,8 +51,12 @@ function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
     <StyledNavBar>
       <StyledLinks>
         <Link to="/">
-          <img src={imgNav} alt="Logo Sneakers" />
-          {isSmallScreen() ? null : <h1>Motion</h1>}
+          {isSmallScreen() ? null : (
+            <>
+              <img src={imgNav} alt="Logo Sneakers" />
+              <h1>Motion</h1>
+            </>
+          )}
         </Link>
         {isSmallScreen() ? null : <Link to="./shop">Shop</Link>}
       </StyledLinks>

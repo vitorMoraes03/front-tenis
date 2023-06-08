@@ -1,6 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { InputWrapper } from '../../../global';
 import { AuthContext } from '../../../contexts/authContext';
 import { CartContext } from '../../../contexts/cartContext';
@@ -8,6 +10,7 @@ import api from '../../../api/api';
 import { StyledForm, StyledContainerBtn, StyledBtnLogin } from './styles';
 
 function LoginForm({ promoText }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { setLoggedInUser } = useContext(AuthContext);
   const { order } = useContext(CartContext);
@@ -90,7 +93,7 @@ function LoginForm({ promoText }) {
     <StyledForm>
       <InputWrapper>
         <label htmlFor="inputEmail">
-          Endereço de Email:
+          {t('Endereço de Email')}:
           <input
             id="inputEmail"
             type="text"
@@ -118,7 +121,7 @@ function LoginForm({ promoText }) {
       </InputWrapper>
       <StyledContainerBtn>
         <StyledBtnLogin type="submit" onClick={handleSubmit}>
-          Login
+          {t('Login')}
         </StyledBtnLogin>
       </StyledContainerBtn>
     </StyledForm>

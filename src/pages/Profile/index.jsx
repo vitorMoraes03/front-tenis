@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import api from '../../api/api';
 import { AuthContext } from '../../contexts/authContext';
 import { CartContext } from '../../contexts/cartContext';
@@ -9,6 +11,7 @@ import { StyledProfileContainer } from './style';
 import { allRegex } from '../../global';
 
 function Profile({ setPromoText }) {
+  const { t } = useTranslation();
   const { loggedInUser, setLoggedInUser } = useContext(AuthContext);
   const { user } = loggedInUser;
   const { setOrder } = useContext(CartContext);
@@ -39,7 +42,7 @@ function Profile({ setPromoText }) {
     try {
       await api.delete('/user/delete');
       logOut();
-      setPromoText('Usuário deletado.');
+      setPromoText(t('Usuário deletado.'));
     } catch (err) {
       console.log(err.response.data);
     }
@@ -47,24 +50,25 @@ function Profile({ setPromoText }) {
 
   function checkEmail() {
     if (edition.email === '') {
-      setEmailMsg('Campo Obrigatório.');
+      setEmailMsg(t('Campo Obrigatório.'));
       return;
     }
-    if (!emailRegex.test(edition.email)) setEmailMsg('Preencher corretamente.');
+    if (!emailRegex.test(edition.email))
+      setEmailMsg(t('Preencher corretamente.'));
   }
 
   function checkFirstName() {
     if (edition.firstName === '') {
-      setFirstNameMsg('Campo Obrigatório.');
+      setFirstNameMsg(t('Campo Obrigatório.'));
       return;
     }
     if (!surNameRegex.test(edition.firstName))
-      setFirstNameMsg('Preencher corretamente.');
+      setFirstNameMsg(t('Preencher corretamente.'));
   }
 
   function checkBirthday() {
     if (edition.birthday === '') {
-      setBirthdayMsg('Campo Obrigatório.');
+      setBirthdayMsg(t('Campo Obrigatório.'));
     }
   }
 
@@ -90,7 +94,7 @@ function Profile({ setPromoText }) {
 
   return (
     <StyledProfileContainer>
-      <h1>Minha Conta</h1>
+      <h1>{t('Minha Conta')}</h1>
       <form>
         <Input
           field="Email"
@@ -99,31 +103,31 @@ function Profile({ setPromoText }) {
           span={emailMsg}
           type="text"
           handler={handleChange}
-          small="Obrigatório"
+          small={t('Obrigatório')}
         />
         <Input
           field="FirstName"
-          text="Primeiro Nome"
+          text={t('Primeiro Nome')}
           value={edition.firstName}
           span={firstNameMsg}
           type="text"
           handler={handleChange}
-          small="Obrigatório"
+          small={t('Obrigatório')}
         />
         <Input
           field="Birthday"
-          text="Data de nascimento"
+          text={t('Data de nascimento')}
           value={edition.birthday}
           span={birthdayMsg}
           type="date"
           handler={handleChange}
-          small="Opcional"
+          small={t('Opcional')}
         />
       </form>
       <div className="container-btn">
-        <StyledBtnLogin onClick={logOut}>Sair</StyledBtnLogin>
-        <StyledBtnLogin onClick={handleSubmit}>Editar</StyledBtnLogin>
-        <StyledBtnLogin onClick={deleteAcc}>Deletar</StyledBtnLogin>
+        <StyledBtnLogin onClick={logOut}>{t('Sair')}</StyledBtnLogin>
+        <StyledBtnLogin onClick={handleSubmit}>{t('Editar')}</StyledBtnLogin>
+        <StyledBtnLogin onClick={deleteAcc}>{t('Deletar')}</StyledBtnLogin>
       </div>
     </StyledProfileContainer>
   );

@@ -19,7 +19,7 @@ import { AppContainer, StyledPromo } from './styles';
 function App() {
   const { t } = useTranslation();
   const [modalCart, setModalCart] = useState(false);
-  const defaultText = t('Imagens criadas com Inteligência Artificial.');
+  const defaultText = 'Imagens criadas com Inteligência Artificial.';
   const [promoText, setPromoText] = useState(defaultText);
   const { loggedInUser } = useContext(AuthContext);
   const [searchInput, setSearchInput] = useState('');
@@ -46,7 +46,7 @@ function App() {
             defaultText={defaultText}
           />
           <StyledPromo>
-            <p>{promoText}</p>
+            <p>{t(`${promoText}`)}</p>
           </StyledPromo>
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />

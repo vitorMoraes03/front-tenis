@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyledSignUpContainer, StyledBtnSignUp } from './styles';
 import api from '../../api/api';
 import { AuthContext } from '../../contexts/authContext';
@@ -7,6 +9,7 @@ import { Input } from '../../components/Input';
 import { allRegex } from '../../global';
 
 function SignUp({ setPromoText }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { setLoggedInUser } = useContext(AuthContext);
   const [form, setForm] = useState({
@@ -31,13 +34,13 @@ function SignUp({ setPromoText }) {
 
   const checkInput = (input, regex, setMsg) => {
     if (input === '') {
-      setMsg('Campo Obrigatório.');
+      setMsg(t('Campo Obrigatório.'));
       submitOk = false;
       return;
     }
     const newRegex = regex;
     if (!newRegex.test(input)) {
-      setMsg('Preencher corretamente.');
+      setMsg(t('Preencher corretamente.'));
       submitOk = false;
       return;
     }
@@ -46,8 +49,8 @@ function SignUp({ setPromoText }) {
 
   const checkPasswordEquality = () => {
     if (form.password !== form.confirmPassword) {
-      setConfirmPasswordMsg('Devem ser iguais.');
-      setPasswordMsg('Devem ser iguais.');
+      setConfirmPasswordMsg(t('Devem ser iguais.'));
+      setPasswordMsg(t('Devem ser iguais.'));
       submitOk = false;
     }
   };
@@ -74,7 +77,7 @@ function SignUp({ setPromoText }) {
       setLoggedInUser({ ...res.data });
       localStorage.setItem('loggedInUser', JSON.stringify(res.data));
       setForm({ ...form, password: '', confirmPassword: '' });
-      setPromoText('Usuário criado com sucesso.');
+      setPromoText(t('Usuário criado com sucesso.'));
       navigate('/');
     } catch (err) {
       console.log(err);
@@ -83,7 +86,7 @@ function SignUp({ setPromoText }) {
 
   return (
     <StyledSignUpContainer>
-      <h1 ref={startingRef}>Cadastro</h1>
+      <h1 ref={startingRef}>{t('Cadastro')}</h1>
       <form onSubmit={handleSubmit}>
         <Input
           field="Email"
@@ -92,7 +95,7 @@ function SignUp({ setPromoText }) {
           span={emailMsg}
           type="text"
           handler={handleChange}
-          small="Obrigatório"
+          small={t("Obrigatório")}
         />
         <Input
           field="Password"
@@ -102,35 +105,35 @@ function SignUp({ setPromoText }) {
           type="password"
           handler={handleChange}
           placeholder="Deve conter um digíto numérico..."
-          small="Obrigatório"
+          small={t("Obrigatório")}
         />
         <Input
           field="ConfirmPassword"
-          text="Confirme o password"
+          text={t('Confirme o password')}
           value={form.confirmPassword}
           span={confirmPasswordMsg}
           type="password"
           handler={handleChange}
-          small="Obrigatório"
+          small={t("Obrigatório")}
         />
         <Input
           field="FirstName"
-          text="Nome de usuário"
+          text={t('Nome de usuário')}
           value={form.firstName}
           span={firstNameMsg}
           type="text"
           handler={handleChange}
-          small="Obrigatório"
+          small={t("Obrigatório")}
         />
         <Input
           field="Birthday"
-          text="Data de nascimento"
+          text={t('Data de nascimento')}
           value={form.birthday}
           type="date"
           handler={handleChange}
-          small="Opcional"
+          small={t("Opcional")}
         />
-        <StyledBtnSignUp>Criar Conta</StyledBtnSignUp>
+        <StyledBtnSignUp>{t('Criar Conta')}</StyledBtnSignUp>
       </form>
     </StyledSignUpContainer>
   );
