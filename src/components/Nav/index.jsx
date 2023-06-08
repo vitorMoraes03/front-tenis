@@ -28,7 +28,7 @@ function NavBar({ modalCart, setModalCart, setPromoText, defaultText }) {
       setModalCart(true);
       return;
     }
-    setPromoText('Carrinho vazio.');
+    setPromoText(t('Carrinho vazio.'));
   };
 
   function handleLanguage() {

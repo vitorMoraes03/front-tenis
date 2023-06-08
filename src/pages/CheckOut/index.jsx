@@ -30,7 +30,7 @@ function CheckOut({ setPromoText }) {
     if (!loggedInUser) {
       navigate('/login');
       window.scrollTo(0, 0);
-      setPromoText('Você precisa estar logado para finalizar sua compra.');
+      setPromoText(t('Você precisa estar logado para finalizar sua compra.'));
     }
   }, []);
 
