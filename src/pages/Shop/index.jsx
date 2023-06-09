@@ -37,6 +37,9 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
   });
   const [option, setOption] = useState('Recomendados');
   const { t } = useTranslation();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
+  const totalPages = Math.ceil(shoes.currentShoes.length / itemsPerPage);
 
   async function getAllShoes() {
     try {
@@ -91,12 +94,15 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
     setShoes({ ...shoes, currentShoes: shoes.defaultShoes });
   }, []);
 
-  // criacao da paginacao
-
-  // estado da paginacao
-  // com base nisso, fatia o pedaço e criar um novo current arrays
-  // renderizada a partide desse current
-  // e os btns devem ter acesso a setEstadodaPaginacao
+  function getCurrentPageItems() {
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = shoes.currentShoes.slice(
+      indexOfFirstItem,
+      indexOfLastItem
+    );
+    return currentItems;
+  }
 
   return (
     <StyledShopContainer>
@@ -152,7 +158,7 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
               <h2>{t('Carregando')}...</h2>
             </div>
           ) : null}
-          {shoes.currentShoes.map((element) => (
+          {getCurrentPageItems().map((element) => (
             <ShoeCard
               element={element}
               order={order}
@@ -163,10 +169,23 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
             />
           ))}
         </StyledGridShop>
-        {/* Quando length for menor/igual que 9 e não for página 1 */}
-        <div className='pagination-icons-container'>
-          <ion-icon name="chevron-back-circle-outline" />
-          <ion-icon name="chevron-forward-circle-outline" />
+        <div className="pagination-icons-container">
+          {currentPage === 1 ? (
+            <span> </span>
+          ) : (
+            <ion-icon
+              name="chevron-back-circle-outline"
+              onClick={() => setCurrentPage(currentPage - 1)}
+            />
+          )}
+          {currentPage === totalPages ? (
+            <span> </span>
+          ) : (
+            <ion-icon
+              name="chevron-forward-circle-outline"
+              onClick={() => setCurrentPage(currentPage + 1)}
+            />
+          )}
         </div>
       </StyledShopMain>
     </StyledShopContainer>

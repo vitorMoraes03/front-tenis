@@ -35,6 +35,11 @@ export const StyledShopMain = styled.div`
     ion-icon:hover {
       color: var(--main-color);
     }
+
+    span,
+    ion-icon {
+      width: 4.2rem;
+    }
   }
 
   @media (max-width: 600px) {
