@@ -41,6 +41,8 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
   const itemsPerPage = 9;
   const totalPages = Math.ceil(shoes.currentShoes.length / itemsPerPage);
 
+  console.log(shoes.defaultShoes);
+
   async function getAllShoes() {
     try {
       const allShoes = await api.get('/shoes');
@@ -170,7 +172,7 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
           ))}
         </StyledGridShop>
         <div className="pagination-icons-container">
-          {currentPage === 1 ? (
+          {currentPage === 1 || shoes.defaultShoes.length === 0 ? (
             <span> </span>
           ) : (
             <ion-icon
@@ -178,7 +180,7 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
               onClick={() => setCurrentPage(currentPage - 1)}
             />
           )}
-          {currentPage === totalPages ? (
+          {currentPage === totalPages || shoes.defaultShoes.length === 0 ? (
             <span> </span>
           ) : (
             <ion-icon
