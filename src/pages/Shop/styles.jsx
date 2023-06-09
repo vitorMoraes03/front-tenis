@@ -21,6 +21,27 @@ export const StyledShopMain = styled.div`
     padding: var(--space-small);
   }
 
+  .pagination-icons-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+
+    ion-icon {
+      font-size: 4.2rem;
+      color: var(--main-shade);
+      cursor: pointer;
+    }
+
+    ion-icon:hover {
+      color: var(--main-color);
+    }
+
+    span,
+    ion-icon {
+      width: 4.2rem;
+    }
+  }
+
   @media (max-width: 600px) {
     padding-left: 0;
   }
