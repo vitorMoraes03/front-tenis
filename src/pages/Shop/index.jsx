@@ -91,6 +91,13 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
     setShoes({ ...shoes, currentShoes: shoes.defaultShoes });
   }, []);
 
+  // criacao da paginacao
+
+  // estado da paginacao
+  // com base nisso, fatia o pedaço e criar um novo current arrays
+  // renderizada a partide desse current
+  // e os btns devem ter acesso a setEstadodaPaginacao
+
   return (
     <StyledShopContainer>
       {isSmallScreen() ? (
@@ -157,6 +164,10 @@ function Shop({ setModalCart, modalCart, searchInput, setSearchInput }) {
           ))}
         </StyledGridShop>
         {/* Quando length for menor/igual que 9 e não for página 1 */}
+        <div className='pagination-icons-container'>
+          <ion-icon name="chevron-back-circle-outline" />
+          <ion-icon name="chevron-forward-circle-outline" />
+        </div>
       </StyledShopMain>
     </StyledShopContainer>
   );
